@@ -577,7 +577,7 @@ main {
     }
     .f_p
     {
-        font-size: 16px;
+        font-size: 14px;
     }
     
 
@@ -599,7 +599,7 @@ main {
         position: static;
         justify-content: flex-start;
         margin-top: 20px;
-        margin-bottom: 49px;
+        margin-bottom: 50px;
     }
     
 }
