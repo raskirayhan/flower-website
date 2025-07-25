@@ -1,0 +1,605 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+.noto-serif-font {
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.inter-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+main {
+    max-width: 1140px;
+    margin: 0 auto;
+
+}
+
+.light_silver {
+    color: #8987A1;
+}
+
+.light_dark {
+    color: #252432;
+}
+
+.deep_dark {
+    color: #000000;
+}
+
+.font_orange {
+    color: #E95A08;
+}
+
+.bg_orange {
+    background-color: #E95A08;
+}
+
+
+
+/* navbar related styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.nav_item a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav_item {
+    list-style: none;
+
+}
+
+.nav_ul {
+    display: flex;
+    gap: 48px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_home {
+
+    font-weight: 900;
+}
+
+
+/* banner related styles */
+.banner {
+    display: flex;
+    margin-top: 120px;
+    margin-bottom: 120px;
+    align-items: flex-end;
+}
+
+.banner_tittle {
+    font-size: 3.75rem;
+}
+
+.banner_description {
+    font-size: 1.375rem;
+}
+
+.navbar,
+.banner {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* our plants related styles */
+.our_plants {
+    margin-top: 120px;
+}
+
+.op_tittle {
+    font-size: 3.125rem;
+    text-align: center;
+}
+
+.op_description {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+/* card related styles */
+.card_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 30px;
+    column-gap: 20px;
+}
+
+.card {
+    max-width: 270px;
+
+}
+
+.card_img {
+    margin-bottom: 30px;
+}
+
+.card_name,
+.card_price {
+    text-align: center;
+}
+
+.card_name {
+    color: #111111;
+    font-size: 1.4rem;
+    font-weight: medium;
+}
+
+.card_price {
+    color: #111111;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.card_btn {
+    width: 100%;
+    color: #FFFFFF;
+    height: 50px;
+    border: none;
+    margin-top: 30px;
+
+}
+
+/* plants lovers related styles */
+
+.plant_lovers {
+    display: flex;
+    gap: 60px;
+    margin-top: 210px;
+}
+
+.pl_div1,
+.pl_div2 {
+    width: 50%;
+}
+
+.pl_tittle {
+    font-size: 3.125rem;
+    font-weight: bold;
+}
+
+.pl_description {
+    font-size: 1.375rem;
+    font-weight: regular;
+}
+
+
+.pl_img_wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.pl_img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.badge {
+    position: absolute;
+    top: -120px;
+    right: -90px;
+    width: 286px;
+    height: auto;
+    animation: spin 5s linear infinite;
+    /* box-shadow: -4px 10px 4px 0px rgba(0, 0, 0, 0.25); */
+
+}
+
+/* latest deals related styles */
+.ld_tittle {
+    margin-top: 134px;
+    text-align: center;
+    font-size: 3.125rem;
+    font-weight: bold;
+}
+
+.ld_description {
+    font-size: 1.375rem;
+    font-weight: regular;
+    text-align: center;
+    margin-bottom: 120px;
+}
+
+.latest_deals_div {
+    display: flex;
+    gap: 28px;
+}
+
+
+
+.ld_div1 {
+    width: 30%;
+    height: 424px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ld_div1_img1 {
+    background-image: url('../assets/deal-bloom.png');
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: overlay;
+    height: 50%;
+}
+
+.ld_div1_img2 {
+    background-image: url('../assets/deal-ana.png');
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: overlay;
+    height: 50%;
+}
+
+.ld_div1_img1,
+.ld_div1_img2 {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+
+
+}
+
+.div1_P {
+    font-size: 1.25rem;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.div1_a {
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.ld_div2 {
+
+    width: 70%;
+    background-image: url('../assets/deal-zabo.png');
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    height: 424px;
+    border-radius: 22px;
+
+
+}
+
+#zabo {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    margin-bottom: 0;
+}
+
+#zabo_shop {
+    font-size: 1.75rem;
+    color: #FFFFFF;
+}
+
+/* join section related styles */
+.join{
+    margin-top: 120px;
+}
+
+.join_div {
+    background-image: url(../assets/news-letter-bg.png);
+    background-repeat: no-repeat;
+    background-color: rgba(7, 51, 79, 0.4);
+    background-blend-mode: overlay;
+    background-size:cover;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+    
+
+}
+
+.join_tittle {
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 3.125rem;
+}
+
+#email_input {
+    height: 50px;
+    width: 645px;
+}
+
+.join_inner_div {
+    display: flex;
+    gap: 0px;
+}
+
+.join_btn {
+    padding: 10px 40px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    border: none;
+
+}
+
+/* footer related styles */
+.footer {
+    margin-top: 50px;
+}
+
+.f_container {
+    display: flex;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.f_p {
+    font-size: 1.375rem;
+}
+
+.f_div1,
+.f_div2,
+.f_div3 {
+    width: 1/3;
+}
+
+.footer_link {
+    text-decoration: none;
+    white-space: nowrap;
+    color: #8987A1;
+
+}
+
+.f_div1 {
+    margin-right: 110px;
+}
+
+.f_div2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 111px;
+    row-gap: 32px;
+    margin-right: 111px;
+
+
+}
+
+.f_div3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    padding: 0px;
+    position: relative;
+    top: -100px;
+}
+
+/* responsive for mobile */
+@media screen and (max-width:576px) {
+   
+   
+    .nav_home,
+    .nav_shop,
+    .nav_about {
+        display: none;
+    }
+
+    .navbar {
+        margin-top: 50px;
+    }
+
+    .banner {
+        flex-direction: column-reverse;
+        margin-bottom: 0px;
+    }
+
+    .banner_description {
+        font-size: .875rem;
+    }
+
+
+    .hero_image {
+        width: 100%;
+    }
+
+    .our_plants {
+        margin-top: 0px;
+
+    }
+
+    .op_tittle,
+    .banner_tittle {
+        font-size: 1.5rem;
+    }
+
+    .op_description {
+        font-size: .875rem;
+
+    }
+
+    .card_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card_img {
+        width: 100%;
+    }
+
+    .card_name,
+    .card_price {
+        font-size: 1rem;
+    }
+
+    .plant_lovers {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .pl_div1,
+    .pl_div2 {
+        width: 100%;
+    }
+
+
+    .badge {
+        display: none;
+
+    }
+
+    .plant_lovers {
+        margin-top: 40px;
+    }
+
+    .pl_tittle {
+        text-align: left;
+        font-size: 2rem;
+    }
+
+
+    .pl_description {
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .ld_tittle {
+        font-size: 24px;
+    }
+
+    .ld_description {
+        font-size: 14px;
+        margin-bottom: 50px;
+    }
+
+    .latest_deals_div {
+        flex-direction: column;
+    }
+
+    .ld_div1,
+    .ld_div2 {
+        width: 100%;
+
+    }
+
+    .ld_div2 {
+        height: 200px;
+        gap: 20px;
+    }
+
+    #zabo {
+        font-size: 20px;
+    }
+
+    #zabo_shop {
+        font-size: 16px;
+    }
+    .join{
+        width: 100%;
+        
+    }
+   
+    .join_div {
+
+        height: 350px;
+         width: 100%;
+         background-size: cover;
+         background-position: center;
+        
+       }
+
+    .join_tittle {
+        font-weight: bold;
+        color: #FFFFFF;
+        font-size: 20px;
+        
+    }
+
+
+
+    .join_inner_div {
+        height: 50;
+        width: 300px;
+
+    }
+
+    #email_input {
+        width: 70%;
+    }
+
+    .join_btn {
+        width: 30%;
+        padding: 0;
+        font-size: 16px;
+
+
+    }
+
+    .f_container {
+        flex-direction: column;
+    }
+    .f_p
+    {
+        font-size: 16px;
+    }
+    
+
+    .f_img {
+        width: 50%;
+    }
+
+    .f_div1 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .f_div2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .f_div3 {
+        position: static;
+        justify-content: flex-start;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    
+}
