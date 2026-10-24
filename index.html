@@ -2,282 +2,620 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Market</title>
-    <link rel="stylesheet" href="styles/flower.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Market — Artfully Arranged Fresh Flowers & Houseplants</title>
+  <meta name="description" content="Discover fresh handpicked flowers, indoor plants, and artisan floral bouquets with same-day local delivery and eco-friendly packaging.">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Noto Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/flower.css">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div>
-                <img src="assets/logo.png" alt="" class="nav_img">
-            </div>
 
-            <ul class="nav_ul">
-                <li class="nav_item ">
-                    <a href="" class="nav_home deep_dark">Home</a>
-                </li>
+  <!-- ==========================================
+       SITE HEADER & NAVIGATION
+       ========================================== -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <!-- Logo -->
+        <a href="#top" class="brand-link" aria-label="Flower Market Homepage">
+          <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo">
+          <span class="brand-name">Flower <span>Market</span></span>
+        </a>
 
-                <li class="nav_item light_silver">
-                    <a href="" class="light_silver nav_shop">Shop</a>
-                </li>
+        <!-- Desktop & Mobile Navigation Links -->
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#top" class="nav-link is-active">Home</a></li>
+          <li><a href="#catalog" class="nav-link">Catalog</a></li>
+          <li><a href="#features" class="nav-link">Why Us</a></li>
+          <li><a href="#deals" class="nav-link">Special Deals</a></li>
+          <li><a href="#newsletter" class="nav-link">Floral Club</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
 
-                <li class="nav_item light_silver">
-                    <a href="" class="light_silver nav_about">About Us</a>
-                </li>
+        <!-- Navigation Actions: Theme Toggle & Cart -->
+        <div class="nav-actions">
+          <!-- Light / Dark Mode Toggle (Rule 2) -->
+          <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+            <span class="theme-label">Dark Mode</span>
+          </button>
 
-                <li class="nav_item">
-                    <a href="" class="nav_cart deep_dark">
-                        <i class="fas fa-shopping-cart text-xl"></i>Cart($56)
-                    </a>
-                </li>
+          <!-- Shopping Cart Pill -->
+          <button type="button" class="cart-toggle-btn" id="cart-toggle" aria-label="View shopping cart">
+            <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+            <span id="cart-badge-total">$0.00</span>
+            <span class="cart-badge" id="cart-badge-count">0</span>
+          </button>
 
-            </ul>
-
-        </nav>
-        <div class="banner noto-serif-font">
-            <div class="banner_div_1">
-                <h1 class="banner_tittle">
-                    ALWAYS <span class="font_orange">FRESH</span>
-                    <br>
-                    <span class="font_orange">FLOWERS</span>
-
-                </h1>
-                <p class="light_silver inter-font banner_description">
-                    Discover the magic of fresh flowers, artfully arranged to convey warmth, joy, and love. From delicate petals to vibrant bouquets, we deliver nature’s charm right to your doorstep. Whether you're sharing a smile or celebrating a moment, our handpicked blooms brighten every day and make it truly special.
-
-                </p>
-
-            </div>
-            <div class="banner_div_2">
-                <img src="assets/hero-flower.png" alt="" class="hero_image">
-
-            </div>
-
+          <!-- Mobile Hamburger Button -->
+          <button type="button" class="nav-toggle-btn" id="nav-toggle" aria-label="Open mobile menu" aria-expanded="false" aria-controls="nav-menu">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
         </div>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Mobile Backdrop -->
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
-    </header>
-    <main class="noto-serif-font">
-
-        <!-- our plants section -->
-        <section class="our_plants">
-            <h2 class="op_tittle "><span class="font_orange">Our</span> Plants</h2>
-            <p class="op_description light_silver inter-font ">
-               Our Plants, Your Peace Explore a lush selection of indoor and outdoor plants that breathe life into every corner. From low-maintenance greens to statement foliage, each one is chosen for beauty and balance. Let nature’s calm grow with you, one leaf at a time.
-
+  <main>
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <i class="fas fa-seedling" aria-hidden="true"></i>
+              <span>100% Organically Farmed & Hand-Tied</span>
+            </div>
+            <h1 class="hero-title">
+              ALWAYS <span class="text-primary-color">FRESH</span><br>
+              <span class="text-primary-color">FLOWERS</span> FOR YOU
+            </h1>
+            <p class="hero-desc">
+              Discover the enchantment of fresh botanical blooms artfully arranged to deliver warmth, joy, and peace. From fragrant cut garden stems to air-purifying foliage, we bring nature’s elegance straight to your doorstep.
             </p>
-            <div class="card_container">
-                
-
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                <div class="card">
-                    <img src="assets/sample-flower-image.png" alt="" class="card_img">
-
-                    <p class="card_name inter-font">Lily Blossom</p>
-                    <p class="card_price inter-font">20 USD</p>
-                    <button class="card_btn bg_orange" onclick="showAlert()">ADD TO CART</button>
-                     <script>
-                    function showAlert() {
-                        alert("Flower Added to Cart");
-                    }
-                </script>
-                </div>
-                
+            <div class="hero-actions">
+              <a href="#catalog" class="btn btn--primary">
+                <i class="fas fa-basket-shopping" aria-hidden="true"></i>
+                <span>Explore Catalog</span>
+              </a>
+              <a href="#deals" class="btn btn--outline">
+                <i class="fas fa-tag" aria-hidden="true"></i>
+                <span>Seasonal Offers</span>
+              </a>
             </div>
+          </div>
 
-
-        </section>
-
-        <!-- plants lover section -->
-        <setion class="plant_lovers">
-            <div class="pl_div1">
-                <div class="pl_img_wrap">
-                    <img src="assets/flower-store.png" alt="" class="pl_img">
-                    <img src="assets/trusted-badge.png" alt="" class="badge">
-                </div>
+          <div class="hero-image-wrap">
+            <img src="assets/hero-flower.png" alt="Artisan hand-tied flower bouquet with delicate pastel petals" class="hero-image">
+            <div class="hero-floating-card">
+              <div class="floating-icon">
+                <i class="fas fa-truck-fast" aria-hidden="true"></i>
+              </div>
+              <div class="floating-text">
+                <strong>Express Delivery</strong>
+                <span>Under 24 hours guaranteed</span>
+              </div>
             </div>
-
-            <div class="pl_div2">
-                <h2 class="pl_tittle noto-serif-font">Flower & Plants <br> Lover</h2>
-                <ul>
-                    <li>
-                        <p class="light_silver pl_description inter-font">Nature offers a peace beyond words to those who cherish flowers and plants. A blooming tulip or a trailing pothos isn't just decoration—it brings a quiet, calming moment of serenity..</p>
-                    </li>
-
-                    <li>
-                        <p class="light_silver pl_description inter-font">Immersed in the art of growth, plant lovers explore with curiosity—eager to understand how each stem and petal responds to sunlight, soil types, and propagation.
-</p>
-                    </li>
-
-                    <li>
-                        <p class="light_silver pl_description inter-font">From digital layouts to cozy shelves, flowers and plants bring warmth to any space they touch. A daisy or well-placed fern can soften surroundings and lift the mood.
-
- </p>
-                    </li>
-                </ul>
-
-            </div>
-        </setion>
-        <!-- latest deals section -->
-        <section class="latest_deals">
-            <h2 class="ld_tittle noto-serif-font"><span class="font_orange">Latest</span> Deals</h2>
-            <p class="ld_description inter-font light_silver">Latest Deals That Bloom Bright Unwrap seasonal offers and fresh discounts on bestselling bouquets and plants. Limited-time deals that bring beauty to your door—without blooming your budget</p>
-
-
-            <div class="latest_deals_div">
-                <div class="ld_div1">
-
-                    <div class="ld_div1_img1">
-                        <p class="div1_P">60% Off | Bloom Plant</p>
-                        <a href="" class="div1_a inter-font">Shop Now</a>
-
-                    </div>
-                    <div class="ld_div1_img2">
-                        <p class="div1_P">30% Off | Ana Plant
-                        </p>
-                        <a href="" class="div1_a inter-font">Shop Now</a>
-                    </div>
-
-                </div>
-                <div class="ld_div2">
-                    <p id="zabo">25% Off | Zabo Plant</p>
-                    <a href="" id="zabo_shop" class="inter-font">Shop Now</a>
-
-
-                </div>
-            </div>
-
-        </section>
-
-    </main>
-    <section class="join noto-serif-font">
-        <div class="join_div">
-            <h3 class="join_tittle">Join the colorful Brunch</h3>
-
-            <div class="join_inner_div">
-                <input type="email" name="" id="email_input" placeholder="        Write email" class="inter-font">
-                <button class="join_btn inter-font bg_orange">Subscribe</button>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
-    <footer class="footer">
-         <div class="f_container">
-            <div class="f_div1">
-                <img src="assets/logo.png" alt="" class="f_img">
-                <p class="f_p inter-font light_silver">Indulge your senses with the beauty and fragrance of our fresh flower shop. </p>
-            </div>
-            <div class="f_div2 inter-font">
-                <a href="" class="footer_link">Home</a>
-                <a href="" class="footer_link">Features </a>
-                <a href="" class="footer_link">About Us</a>
 
-                <a href="" class="footer_link">Pricing</a>
-                <a href="" class="footer_link">Blog</a>
-                
-                <a href="" class="footer_link">Privacy Policy</a>
-                <a href="" class="footer_link">FAQ</a>
-                <a href="" class="footer_link">Terms Of Service</a>
-                <a href="" class="footer_link">Contact Us</a>
-                <a href="" class="footer_link">Help Center</a>
-            </div>
-            <div class="f_div3">
-                <img src="assets/icon-linkedin.png" alt="" class="f_icon">
-                <img src="assets/icon-twitter.png" alt="" class="f_icon">
-                <img src="assets/icon-facebook.png" alt="" class="f_icon">
-                <img src="assets/icon-youtube.png" alt="" class="f_icon">
-            </div>
-         </div>
+    <!-- ==========================================
+         CATALOG SECTION & FILTERABLE CARDS
+         Rule 4: All cards share identical size, border-radius & visual style
+         Rule 7: Real products, no placeholder content
+         ========================================== -->
+    <section class="catalog-section" id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Botanical Collection</span>
+          <h2 class="section-title">Our <span class="text-primary-color">Featured</span> Plants & Blooms</h2>
+          <p class="section-desc">
+            Explore our curated gallery of vibrant flowering arrangements and resilient houseplants. Each botanical specimen is nurtured for balance, longevity, and tranquil beauty.
+          </p>
+        </div>
 
-    </footer>
+        <!-- Filter Controls -->
+        <div class="catalog-filters" role="tablist" aria-label="Plant Categories">
+          <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+            All Blooms (8)
+          </button>
+          <button type="button" class="filter-btn" data-filter="indoor" role="tab" aria-selected="false">
+            Indoor Greens
+          </button>
+          <button type="button" class="filter-btn" data-filter="bouquets" role="tab" aria-selected="false">
+            Fresh Bouquets
+          </button>
+          <button type="button" class="filter-btn" data-filter="flowering" role="tab" aria-selected="false">
+            Flowering Plants
+          </button>
+        </div>
+
+        <!-- Product Cards Container (Rendered by JS with complete data) -->
+        <div class="product-grid" id="product-catalog">
+          <!-- Fallback Static Cards for SEO / Accessibility -->
+          <article class="product-card" data-id="prod-1">
+            <div class="product-card__img-wrap">
+              <img src="assets/peace-lily.jpg" alt="White Peace Lily in terracotta pot" class="product-card__img" loading="lazy">
+              <span class="product-badge badge--primary">Best Seller</span>
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__meta">
+                <span class="product-category">Air Purifying</span>
+                <span class="product-rating"><i class="fas fa-star text-amber"></i> 4.9 <span class="review-count">(64)</span></span>
+              </div>
+              <h3 class="product-title">White Peace Lily</h3>
+              <p class="product-desc">Lush indoor Spathiphyllum in artisanal terracotta pot, naturally purifying indoor air.</p>
+              <div class="product-card__footer">
+                <div class="product-price-box">
+                  <span class="product-price">$24.00</span>
+                  <span class="product-original-price">$30.00</span>
+                </div>
+                <button type="button" class="btn btn--primary btn--add-cart" data-product-id="prod-1">
+                  <i class="fas fa-bag-shopping"></i> <span>Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PLANT LOVERS STORY SECTION
+         ========================================== -->
+    <section class="plant-lovers" id="features">
+      <div class="container">
+        <div class="plant-lovers-grid">
+          <div class="pl-image-wrapper">
+            <img src="assets/flower-store.png" alt="Inside our sunlit local botanical florist boutique" class="pl-main-img">
+            <img src="assets/trusted-badge.png" alt="Trusted Florist Quality Badge" class="pl-rotating-badge">
+          </div>
+
+          <div class="pl-content">
+            <span class="section-tag">Our Ethos</span>
+            <h2 class="pl-content-title">Flowers & Plants <br><span class="text-primary-color">Crafted with Love</span></h2>
+            
+            <div class="pl-feature-list">
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon">
+                  <i class="fas fa-heart-pulse" aria-hidden="true"></i>
+                </div>
+                <div class="pl-feature-text">
+                  <h4>Serenity for Every Home</h4>
+                  <p>Nature offers peace beyond words to those who cherish living greens. A blooming tulip or trailing vine brings a restorative moment of daily serenity.</p>
+                </div>
+              </div>
+
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon">
+                  <i class="fas fa-leaf" aria-hidden="true"></i>
+                </div>
+                <div class="pl-feature-text">
+                  <h4>Sustainably Sourced & Packaged</h4>
+                  <p>We partner exclusively with certified organic regional growers, utilizing 100% plastic-free, recyclable paper packaging and nutrient soil pods.</p>
+                </div>
+              </div>
+
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon">
+                  <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                </div>
+                <div class="pl-feature-text">
+                  <h4>7-Day Freshness Guarantee</h4>
+                  <p>Every handpicked stem is conditioned in fresh floral hydration packs, ensuring your arrangement stays vibrant and aromatic for a full week.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         LATEST DEALS SECTION
+         Rule 4: Unified border radius, buttons, and elevation
+         ========================================== -->
+    <section class="deals-section" id="deals">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Limited Time</span>
+          <h2 class="section-title"><span class="text-primary-color">Latest</span> Seasonal Deals</h2>
+          <p class="section-desc">
+            Unwrap limited seasonal offers and special discounts on our bestselling bouquets and architectural plants before stocks run out.
+          </p>
+        </div>
+
+        <div class="deals-grid">
+          <!-- Stack of 2 Deals -->
+          <div class="deals-stack">
+            <article class="deal-card deal-card--bloom">
+              <div class="deal-card__content">
+                <span class="deal-discount-pill">60% Off</span>
+                <h3 class="deal-title">Calathea Bloom Plant</h3>
+                <button type="button" class="btn btn--primary btn--deal-shop" data-deal-target="prod-5">
+                  <i class="fas fa-cart-shopping" aria-hidden="true"></i> <span>Claim 60% Off</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="deal-card deal-card--ana">
+              <div class="deal-card__content">
+                <span class="deal-discount-pill">30% Off</span>
+                <h3 class="deal-title">Scarlet Anthurium Ana</h3>
+                <button type="button" class="btn btn--primary btn--deal-shop" data-deal-target="prod-6">
+                  <i class="fas fa-cart-shopping" aria-hidden="true"></i> <span>Claim 30% Off</span>
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Featured Large Deal -->
+          <article class="deal-card deal-card--zabo deal-card--featured">
+            <div class="deal-card__content">
+              <span class="deal-discount-pill">25% Off Premium</span>
+              <h3 class="deal-title">Zabo Bonsai Ficus Plant</h3>
+              <p style="margin-bottom: 1.5rem; max-width: 480px; color: rgba(255,255,255,0.9);">
+                Sculptural indoor miniature bonsai with aerial root formation in a hand-glazed ceramic dish.
+              </p>
+              <button type="button" class="btn btn--primary btn--deal-shop" data-deal-target="prod-7">
+                <i class="fas fa-cart-shopping" aria-hidden="true"></i> <span>Shop Zabo Deal</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         NEWSLETTER SECTION
+         Rule 5: Form Validation, Loader, Error Messages, Success State
+         ========================================== -->
+    <section class="newsletter-section" id="newsletter">
+      <div class="container">
+        <div class="newsletter-box">
+          <div class="newsletter-content">
+            <!-- Active Form Content -->
+            <div id="newsletter-form-content">
+              <h2 class="newsletter-title">Join the Colorful Brunch</h2>
+              <p class="newsletter-desc">
+                Subscribe to our weekly botanical gazette. Enjoy 15% off your first purchase, seasonal plant care guides, and exclusive subscriber perks.
+              </p>
+
+              <form id="newsletter-form" novalidate aria-label="Newsletter Subscription Form">
+                <div class="newsletter-form-row">
+                  <div class="newsletter-input-wrap">
+                    <i class="fas fa-envelope newsletter-icon" aria-hidden="true"></i>
+                    <input 
+                      type="email" 
+                      id="newsletter-email" 
+                      name="email"
+                      class="newsletter-input" 
+                      placeholder="Enter your email address" 
+                      aria-label="Email address"
+                      autocomplete="email"
+                      required
+                    >
+                  </div>
+                  <button type="submit" class="btn btn--primary newsletter-btn" id="newsletter-submit-btn">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    <span>Subscribe</span>
+                  </button>
+                </div>
+
+                <!-- Validation Error Message (Rule 5) -->
+                <div id="newsletter-error" class="newsletter-error-msg is-hidden" role="alert" aria-live="assertive"></div>
+              </form>
+            </div>
+
+            <!-- Success State Card (Rule 5) -->
+            <div id="newsletter-success" class="newsletter-success-card is-hidden" role="region" aria-live="polite">
+              <div class="success-icon">
+                <i class="fas fa-check" aria-hidden="true"></i>
+              </div>
+              <h3 style="font-family: 'Noto Serif', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Welcome to Flower Market!</h3>
+              <p style="margin-bottom: 1.25rem;">
+                A confirmation with your <strong>15% OFF voucher code</strong> has been sent to <span class="user-email-display" style="text-decoration: underline;"></span>.
+              </p>
+              <button type="button" class="btn btn--outline" id="newsletter-reset-btn" style="background-color: #FFFFFF; color: #111827;">
+                <span>Subscribe another email</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       SITE FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="#top" class="brand-link" aria-label="Flower Market">
+            <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo">
+            <span class="brand-name">Flower <span>Market</span></span>
+          </a>
+          <p>
+            Indulge your senses with the vibrant colors and soothing fragrances of freshly arranged flowers and thriving houseplants.
+          </p>
+          <div class="footer-socials" aria-label="Social media links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on LinkedIn">
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on Twitter / X">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on Facebook">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on YouTube">
+              <i class="fab fa-youtube" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Shop Collection</h4>
+          <ul class="footer-links">
+            <li><a href="#catalog" class="footer-link">Fresh Flower Bouquets</a></li>
+            <li><a href="#catalog" class="footer-link">Indoor Air Purifiers</a></li>
+            <li><a href="#deals" class="footer-link">Weekly Specials</a></li>
+            <li><a href="#catalog" class="footer-link">Pet-Friendly Foliage</a></li>
+            <li><a href="#catalog" class="footer-link">Bonsai & Ceramic Planters</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#contact" class="footer-link">Help & Contact Us</a></li>
+            <li><a href="#features" class="footer-link">Flower Care Guide</a></li>
+            <li><a href="#top" class="footer-link">Delivery & Shipping Terms</a></li>
+            <li><a href="#top" class="footer-link">7-Day Freshness Guarantee</a></li>
+            <li><a href="#contact" class="footer-link">Corporate Gifting</a></li>
+          </ul>
+        </div>
+
+        <!-- Store Location & Hours -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Store & Greenhouse</h4>
+          <ul class="footer-links" style="line-height: 1.8;">
+            <li style="color: var(--text-secondary);"><i class="fas fa-location-dot text-primary-color" style="margin-right: 6px;"></i> 142 Garden Blossom Way</li>
+            <li style="color: var(--text-secondary);"><i class="fas fa-clock text-primary-color" style="margin-right: 6px;"></i> Mon – Sat: 8:00 AM – 7:00 PM</li>
+            <li style="color: var(--text-secondary);"><i class="fas fa-phone text-primary-color" style="margin-right: 6px;"></i> +1 (800) 456-FLOWERS</li>
+            <li style="color: var(--text-secondary);"><i class="fas fa-envelope text-primary-color" style="margin-right: 6px;"></i> hello@flowermarket.shop</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Flower Market Inc. All rights reserved. Crafted for botanical living.</p>
+        <p>Built with plain semantic HTML5, CSS3 & Modern JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       CART DRAWER & CHECKOUT FORM
+       Rule 5: Form Validation, Loader, Error Messages, Success State
+       ========================================== -->
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart and Checkout" aria-hidden="true">
+    <div class="cart-drawer__header">
+      <h3 class="cart-drawer__title">Your Botanical Cart</h3>
+      <button type="button" class="btn btn--icon" id="cart-drawer-close" aria-label="Close cart drawer">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="cart-drawer__body">
+      <!-- Items Container -->
+      <div id="cart-items-container" class="cart-items-container"></div>
+
+      <!-- Empty State -->
+      <div id="cart-empty-state" class="cart-empty-state">
+        <i class="fas fa-basket-shopping cart-empty-icon" aria-hidden="true"></i>
+        <h4 style="font-family: 'Noto Serif', serif; font-size: 1.25rem; margin-bottom: 0.5rem;">Your Cart is Empty</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9375rem;">
+          Add handpicked flowers or indoor greens to experience nature’s tranquility.
+        </p>
+        <button type="button" class="btn btn--primary btn-continue-shopping">
+          <i class="fas fa-leaf" aria-hidden="true"></i> <span>Explore Blooms</span>
+        </button>
+      </div>
+
+      <!-- Order Confirmation Screen (Success State) -->
+      <div id="order-confirmation-screen" class="order-confirmation-screen is-hidden" role="region" aria-live="polite">
+        <div class="order-conf-icon">
+          <i class="fas fa-check" aria-hidden="true"></i>
+        </div>
+        <h3 style="font-family: 'Noto Serif', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Order Confirmed!</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9375rem;">
+          Thank you, <strong id="order-confirmation-name"></strong>! Your fresh blooms are being carefully arranged.
+        </p>
+        <div class="order-conf-id-box">
+          <div>Order Tracking ID: <strong id="order-confirmation-id" class="text-primary-color">#FM-000000</strong></div>
+          <div style="margin-top: 4px;">Total Paid: <strong id="order-confirmation-total">$0.00</strong></div>
+          <div style="margin-top: 4px;">Estimated Delivery: <strong id="order-confirmation-date">Tomorrow</strong></div>
+        </div>
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          A full receipt and delivery tracking link have been dispatched to your email address.
+        </p>
+        <button type="button" class="btn btn--primary" id="order-confirmation-finish-btn">
+          <span>Continue Shopping</span>
+        </button>
+      </div>
+
+      <!-- Checkout Form inside Drawer -->
+      <div id="cart-checkout-section" class="checkout-form-box is-hidden">
+        <h4 class="checkout-title"><i class="fas fa-truck-fast text-primary-color"></i> Express Checkout</h4>
+
+        <form id="checkout-form" novalidate aria-label="Checkout Delivery Details">
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="checkout-name" class="form-label">Recipient Full Name *</label>
+            <input type="text" id="checkout-name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+            <div id="checkout-name-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label for="checkout-email" class="form-label">Delivery Notification Email *</label>
+            <input type="email" id="checkout-email" class="form-input" placeholder="e.g. eleanor@example.com" required>
+            <div id="checkout-email-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <!-- Street Address -->
+          <div class="form-group">
+            <label for="checkout-address" class="form-label">Delivery Street Address *</label>
+            <input type="text" id="checkout-address" class="form-input" placeholder="Street, Apartment, City, Postal Code" required>
+            <div id="checkout-address-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <!-- Preferred Delivery Date -->
+          <div class="form-group">
+            <label for="checkout-date" class="form-label">Preferred Delivery Date *</label>
+            <input type="date" id="checkout-date" class="form-input" required>
+            <div id="checkout-date-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <!-- Gift Notes (Optional) -->
+          <div class="form-group">
+            <label for="checkout-notes" class="form-label">Gift Message Card (Optional)</label>
+            <textarea id="checkout-notes" class="form-textarea" placeholder="Write a warm note for the recipient..."></textarea>
+          </div>
+
+          <!-- Order Summary -->
+          <div style="margin: 1.25rem 0; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span id="drawer-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Courier Delivery:</span>
+              <span id="drawer-shipping">Free</span>
+            </div>
+            <div class="summary-row">
+              <span>Estimated Tax (8%):</span>
+              <span id="drawer-tax">$0.00</span>
+            </div>
+            <div class="summary-row summary-row--total">
+              <span>Order Total:</span>
+              <span id="drawer-total" class="text-primary-color">$0.00</span>
+            </div>
+          </div>
+
+          <!-- Submit Order Button with Loader -->
+          <button type="submit" class="btn btn--primary" id="checkout-submit-btn" style="width: 100%; height: 48px;">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span>Place Secure Order</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cart Backdrop -->
+  <div class="nav-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       CONTACT US MODAL FORM
+       Rule 5: Form Validation, Loader, Error Messages, Success State
+       ========================================== -->
+  <div class="modal-dialog" id="contact-modal" role="dialog" aria-modal="true" aria-label="Contact Customer Support" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Contact Flower Market</h3>
+        <button type="button" class="btn btn--icon" id="contact-modal-close" aria-label="Close contact dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div id="contact-form-content">
+        <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          Have questions about an ongoing order, custom floral styling, or corporate events? Send us a message and our lead botanist will reply within 2 hours.
+        </p>
+
+        <form id="contact-form" novalidate aria-label="Customer Inquiry Form">
+          <div class="form-group">
+            <label for="contact-name" class="form-label">Your Name *</label>
+            <input type="text" id="contact-name" class="form-input" placeholder="e.g. Maya Lin" required>
+            <div id="contact-name-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email" class="form-label">Email Address *</label>
+            <input type="email" id="contact-email" class="form-input" placeholder="e.g. maya@example.com" required>
+            <div id="contact-email-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-subject" class="form-label">Subject</label>
+            <select id="contact-subject" class="form-select">
+              <option value="order">Order Inquiry / Delivery Status</option>
+              <option value="custom">Custom Floral Arrangement Request</option>
+              <option value="care">Plant Health & Care Advice</option>
+              <option value="corporate">Corporate or Event Decoration</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message" class="form-label">Message *</label>
+            <textarea id="contact-message" class="form-textarea" placeholder="How can our florist team assist you today?" required></textarea>
+            <div id="contact-message-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <button type="submit" class="btn btn--primary" id="contact-submit-btn" style="width: 100%; height: 46px; margin-top: 0.5rem;">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Success State -->
+      <div id="contact-success" class="is-hidden" style="text-align: center; padding: var(--space-4) 0;" role="region" aria-live="polite">
+        <div class="success-icon" style="margin-bottom: var(--space-3);">
+          <i class="fas fa-check" aria-hidden="true"></i>
+        </div>
+        <h4 style="font-family: 'Noto Serif', serif; font-size: 1.375rem; margin-bottom: 0.5rem;">Message Received!</h4>
+        <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 1.25rem;">
+          Thank you for reaching out. Our botanical support team will respond to your email shortly.
+        </p>
+        <button type="button" class="btn btn--outline" id="contact-reset-btn">
+          <span>Send Another Inquiry</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Backdrop -->
+  <div class="nav-backdrop" id="contact-backdrop" aria-hidden="true"></div>
+
+  <!-- Main JavaScript Application -->
+  <script src="scripts/app.js"></script>
 </body>
 
 </html>
