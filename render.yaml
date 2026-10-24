@@ -1,7 +1,7 @@
 services:
   # Backend API Service
   - type: web
-    name: fixitnow-backend
+    name: flowermarket-backend
     env: node
     plan: free
     rootDir: backend
@@ -15,7 +15,7 @@ services:
         value: 5000
       - key: DATABASE_URL
         fromDatabase:
-          name: fixitnow-db
+          name: flowermarket-db
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
@@ -26,7 +26,7 @@ services:
 
   # Frontend Web Service
   - type: web
-    name: fixitnow-frontend
+    name: flowermarket-frontend
     env: static
     plan: free
     rootDir: frontend
@@ -38,7 +38,7 @@ services:
         destination: /index.html
 
 databases:
-  - name: fixitnow-db
+  - name: flowermarket-db
     plan: free
-    databaseName: fixitnow
-    user: fixitnow_user
+    databaseName: flowermarket_db
+    user: flowermarket_user

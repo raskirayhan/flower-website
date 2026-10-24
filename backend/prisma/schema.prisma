@@ -1,5 +1,5 @@
 // Prisma Schema with exactly 11 Relational Models
-// FixItNow: Botanical Flower Market & On-Demand Greenery Services
+// Flower Market: Artisanal Blooms, Indoor Greens & Botanical Services
 
 generator client {
   provider = "prisma-client-js"
