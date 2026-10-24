@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
+          <nav className="hidden md:flex items-center gap-3 lg:gap-6 xl:gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap">
             <Link to="/" className="hover:text-[#E95A08] transition">
               Home
             </Link>
