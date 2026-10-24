@@ -1,0 +1,232 @@
+// Prisma Schema with exactly 11 Relational Models
+// FixItNow: Botanical Flower Market & On-Demand Greenery Services
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  MANAGER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  DISPATCHED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+
+// 1. User Model
+model User {
+  id           String         @id @default(uuid())
+  email        String         @unique
+  password     String
+  name         String
+  phone        String?
+  avatar       String?
+  role         Role           @default(USER)
+  address      String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  profile      Profile?
+  bookings     OrderBooking[]
+  reviews      Review[]
+  notifications Notification[]
+  auditLogs    AuditLog[]
+
+  @@map("users")
+}
+
+// 2. Profile Model
+model Profile {
+  id                  String   @id @default(uuid())
+  userId              String   @unique
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio                 String?
+  preferences         String?
+  loyaltyPoints       Int      @default(0)
+  notificationEmail   Boolean  @default(true)
+  notificationSms     Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("profiles")
+}
+
+// 3. Category Model
+model Category {
+  id           String           @id @default(uuid())
+  name         String           @unique
+  slug         String           @unique
+  description  String?
+  icon         String?
+  image        String?
+  displayOrder Int              @default(0)
+  isActive     Boolean          @default(true)
+  createdAt    DateTime         @default(now())
+  services     ProductService[]
+
+  @@map("categories")
+}
+
+// 4. ProductService Model
+model ProductService {
+  id                 String         @id @default(uuid())
+  title              String
+  slug               String         @unique
+  scientificName     String?
+  description        String
+  price              Decimal        @db.Decimal(10, 2)
+  originalPrice      Decimal?       @db.Decimal(10, 2)
+  durationOrHeight   String?
+  originLocation     String?
+  petFriendlyRating  String         @default("Caution")
+  stock              Int            @default(50)
+  rating             Decimal        @default(5.0) @db.Decimal(3, 2)
+  reviewCount        Int            @default(0)
+  images             String[]
+  isFeatured         Boolean        @default(false)
+  categoryId         String
+  category           Category       @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  addons             ServiceAddon[]
+  bookings           OrderBooking[]
+  reviews            Review[]
+
+  @@index([categoryId])
+  @@index([slug])
+  @@map("product_services")
+}
+
+// 5. ServiceAddon Model
+model ServiceAddon {
+  id          String         @id @default(uuid())
+  serviceId   String
+  service     ProductService @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  name        String
+  price       Decimal        @db.Decimal(10, 2)
+  description String?
+
+  @@map("service_addons")
+}
+
+// 6. OrderBooking Model
+model OrderBooking {
+  id              String         @id @default(uuid())
+  bookingCode     String         @unique
+  customerId      String
+  customer        User           @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  serviceId       String
+  service         ProductService @relation(fields: [serviceId], references: [id], onDelete: Restrict)
+  status          BookingStatus  @default(PENDING)
+  scheduledDate   DateTime
+  totalAmount     Decimal        @db.Decimal(10, 2)
+  deliveryAddress String
+  notes           String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  payment         Payment?
+  review          Review?
+
+  @@index([customerId])
+  @@index([bookingCode])
+  @@map("order_bookings")
+}
+
+// 7. Payment Model
+model Payment {
+  id                     String        @id @default(uuid())
+  bookingId              String        @unique
+  booking                OrderBooking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  stripePaymentIntentId  String?       @unique
+  amount                 Decimal       @db.Decimal(10, 2)
+  currency               String        @default("USD")
+  status                 PaymentStatus @default(PENDING)
+  method                 String        @default("card")
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  @@map("payments")
+}
+
+// 8. Review Model
+model Review {
+  id                 String         @id @default(uuid())
+  serviceId          String
+  service            ProductService @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  customerId         String
+  customer           User           @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  bookingId          String?        @unique
+  booking            OrderBooking?  @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  rating             Int
+  comment            String
+  isVerifiedPurchase Boolean        @default(true)
+  createdAt          DateTime       @default(now())
+
+  @@index([serviceId])
+  @@map("reviews")
+}
+
+// 9. Notification Model
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("info")
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("notifications")
+}
+
+// 10. Coupon Model
+model Coupon {
+  id             String    @id @default(uuid())
+  code           String    @unique
+  discountPercent Int
+  minOrderAmount Decimal   @default(0) @db.Decimal(10, 2)
+  maxUses        Int       @default(100)
+  usedCount      Int       @default(0)
+  expiresAt      DateTime?
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+
+  @@map("coupons")
+}
+
+// 11. AuditLog Model
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  ipAddress String?
+  userAgent String?
+  details   String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("audit_logs")
+}
