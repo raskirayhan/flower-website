@@ -16,67 +16,86 @@ Visit the live website hosted on GitHub Pages:
 
 ---
 
-## Global UI & Design System
+## Architecture & Features
 
-The application strictly implements the following design architecture:
+### 1. Advanced Full-Width Sticky Navbar
+- **Routes & Authentication States**:
+  - *Logged Out (6+ Public Routes)*: Home, Catalog, Categories, Services, Why Us, Journal, FAQ.
+  - *Logged In (8+ Routes)*: Unlocks "My Orders" and "Saved Wishlist" with dedicated badges.
+- **Advanced Profile Dropdown Menu**:
+  - Displays user avatar, name ("Rayhan Raski"), "Floral VIP" member tier badge.
+  - Direct shortcuts to Order History & Tracking, Saved Wishlist, Active Subscriptions, and Delivery Addresses.
+  - Interactive "Sign In / Sign Out" simulation button that toggles authentication state with instant UI updates and toast feedback.
+- **Header Actions**:
+  - Dark / Light mode toggle switch.
+  - Dynamic shopping cart pill with live item count and running subtotal.
+  - Mobile hamburger slide-out drawer navigation with accessible focus trapping.
 
-1. **Max 3 Primary Colors (+ Optional Neutral Palette)**:
-   - **Primary 1 (Brand Flora Orange)**: `#E95A08` (Hover: `#C2410C`, Focus Ring: `rgba(233, 90, 8, 0.3)`)
-   - **Primary 2 (Botanical Emerald)**: `#2D6A4F` (Hover: `#1B4332`, Focus Ring: `rgba(45, 106, 79, 0.3)`)
-   - **Primary 3 (Warm Honey / Amber)**: `#D97706` (Hover: `#B45309`, Focus Ring: `rgba(217, 119, 6, 0.3)`)
-   - **Neutral Palette**:
-     - *Light Mode*: Alabaster background (`#FAF9F6`), pure white cards (`#FFFFFF`), high-contrast dark text (`#111827`, 16.5:1 contrast ratio, WCAG AAA).
-     - *Dark Mode*: Deep slate background (`#0F172A`), slate card surfaces (`#1E293B`), bright legible text (`#F8FAFC`, 15.8:1 contrast ratio, WCAG AAA).
+### 2. Hero Section (60–70% Viewport Height)
+- **Interactive Multi-Slide Carousel**:
+  - Slide 1: *Always Fresh Flowers for You* (Pastel Floral Centerpiece)
+  - Slide 2: *Breathe Life with Indoor Greens* (Air-Purifying Peace Lily & Houseplants)
+  - Slide 3: *Hand-Tied Velvet Ecuadorian Roses* (Long-Stem Romance Stems)
+- **Controls & Behavior**:
+  - Previous / Next arrow navigation, dot indicators, and automatic advance (pauses on mouse hover).
+  - Animated floating trust cards ("Guaranteed 24h Express Delivery", "7-Day Bloom Guarantee").
+- **Visual Flow to Next Section**:
+  - Animated bouncing scroll down prompt ("Explore Botanical Categories") guiding visitors into the catalog.
 
-2. **Light & Dark Mode Support**:
-   - One-click theme switcher in the navigation bar with sun/moon iconography.
-   - Automatically detects system OS preferences (`prefers-color-scheme`).
-   - Persists user selection across page reloads via `localStorage`.
+### 3. 12 Meaningful Landing Page Sections
+1. **Hero Section (`#hero`)**: 60–70% height interactive slider, CTAs, floating perks.
+2. **Botanical Categories (`#categories`)**: 6 category cards with item counts (Bouquets, Indoor Greens, Flowering Pots, Bonsai, Wedding Specials, Succulents).
+3. **Core Listing / Featured Catalog (`#catalog`)**: Category filter pills, shimmering skeleton loader, 4-cards-per-row desktop grid, metadata tags, and "View Details" + "Add to Cart" actions.
+4. **Why Choose Us / Features (`#features`)**: 4 pillars with icons (100% Organically Farmed, 2h Express Dispatch, Plastic-Free Recyclable Packaging, 7-Day Bloom Guarantee) + rotating florist badge.
+5. **Seasonal Deals & Highlights (`#deals`)**: 3 cards (Bloom 60% Off, Ana 30% Off, Zabo 25% Off) with real-time countdown timer.
+6. **Greenhouse Services (`#services`)**: Bridal styling, corporate greening, weekly flower club, sympathy arrangements.
+7. **Statistics & Impact (`#stats`)**: 4 live metric counters (12,500+ Delivered, 99.8% On-Time, 4.9/5 Rating, 100% Plastic-Free).
+8. **Verified Testimonials (`#testimonials`)**: 3 buyer reviews with verified badges, star ratings, and real feedback.
+9. **Botanical Journal / Blog (`#journal`)**: 3 educational articles with interactive read-modal dialog.
+10. **Interactive FAQs (`#faq`)**: 6 collapsible accordion items with animated smooth expansions.
+11. **Newsletter / Floral Club (`#newsletter`)**: Form with email regex validation, loader state, inline errors, and 15% discount voucher success card.
+12. **Final Call-to-Action (`#cta`)**: High-contrast closing conversion banner with instant order triggers.
 
-3. **Consistent Layout, Spacing & Alignment**:
-   - Standard 8pt spacing system (`--space-1` to `--space-12`).
-   - Symmetrical container widths (`max-width: 1200px`) with consistent lateral padding.
-   - Clear visual rhythm and typographic scale (`Noto Serif` for headings, `Inter` for functional UI).
+### 4. Core Listing / Card Section Rules
+- **Desktop Grid**: Strict **4 cards per row** on desktop screens (`>= 1024px`), 2 per row on tablets, 1 on mobile.
+- **Component Consistency**: Exact same height, same `16px` border radius, same 4:3 image aspect ratio.
+- **Card Data & Meta Information**:
+  - Image with category pill
+  - Title & short description
+  - Star rating with total review counts
+  - Extended meta: Harvest date (e.g. *Fresh Harvest Today*) and Origin location (e.g. *Sonoma Valley Nursery*, *Ecuadorian Highlands*)
+  - Two buttons: "**Details**" (navigates to the dedicated details page) and "**Add**" (instant cart addition with toast feedback).
+- **Skeleton Loader**:
+  - 8 shimmering placeholder cards with animated linear gradient shimmer (`@keyframes shimmer`) displayed during initial loading and category filtering.
 
-4. **Component & Card Consistency**:
-   - Uniform border radii: `--radius-card: 16px` across all catalog and promotional cards.
-   - Unified button components (`44px` height, `--radius-btn: 10px`, hover/active states).
-   - Standard form inputs (`--radius-input: 10px`, clear focus rings).
-   - Uniform product card dimensions with consistent 4:3 aspect ratio image containers.
-
-5. **Form Validation, Loaders, Error Messages & Success States**:
-   - **Newsletter Form**:
-     - Client-side email regex validation.
-     - Animated button spinner loader on submission (`Subscribing...`).
-     - Clear inline accessible error alerts (`role="alert"`).
-     - Personalized success state card with confirmation and re-subscription reset.
-   - **Checkout & Order Form (Cart Drawer)**:
-     - Field-level validation for Full Name, Email, Street Address, and Delivery Date.
-     - Live validation clearing as user types.
-     - Animated order processing loader (`Processing Order...`).
-     - Order confirmation screen displaying unique order ID (`#FM-XXXXXX`), total paid, and scheduled delivery date.
-   - **Contact Us Modal Form**:
-     - Multi-field validation, subject selection, loader state, and confirmation card.
-
-6. **Fully Responsive Across All Breakpoints**:
-   - **Desktop (> 1024px)**: 4-column catalog grid, 2-column hero, split promotional deal banners.
-   - **Tablet (641px - 1024px)**: 2-column catalog grid, responsive deal layout, collapsible drawer.
-   - **Mobile (<= 640px)**: 1-column product layout, slide-out hamburger navigation menu, full-width touch-friendly buttons (minimum 44px tap targets).
-
-7. **Zero Placeholder or Dummy Content**:
-   - 8 distinct, authentic floral and plant products with real prices, descriptions, star ratings, and tags.
-   - All navigation links connect to real page sections (`#catalog`, `#features`, `#deals`, `#newsletter`, `#contact`).
-   - Fully functional shopping cart state with live badge counter, subtotal, shipping rules, and line-item controls.
+### 5. Dedicated Public Details Page (`details.html`)
+- **Direct Link**: [`details.html?id=prod-1`](details.html?id=prod-1) (supports all 8 product IDs).
+- **Interactive Multi-Media Gallery**: Large primary viewport with clickable thumbnail selector row.
+- **Separate Detailed Sections**:
+  1. **Description & Botanical Overview**: Full botanical narrative, scent profile, aesthetic arrangement guidance.
+  2. **Key Information & Specifications**: 8-item spec grid (Plant height, pot size, light exposure, watering schedule, pet safety rating, bloom longevity, fragrance, packaging).
+  3. **Customer Reviews & Ratings**: Aggregate star rating badge (4.9/5) + individual verified buyer comments with dates.
+  4. **Related Botanical Items**: 3 companion plants with quick details links and add-to-cart controls.
+  5. **Direct Purchase Controls**: Interactive quantity counter, "Add to Cart" button, and "Buy Now" express checkout.
 
 ---
 
-## Tech Stack
+## Global UI & Design System
 
-- **HTML5**: Semantic elements, accessible ARIA attributes, standard dialogs.
-- **CSS3**: CSS Custom Properties (Tokens), Flexbox, CSS Grid, media queries, animations.
-- **JavaScript (ES6+)**: Vanilla modular architecture, zero runtime dependencies.
-- **Google Fonts**: `Noto Serif` & `Inter`.
-- **Font Awesome 6**: Vector icons for cart, badges, social links, and theme toggle.
+1. **Max 3 Primary Colors (+ Optional Neutral Palette)**:
+   - **Primary 1 (Brand Flora Orange)**: `#E95A08` (Hover: `#C2410C`)
+   - **Primary 2 (Botanical Emerald)**: `#2D6A4F` (Hover: `#1B4332`)
+   - **Primary 3 (Warm Honey / Amber)**: `#D97706` (Hover: `#B45309`)
+   - **Neutral Palette**: Light Canvas (`#FAF9F6`), Dark Slate (`#0F172A`), Pure White cards (`#FFFFFF`).
+
+2. **Light & Dark Mode**:
+   - One-click theme switcher in header.
+   - WCAG AAA text contrast (>15:1) in both light and dark modes; saved to `localStorage`.
+
+3. **Forms with Validation, Loaders & Feedback**:
+   - Newsletter form with email regex validation, spinner loader, inline error alerts, and success voucher card.
+   - Cart checkout form with full name, email, street address, and delivery date validation.
+   - Contact modal with live error helpers and success confirmation card.
 
 ---
 
@@ -92,7 +111,7 @@ npx serve .
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000` in your web browser.
+Open `http://localhost:8000` or `http://localhost:8000/details.html?id=prod-1` in your browser.
 
 ---
 
@@ -112,10 +131,13 @@ flower-website/
 │   ├── flower-store.png
 │   └── trusted-badge.png
 ├── styles/
-│   └── flower.css           # Design tokens, dark mode, layout, and components
+│   └── flower.css           # Tokens, dark mode, 10+ sections, 4-col grid, details page
 ├── scripts/
-│   └── app.js               # Theme toggle, cart state, filter, form validations
-├── index.html               # Semantic HTML5 single-page application
+│   ├── products-data.js     # Single source of truth for products, specs & reviews
+│   ├── app.js               # Slider, skeleton loader, auth state, cart drawer, modals
+│   └── details.js           # Multi-angle gallery, specifications, reviews, related items
+├── index.html               # 12-section landing page with interactive hero slider
+├── details.html             # Dedicated public product details showcase page
 └── README.md
 ```
 

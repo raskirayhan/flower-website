@@ -1,158 +1,43 @@
 /**
  * Flower Market - Interactive Client Application
- * Adheres to all Global UI & Design Rules:
- * - 3 Primary Colors (+ Neutrals)
- * - Light & Dark Mode with High Contrast
- * - Form Validations, Loaders, Error & Success States
- * - Fully Responsive Layout & Component Consistency
- * - Zero Dummy / Placeholder Data
+ * Supporting all sections:
+ * - Advanced Navbar (Logged in / Logged out states, Profile Menu)
+ * - Hero Slider (Autoplay, next/prev, dots, 60-70% height)
+ * - Skeleton Loader for Card Section
+ * - 4-cards-per-row Core Listing with Meta Info & "View Details"
+ * - FAQ Accordion
+ * - Deals Countdown Timer
+ * - Journal Reader Modal
+ * - Cart Drawer & Checkout Form Validation
+ * - Newsletter Validation with Loader & Success States
  */
 
 (function () {
   'use strict';
 
-  // ==========================================
-  // 1. DATA DEFINITIONS (Authentic Products)
-  // ==========================================
-  const PRODUCTS = [
-    {
-      id: 'prod-1',
-      name: 'White Peace Lily',
-      category: 'indoor',
-      categoryLabel: 'Air Purifying',
-      price: 24,
-      originalPrice: 30,
-      rating: 4.9,
-      reviews: 64,
-      image: 'assets/peace-lily.jpg',
-      badge: 'Best Seller',
-      badgeColor: 'primary',
-      description: 'Lush indoor Spathiphyllum in artisanal terracotta pot, naturally purifying indoor air.'
-    },
-    {
-      id: 'prod-2',
-      name: 'Crimson Velvet Rose',
-      category: 'bouquets',
-      categoryLabel: 'Fresh Cut',
-      price: 35,
-      originalPrice: 42,
-      rating: 5.0,
-      reviews: 88,
-      image: 'assets/rose.jpg',
-      badge: 'Fresh Cut',
-      badgeColor: 'secondary',
-      description: 'Dozen long-stem Ecuadorian crimson roses paired with fresh silver dollar eucalyptus.'
-    },
-    {
-      id: 'prod-3',
-      name: 'Sunburst Sunflower',
-      category: 'bouquets',
-      categoryLabel: 'Seasonal',
-      price: 18,
-      originalPrice: 22,
-      rating: 4.8,
-      reviews: 52,
-      image: 'assets/sunflower.jpg',
-      badge: 'Seasonal',
-      badgeColor: 'tertiary',
-      description: 'Golden field-cut sunflowers radiating positive energy and rustic cottage charm.'
-    },
-    {
-      id: 'prod-4',
-      name: 'Pink Lily Blossom',
-      category: 'bouquets',
-      categoryLabel: 'Fragrant',
-      price: 22,
-      originalPrice: 28,
-      rating: 4.9,
-      reviews: 41,
-      image: 'assets/sample-flower-image.png',
-      badge: 'Popular',
-      badgeColor: 'primary',
-      description: 'Fragrant Oriental stargazer lilies with delicate blush petals and graceful blooms.'
-    },
-    {
-      id: 'prod-5',
-      name: 'Calathea Bloom Plant',
-      category: 'indoor',
-      categoryLabel: 'Pet Friendly',
-      price: 28,
-      originalPrice: 35,
-      rating: 4.7,
-      reviews: 39,
-      image: 'assets/deal-bloom.png',
-      badge: 'Eco Pick',
-      badgeColor: 'secondary',
-      description: 'Ornamental prayer plant with striking patterned leaves that fold gently at dusk.'
-    },
-    {
-      id: 'prod-6',
-      name: 'Scarlet Anthurium Ana',
-      category: 'flowering',
-      categoryLabel: 'Long Lasting',
-      price: 32,
-      originalPrice: 38,
-      rating: 4.9,
-      reviews: 73,
-      image: 'assets/deal-ana.png',
-      badge: 'Trending',
-      badgeColor: 'primary',
-      description: 'Heart-shaped fiery red spathes that bloom continuously for months in indirect light.'
-    },
-    {
-      id: 'prod-7',
-      name: 'Zabo Bonsai Ficus',
-      category: 'indoor',
-      categoryLabel: 'Architectural',
-      price: 45,
-      originalPrice: 55,
-      rating: 5.0,
-      reviews: 94,
-      image: 'assets/deal-zabo.png',
-      badge: 'Signature',
-      badgeColor: 'tertiary',
-      description: 'Sculptural miniature bonsai featuring aerial roots potted in glazed stoneware.'
-    },
-    {
-      id: 'prod-8',
-      name: 'Pastel Floral Harmony',
-      category: 'flowering',
-      categoryLabel: 'Centerpiece',
-      price: 39,
-      originalPrice: 48,
-      rating: 4.8,
-      reviews: 45,
-      image: 'assets/hero-flower.png',
-      badge: 'Chef Choice',
-      badgeColor: 'secondary',
-      description: 'Hand-tied arrangement of seasonal pastel garden blooms curated by master florists.'
-    }
-  ];
-
-  // ==========================================
-  // 2. STATE MANAGEMENT
-  // ==========================================
+  // State Management
   const state = {
     theme: localStorage.getItem('fm_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
     cart: JSON.parse(localStorage.getItem('fm_cart') || '[]'),
-    activeFilter: 'all'
+    activeFilter: 'all',
+    currentHeroSlide: 0,
+    heroAutoplayTimer: null,
+    isLoggedIn: localStorage.getItem('fm_logged_in') === 'true'
   };
 
   // ==========================================
-  // 3. THEME MANAGEMENT (Light / Dark Mode)
+  // 1. THEME MANAGEMENT (Light / Dark Mode)
   // ==========================================
   function initTheme() {
     applyTheme(state.theme);
-
     const toggleBtn = document.getElementById('theme-toggle');
     if (toggleBtn) {
       toggleBtn.addEventListener('click', () => {
-        const newTheme = state.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
+        const next = state.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
       });
     }
 
-    // Listen to OS theme changes if user hasn't explicitly set one
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('fm_theme')) {
         applyTheme(e.matches ? 'dark' : 'light');
@@ -182,118 +67,267 @@
   }
 
   // ==========================================
-  // 4. MOBILE NAVIGATION
+  // 2. NAVBAR & ADVANCED PROFILE MENU
   // ==========================================
   function initNavigation() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navBackdrop = document.getElementById('nav-backdrop');
 
-    if (!navToggle || !navMenu) return;
-
-    function openNav() {
-      navToggle.setAttribute('aria-expanded', 'true');
-      navMenu.classList.add('is-open');
-      if (navBackdrop) navBackdrop.classList.add('is-visible');
-      document.body.classList.add('no-scroll');
-    }
-
-    function closeNav() {
-      navToggle.setAttribute('aria-expanded', 'false');
-      navMenu.classList.remove('is-open');
-      if (navBackdrop) navBackdrop.classList.remove('is-visible');
-      document.body.classList.remove('no-scroll');
-    }
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.contains('is-open');
-      if (isOpen) {
-        closeNav();
-      } else {
-        openNav();
+    if (navToggle && navMenu) {
+      function openNav() {
+        navToggle.setAttribute('aria-expanded', 'true');
+        navMenu.classList.add('is-open');
+        if (navBackdrop) navBackdrop.classList.add('is-visible');
+        document.body.classList.add('no-scroll');
       }
-    });
 
-    if (navBackdrop) {
-      navBackdrop.addEventListener('click', closeNav);
-    }
+      function closeNav() {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('is-open');
+        if (navBackdrop) navBackdrop.classList.remove('is-visible');
+        document.body.classList.remove('no-scroll');
+      }
 
-    // Close when clicking nav links
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        closeNav();
+      navToggle.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          closeNav();
+        } else {
+          openNav();
+        }
       });
+
+      if (navBackdrop) navBackdrop.addEventListener('click', closeNav);
+
+      navMenu.querySelectorAll('a').forEach(l => {
+        l.addEventListener('click', () => closeNav());
+      });
+    }
+
+    // Advanced Profile Dropdown
+    const profileBtn = document.getElementById('profile-menu-btn');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    if (profileBtn && profileDropdown) {
+      profileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = profileDropdown.classList.contains('is-active');
+        profileDropdown.classList.toggle('is-active', !isOpen);
+        profileBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', () => {
+        profileDropdown.classList.remove('is-active');
+        profileBtn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    // Sign in / Sign out Simulator Toggle
+    const authToggleBtn = document.getElementById('auth-toggle-btn');
+    if (authToggleBtn) {
+      authToggleBtn.addEventListener('click', () => {
+        state.isLoggedIn = !state.isLoggedIn;
+        localStorage.setItem('fm_logged_in', String(state.isLoggedIn));
+        updateNavAuthUI();
+        showToast(state.isLoggedIn ? 'Welcome back, Rayhan Raski! (Member routes unlocked)' : 'You have signed out.');
+      });
+    }
+
+    updateNavAuthUI();
+  }
+
+  function updateNavAuthUI() {
+    const authItems = document.querySelectorAll('.nav-auth-only');
+    const authStatusText = document.getElementById('auth-status-text');
+    const authToggleBtn = document.getElementById('auth-toggle-btn');
+
+    authItems.forEach(item => {
+      item.style.display = state.isLoggedIn ? 'block' : 'none';
     });
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
-        closeNav();
-      }
-    });
+    if (authStatusText) {
+      authStatusText.textContent = state.isLoggedIn ? 'Signed in as Rayhan Raski' : 'Guest Visitor';
+    }
+    if (authToggleBtn) {
+      authToggleBtn.innerHTML = state.isLoggedIn 
+        ? '<i class="fas fa-sign-out-alt"></i> <span>Sign Out</span>' 
+        : '<i class="fas fa-sign-in-alt"></i> <span>Sign In as Member</span>';
+    }
   }
 
   // ==========================================
-  // 5. PRODUCT CATALOG & CARDS RENDERING
+  // 3. HERO SLIDER (60-70% Height, Autoplay)
   // ==========================================
+  function initHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('hero-prev-btn');
+    const nextBtn = document.getElementById('hero-next-btn');
+    const sliderContainer = document.querySelector('.hero-slider');
+
+    if (slides.length === 0) return;
+
+    function goToSlide(index) {
+      slides.forEach((s, i) => {
+        s.classList.toggle('is-active', i === index);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-active', i === index);
+        d.setAttribute('aria-selected', String(i === index));
+      });
+      state.currentHeroSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (state.currentHeroSlide + 1) % slides.length;
+      goToSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (state.currentHeroSlide - 1 + slides.length) % slides.length;
+      goToSlide(prev);
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        goToSlide(idx);
+        resetAutoplay();
+      });
+    });
+
+    function startAutoplay() {
+      state.heroAutoplayTimer = setInterval(nextSlide, 5500);
+    }
+
+    function pauseAutoplay() {
+      if (state.heroAutoplayTimer) clearInterval(state.heroAutoplayTimer);
+    }
+
+    function resetAutoplay() {
+      pauseAutoplay();
+      startAutoplay();
+    }
+
+    if (sliderContainer) {
+      sliderContainer.addEventListener('mouseenter', pauseAutoplay);
+      sliderContainer.addEventListener('mouseleave', startAutoplay);
+    }
+
+    startAutoplay();
+  }
+
+  // ==========================================
+  // 4. CORE LISTING WITH SKELETON LOADER
+  // ==========================================
+  function renderSkeletonLoader(count = 8) {
+    const container = document.getElementById('product-catalog');
+    if (!container) return;
+
+    container.innerHTML = Array.from({ length: count }, () => `
+      <div class="product-card skeleton-card" aria-hidden="true">
+        <div class="skeleton-box skeleton-img"></div>
+        <div class="skeleton-meta-row">
+          <div class="skeleton-box skeleton-text-short"></div>
+          <div class="skeleton-box skeleton-text-badge"></div>
+        </div>
+        <div class="skeleton-box skeleton-title"></div>
+        <div class="skeleton-box skeleton-desc"></div>
+        <div class="skeleton-box skeleton-desc" style="width: 70%;"></div>
+        <div class="skeleton-footer">
+          <div class="skeleton-box skeleton-price"></div>
+          <div class="skeleton-box skeleton-btn"></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
   function renderProducts(filter = 'all') {
     const container = document.getElementById('product-catalog');
     if (!container) return;
 
-    const filtered = filter === 'all' 
-      ? PRODUCTS 
-      : PRODUCTS.filter(p => p.category === filter);
+    // Trigger Skeleton Loader
+    renderSkeletonLoader(8);
 
-    container.innerHTML = filtered.map(product => `
-      <article class="product-card" data-id="${product.id}">
-        <div class="product-card__img-wrap">
-          <img 
-            src="${product.image}" 
-            alt="${product.name}" 
-            class="product-card__img"
-            loading="lazy"
-            onerror="this.src='assets/sample-flower-image.png'"
-          >
-          <span class="product-badge badge--${product.badgeColor}">
-            ${product.badge}
-          </span>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__meta">
-            <span class="product-category">${product.categoryLabel}</span>
-            <span class="product-rating" aria-label="Rating: ${product.rating} out of 5 stars">
-              <i class="fas fa-star text-amber" aria-hidden="true"></i> ${product.rating}
-              <span class="review-count">(${product.reviews})</span>
+    setTimeout(() => {
+      const filtered = filter === 'all' 
+        ? PRODUCTS_DATA 
+        : PRODUCTS_DATA.filter(p => p.category === filter);
+
+      container.innerHTML = filtered.map(product => `
+        <article class="product-card" data-id="${product.id}">
+          <div class="product-card__img-wrap">
+            <img 
+              src="${product.images[0]}" 
+              alt="${product.name}" 
+              class="product-card__img"
+              loading="lazy"
+              onerror="this.src='assets/sample-flower-image.png'"
+            >
+            <span class="product-badge badge--${product.badgeColor}">
+              ${product.badge}
             </span>
           </div>
-          <h3 class="product-title">${product.name}</h3>
-          <p class="product-desc">${product.description}</p>
-          <div class="product-card__footer">
-            <div class="product-price-box">
-              <span class="product-price">$${product.price}.00</span>
-              <span class="product-original-price">$${product.originalPrice}.00</span>
-            </div>
-            <button 
-              type="button" 
-              class="btn btn--primary btn--add-cart" 
-              data-product-id="${product.id}"
-              aria-label="Add ${product.name} to cart"
-            >
-              <i class="fas fa-bag-shopping" aria-hidden="true"></i>
-              <span>Add to Cart</span>
-            </button>
-          </div>
-        </div>
-      </article>
-    `).join('');
 
-    // Attach click listeners to all Add to Cart buttons
-    container.querySelectorAll('.btn--add-cart').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-product-id');
-        addToCart(id, btn);
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <span class="product-category">${product.categoryLabel}</span>
+              <span class="product-rating" aria-label="Rating: ${product.rating} stars">
+                <i class="fas fa-star text-amber"></i> ${product.rating}
+                <span class="review-count">(${product.reviewsCount})</span>
+              </span>
+            </div>
+
+            <h3 class="product-title">${product.name}</h3>
+            <p class="product-desc">${product.shortDescription}</p>
+
+            <!-- Card Meta Info: Harvest Date & Location Origin -->
+            <div class="product-card__ext-meta">
+              <span><i class="fas fa-calendar-check text-secondary-color"></i> ${product.dateAdded}</span>
+              <span><i class="fas fa-location-dot text-primary-color"></i> ${product.origin}</span>
+            </div>
+
+            <div class="product-card__footer">
+              <div class="product-price-box">
+                <span class="product-price">$${product.price}.00</span>
+                <span class="product-original-price">$${product.originalPrice}.00</span>
+              </div>
+              
+              <!-- Two Actions: View Details and Add to Cart -->
+              <div class="product-btn-group">
+                <a 
+                  href="details.html?id=${product.id}" 
+                  class="btn btn--outline btn--view-details"
+                  aria-label="View details for ${product.name}"
+                >
+                  <i class="fas fa-circle-info" aria-hidden="true"></i>
+                  <span>Details</span>
+                </a>
+                <button 
+                  type="button" 
+                  class="btn btn--primary btn--add-cart" 
+                  data-product-id="${product.id}"
+                  aria-label="Add ${product.name} to cart"
+                >
+                  <i class="fas fa-bag-shopping" aria-hidden="true"></i>
+                  <span>Add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      // Add to Cart Handlers
+      container.querySelectorAll('.btn--add-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-product-id');
+          addToCart(id, 1, btn);
+        });
       });
-    });
+    }, 450); // Shimmer duration
   }
 
   function initFilters() {
@@ -311,66 +345,79 @@
         renderProducts(filter);
       });
     });
+
+    // Category Section Cards click-to-filter
+    document.querySelectorAll('.category-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const cat = card.getAttribute('data-category');
+        if (cat) {
+          const matchingFilterBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
+          if (matchingFilterBtn) {
+            matchingFilterBtn.click();
+          }
+          const catSection = document.getElementById('catalog');
+          if (catSection) catSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   }
 
   // ==========================================
-  // 6. CART MANAGEMENT & DRAWER
+  // 5. CART MANAGEMENT & DRAWER
   // ==========================================
   function saveCart() {
     localStorage.setItem('fm_cart', JSON.stringify(state.cart));
     updateCartUI();
   }
 
-  function addToCart(productId, sourceBtn) {
-    const product = PRODUCTS.find(p => p.id === productId);
+  function addToCart(productId, qty = 1, sourceBtn) {
+    const product = getProductById(productId);
     if (!product) return;
 
     const existing = state.cart.find(item => item.id === productId);
     if (existing) {
-      existing.quantity += 1;
+      existing.quantity += qty;
     } else {
       state.cart.push({
         id: product.id,
         name: product.name,
         price: product.price,
-        image: product.image,
+        image: product.images[0],
         category: product.categoryLabel,
-        quantity: 1
+        quantity: qty
       });
     }
 
     saveCart();
 
-    // Visual button feedback
     if (sourceBtn) {
-      const originalHtml = sourceBtn.innerHTML;
+      const original = sourceBtn.innerHTML;
       sourceBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> <span>Added!</span>';
       sourceBtn.classList.add('btn--success-flash');
       sourceBtn.disabled = true;
       setTimeout(() => {
-        sourceBtn.innerHTML = originalHtml;
+        sourceBtn.innerHTML = original;
         sourceBtn.classList.remove('btn--success-flash');
         sourceBtn.disabled = false;
       }, 1000);
     }
 
-    showToast(`Added "${product.name}" to your cart.`);
+    showToast(`Added ${qty} × "${product.name}" to cart.`);
   }
 
   function updateCartQuantity(productId, delta) {
-    const itemIndex = state.cart.findIndex(i => i.id === productId);
-    if (itemIndex === -1) return;
-
-    state.cart[itemIndex].quantity += delta;
-    if (state.cart[itemIndex].quantity <= 0) {
-      state.cart.splice(itemIndex, 1);
+    const idx = state.cart.findIndex(i => i.id === productId);
+    if (idx === -1) return;
+    state.cart[idx].quantity += delta;
+    if (state.cart[idx].quantity <= 0) {
+      state.cart.splice(idx, 1);
     }
     saveCart();
     renderCartItems();
   }
 
   function removeFromCart(productId) {
-    state.cart = state.cart.filter(item => item.id !== productId);
+    state.cart = state.cart.filter(i => i.id !== productId);
     saveCart();
     renderCartItems();
     showToast('Item removed from cart.');
@@ -388,20 +435,16 @@
     const shipping = subtotal > 50 || subtotal === 0 ? 0 : 7.99;
     const tax = Math.round(subtotal * 0.08 * 100) / 100;
     const total = subtotal === 0 ? 0 : Math.round((subtotal + shipping + tax) * 100) / 100;
-
     return { count, subtotal, shipping, tax, total };
   }
 
   function updateCartUI() {
     const totals = getCartTotals();
-
-    // Update navbar badge and label
     const cartCountEl = document.getElementById('cart-badge-count');
     const cartTotalEl = document.getElementById('cart-badge-total');
     if (cartCountEl) cartCountEl.textContent = totals.count;
     if (cartTotalEl) cartTotalEl.textContent = `$${totals.subtotal}.00`;
 
-    // Update cart drawer summary
     const drawerSubtotal = document.getElementById('drawer-subtotal');
     const drawerShipping = document.getElementById('drawer-shipping');
     const drawerTax = document.getElementById('drawer-tax');
@@ -438,25 +481,22 @@
           <div class="cart-item__actions">
             <div class="qty-control" role="group" aria-label="Item quantity">
               <button type="button" class="btn-qty" data-action="dec" data-id="${item.id}" aria-label="Decrease quantity">
-                <i class="fas fa-minus" aria-hidden="true"></i>
+                <i class="fas fa-minus"></i>
               </button>
               <span class="qty-value">${item.quantity}</span>
               <button type="button" class="btn-qty" data-action="inc" data-id="${item.id}" aria-label="Increase quantity">
-                <i class="fas fa-plus" aria-hidden="true"></i>
+                <i class="fas fa-plus"></i>
               </button>
             </div>
-            <button type="button" class="btn-remove" data-action="remove" data-id="${item.id}" aria-label="Remove ${item.name} from cart">
-              <i class="fas fa-trash-alt" aria-hidden="true"></i> Remove
+            <button type="button" class="btn-remove" data-action="remove" data-id="${item.id}">
+              <i class="fas fa-trash-alt"></i> Remove
             </button>
           </div>
         </div>
-        <div class="cart-item__subtotal">
-          $${(item.price * item.quantity).toFixed(2)}
-        </div>
+        <div class="cart-item__subtotal">$${(item.price * item.quantity).toFixed(2)}</div>
       </div>
     `).join('');
 
-    // Attach listeners
     container.querySelectorAll('[data-action]').forEach(btn => {
       btn.addEventListener('click', () => {
         const action = btn.getAttribute('data-action');
@@ -483,14 +523,12 @@
       cartDrawer.classList.add('is-open');
       if (drawerBackdrop) drawerBackdrop.classList.add('is-visible');
       document.body.classList.add('no-scroll');
-      cartDrawer.setAttribute('aria-hidden', 'false');
     }
 
     function closeDrawer() {
       cartDrawer.classList.remove('is-open');
       if (drawerBackdrop) drawerBackdrop.classList.remove('is-visible');
       document.body.classList.remove('no-scroll');
-      cartDrawer.setAttribute('aria-hidden', 'true');
     }
 
     if (cartToggle) {
@@ -500,46 +538,180 @@
       });
     }
 
-    if (drawerClose) {
-      drawerClose.addEventListener('click', closeDrawer);
-    }
-
-    if (drawerBackdrop) {
-      drawerBackdrop.addEventListener('click', closeDrawer);
-    }
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && cartDrawer.classList.contains('is-open')) {
-        closeDrawer();
-      }
+      if (e.key === 'Escape' && cartDrawer.classList.contains('is-open')) closeDrawer();
     });
 
-    // "Continue Shopping" buttons inside drawer
-    document.querySelectorAll('.btn-continue-shopping').forEach(btn => {
-      btn.addEventListener('click', closeDrawer);
+    document.querySelectorAll('.btn-continue-shopping').forEach(b => {
+      b.addEventListener('click', closeDrawer);
     });
 
-    // Make openDrawer accessible globally if needed
     window.openCartDrawer = openDrawer;
     window.closeCartDrawer = closeDrawer;
   }
 
   // ==========================================
-  // 7. FORM VALIDATION & INTERACTIVE HANDLERS
+  // 6. DEALS COUNTDOWN TIMER
   // ==========================================
+  function initDealsTimer() {
+    const timerEls = document.querySelectorAll('.deal-timer');
+    if (timerEls.length === 0) return;
 
-  /**
-   * Helper: Email regex validation conforming to standard formats
-   */
+    // Target: 2 days, 14 hours from now
+    const target = new Date(Date.now() + (2 * 24 + 14) * 3600 * 1000);
+
+    function update() {
+      const now = new Date();
+      const diff = Math.max(0, target - now);
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      const str = `${String(d).padStart(2, '0')}d : ${String(h).padStart(2, '0')}h : ${String(m).padStart(2, '0')}m : ${String(s).padStart(2, '0')}s`;
+      timerEls.forEach(el => { el.textContent = str; });
+    }
+
+    update();
+    setInterval(update, 1000);
+  }
+
+  // ==========================================
+  // 7. FAQ ACCORDION
+  // ==========================================
+  function initAccordion() {
+    const accordions = document.querySelectorAll('.faq-item');
+    accordions.forEach(item => {
+      const trigger = item.querySelector('.faq-question');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        // Close others
+        accordions.forEach(other => {
+          other.classList.remove('is-open');
+          const t = other.querySelector('.faq-question');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // 8. BOTANICAL JOURNAL / BLOG MODAL
+  // ==========================================
+  const BLOG_POSTS = {
+    'post-1': {
+      title: '5 Secrets to Make Cut Flowers Last 2 Weeks',
+      date: 'October 20, 2026',
+      readTime: '4 min read',
+      author: 'Eleanor Vance, Head Florist',
+      content: `
+        <p>Fresh-cut flowers bring an unmistakable aura of beauty into any living space, but watching them wilt within three days can be heartbreaking. Here are the 5 science-backed botanical practices our florists use daily:</p>
+        <h4 style="margin: 1rem 0 0.5rem;">1. The 45-Degree Underwater Stem Cut</h4>
+        <p>Never cut flower stems flat across! Cutting at a 45-degree angle under a gentle stream of lukewarm water prevents air bubbles (embolisms) from locking up the xylem tubes. This ensures unobstructed water uptake.</p>
+        <h4 style="margin: 1rem 0 0.5rem;">2. Sterile Vase Sanitation</h4>
+        <p>Bacteria is the #1 enemy of stem longevity. Wash your vase with hot soapy water and a drop of bleach before filling with floral water.</p>
+        <h4 style="margin: 1rem 0 0.5rem;">3. Strip Submerged Leaves</h4>
+        <p>Any foliage submerged beneath the water level quickly rots, creating foul odors and breeding bacterial colonies that plug the stem base.</p>
+        <h4 style="margin: 1rem 0 0.5rem;">4. Location Matters: Away from Ethylene</h4>
+        <p>Keep your arrangement away from ripening fruit (bananas, apples) and direct sunlight. Fruit emits ethylene gas, which signals flowers to rapidly mature and drop petals.</p>
+        <h4 style="margin: 1rem 0 0.5rem;">5. Refresh Water Every 48 Hours</h4>
+        <p>Change vase water completely every two days and add half a sachet of flower food. Your blooms will easily flourish for 12 to 14 days!</p>
+      `
+    },
+    'post-2': {
+      title: 'Top 7 Low-Light Houseplants for Calm Workspaces',
+      date: 'October 16, 2026',
+      readTime: '6 min read',
+      author: 'Marcus Lin, Horticulturist',
+      content: `
+        <p>Not every office or study desk receives direct morning sun, but that shouldn't stop you from surrounding yourself with lush greenery. Research demonstrates that desk plants improve concentration by 15% and significantly lower ambient stress.</p>
+        <h4 style="margin: 1rem 0 0.5rem;">The Best Low-Light Champions:</h4>
+        <ul style="list-style: disc; padding-left: 1.5rem; line-height: 1.8;">
+          <li><strong>White Peace Lily:</strong> Beautiful glossy foliage that actively filters indoor airborne VOCs and signals when it needs water.</li>
+          <li><strong>ZZ Plant (Zamioculcas zamiifolia):</strong> Virtually indestructible; tolerates fluorescent lighting and dry office air.</li>
+          <li><strong>Cast Iron Plant (Aspidistra elatior):</strong> True to its name, endures temperature swings and dim corners.</li>
+          <li><strong>Snake Plant (Sansevieria):</strong> Produces oxygen overnight and requires watering only once every 3 weeks.</li>
+          <li><strong>Golden Pothos:</strong> Cascading trailing vines that thrive under desk lamps.</li>
+        </ul>
+      `
+    },
+    'post-3': {
+      title: 'The Art of Color Pairing: Harmonizing Pastels & Emeralds',
+      date: 'October 11, 2026',
+      readTime: '5 min read',
+      author: 'Sophia Rossi, Botanical Stylist',
+      content: `
+        <p>Floral arrangement is an art form rooted in chromatic balance and textural juxtaposition. In this guide, we explore how pairing delicate blush florals with deep emerald greenery creates an instant sense of peaceful luxury.</p>
+        <h4 style="margin: 1rem 0 0.5rem;">The 60-30-10 Floral Rule</h4>
+        <p>Apply the interior design principle to your bouquets: 60% dominant foliage or base flowers (deep greens), 30% secondary bloom color (blush, cream, soft lilac), and 10% bold chromatic accent (crimson rose or golden sunflower).</p>
+      `
+    }
+  };
+
+  function initJournalModal() {
+    const modal = document.getElementById('journal-modal');
+    const closeBtn = document.getElementById('journal-modal-close');
+    const backdrop = document.getElementById('journal-backdrop');
+    const titleEl = document.getElementById('journal-modal-title');
+    const metaEl = document.getElementById('journal-modal-meta');
+    const bodyEl = document.getElementById('journal-modal-body');
+
+    if (!modal) return;
+
+    function openArticle(postId) {
+      const post = BLOG_POSTS[postId];
+      if (!post) return;
+
+      if (titleEl) titleEl.textContent = post.title;
+      if (metaEl) metaEl.innerHTML = `<span><i class="fas fa-calendar"></i> ${post.date}</span> • <span><i class="fas fa-clock"></i> ${post.readTime}</span> • <span><i class="fas fa-user"></i> ${post.author}</span>`;
+      if (bodyEl) bodyEl.innerHTML = post.content;
+
+      modal.classList.add('is-open');
+      if (backdrop) backdrop.classList.add('is-visible');
+      document.body.classList.add('no-scroll');
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      if (backdrop) backdrop.classList.remove('is-visible');
+      document.body.classList.remove('no-scroll');
+    }
+
+    document.querySelectorAll('[data-blog-id]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute('data-blog-id');
+        openArticle(id);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  }
+
+  // ==========================================
+  // 9. FORMS: NEWSLETTER & CHECKOUT VALIDATION
+  // ==========================================
   function isValidEmail(email) {
     const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
     return re.test(String(email).toLowerCase().trim());
   }
 
-  /**
-   * Form 1: Newsletter Subscription Form
-   * Includes live validation, loaders, error messages, and success state
-   */
   function initNewsletterForm() {
     const form = document.getElementById('newsletter-form');
     if (!form) return;
@@ -574,24 +746,17 @@
       }
     }
 
-    // Clear error as user types
-    if (emailInput) {
-      emailInput.addEventListener('input', () => {
-        clearError();
-      });
-    }
+    if (emailInput) emailInput.addEventListener('input', clearError);
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       clearError();
 
       const val = emailInput ? emailInput.value.trim() : '';
-
       if (!val) {
         showError('Please enter your email address to receive our weekly bloom discounts.');
         return;
       }
-
       if (!isValidEmail(val)) {
         showError('Please enter a valid email address (e.g., yourname@domain.com).');
         return;
@@ -600,12 +765,10 @@
       // Loader State
       const originalBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Subscribing...</span>';
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Subscribing...</span>';
       if (emailInput) emailInput.disabled = true;
 
-      // Simulate network request
       setTimeout(() => {
-        // Success State
         if (formContent) formContent.classList.add('is-hidden');
         if (successCard) {
           successCard.classList.remove('is-hidden');
@@ -613,7 +776,6 @@
           if (emailDisplay) emailDisplay.textContent = val;
         }
 
-        // Reset button state
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
         if (emailInput) emailInput.disabled = false;
@@ -633,11 +795,6 @@
     }
   }
 
-  /**
-   * Form 2: Checkout / Order Form inside Cart Drawer
-   * Complete validation for Name, Email, Address, Delivery Date
-   * Includes loader, error banners, and celebratory order confirmation
-   */
   function initCheckoutForm() {
     const form = document.getElementById('checkout-form');
     if (!form) return;
@@ -646,8 +803,7 @@
       name: document.getElementById('checkout-name'),
       email: document.getElementById('checkout-email'),
       address: document.getElementById('checkout-address'),
-      date: document.getElementById('checkout-date'),
-      notes: document.getElementById('checkout-notes')
+      date: document.getElementById('checkout-date')
     };
 
     const submitBtn = document.getElementById('checkout-submit-btn');
@@ -655,33 +811,28 @@
     const checkoutSection = document.getElementById('cart-checkout-section');
     const cartItemsContainer = document.getElementById('cart-items-container');
 
-    // Set min date to today for delivery date input
     if (fields.date) {
-      const today = new Date().toISOString().split('T')[0];
-      fields.date.min = today;
+      fields.date.min = new Date().toISOString().split('T')[0];
     }
 
-    function setFieldError(field, errorId, message) {
+    function setFieldError(field, errorId, msg) {
       field.classList.add('input--invalid');
-      field.setAttribute('aria-invalid', 'true');
-      const errEl = document.getElementById(errorId);
-      if (errEl) {
-        errEl.textContent = message;
-        errEl.classList.remove('is-hidden');
+      const err = document.getElementById(errorId);
+      if (err) {
+        err.textContent = msg;
+        err.classList.remove('is-hidden');
       }
     }
 
     function clearFieldError(field, errorId) {
       field.classList.remove('input--invalid');
-      field.removeAttribute('aria-invalid');
-      const errEl = document.getElementById(errorId);
-      if (errEl) {
-        errEl.textContent = '';
-        errEl.classList.add('is-hidden');
+      const err = document.getElementById(errorId);
+      if (err) {
+        err.textContent = '';
+        err.classList.add('is-hidden');
       }
     }
 
-    // Attach live clearing on input
     if (fields.name) fields.name.addEventListener('input', () => clearFieldError(fields.name, 'checkout-name-error'));
     if (fields.email) fields.email.addEventListener('input', () => clearFieldError(fields.email, 'checkout-email-error'));
     if (fields.address) fields.address.addEventListener('input', () => clearFieldError(fields.address, 'checkout-address-error'));
@@ -689,7 +840,6 @@
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
       if (state.cart.length === 0) {
         showToast('Your cart is empty. Please add flowers before placing an order.');
         return;
@@ -697,100 +847,66 @@
 
       let hasError = false;
 
-      // 1. Name validation
       const nameVal = fields.name ? fields.name.value.trim() : '';
       if (!nameVal || nameVal.length < 2) {
         setFieldError(fields.name, 'checkout-name-error', 'Please enter your full name (at least 2 characters).');
         hasError = true;
-      } else {
-        clearFieldError(fields.name, 'checkout-name-error');
       }
 
-      // 2. Email validation
       const emailVal = fields.email ? fields.email.value.trim() : '';
       if (!emailVal || !isValidEmail(emailVal)) {
         setFieldError(fields.email, 'checkout-email-error', 'Please provide a valid delivery contact email.');
         hasError = true;
-      } else {
-        clearFieldError(fields.email, 'checkout-email-error');
       }
 
-      // 3. Address validation
       const addressVal = fields.address ? fields.address.value.trim() : '';
       if (!addressVal || addressVal.length < 5) {
-        setFieldError(fields.address, 'checkout-address-error', 'Please provide a complete street address for safe courier delivery.');
+        setFieldError(fields.address, 'checkout-address-error', 'Please provide a complete street address.');
         hasError = true;
-      } else {
-        clearFieldError(fields.address, 'checkout-address-error');
       }
 
-      // 4. Delivery Date validation
       const dateVal = fields.date ? fields.date.value : '';
       if (!dateVal) {
         setFieldError(fields.date, 'checkout-date-error', 'Please select a preferred delivery date.');
         hasError = true;
-      } else {
-        const selected = new Date(dateVal);
-        const now = new Date();
-        now.setHours(0, 0, 0, 0);
-        if (selected < now) {
-          setFieldError(fields.date, 'checkout-date-error', 'Delivery date cannot be in the past.');
-          hasError = true;
-        } else {
-          clearFieldError(fields.date, 'checkout-date-error');
-        }
       }
 
       if (hasError) return;
 
-      // Loader State
       const originalText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i> <span>Processing Order...</span>';
+      submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> <span>Processing Order...</span>';
 
-      // Disable inputs during processing
-      Object.values(fields).forEach(input => {
-        if (input) input.disabled = true;
-      });
-
-      // Simulate order processing
       setTimeout(() => {
         const orderId = 'FM-' + Math.floor(100000 + Math.random() * 900000);
         const totals = getCartTotals();
 
-        // Render confirmation screen
         if (checkoutSection) checkoutSection.classList.add('is-hidden');
         if (cartItemsContainer) cartItemsContainer.classList.add('is-hidden');
 
         if (orderConfirmation) {
           orderConfirmation.classList.remove('is-hidden');
-          const orderNumEl = document.getElementById('order-confirmation-id');
-          const orderTotalEl = document.getElementById('order-confirmation-total');
-          const orderRecipientEl = document.getElementById('order-confirmation-name');
-          const orderDateEl = document.getElementById('order-confirmation-date');
+          const numEl = document.getElementById('order-confirmation-id');
+          const totalEl = document.getElementById('order-confirmation-total');
+          const recEl = document.getElementById('order-confirmation-name');
+          const dtEl = document.getElementById('order-confirmation-date');
 
-          if (orderNumEl) orderNumEl.textContent = orderId;
-          if (orderTotalEl) orderTotalEl.textContent = `$${totals.total.toFixed(2)}`;
-          if (orderRecipientEl) orderRecipientEl.textContent = nameVal;
-          if (orderDateEl) orderDateEl.textContent = dateVal;
+          if (numEl) numEl.textContent = orderId;
+          if (totalEl) totalEl.textContent = `$${totals.total.toFixed(2)}`;
+          if (recEl) recEl.textContent = nameVal;
+          if (dtEl) dtEl.textContent = dateVal;
         }
 
-        // Clear cart state
         clearCart();
         form.reset();
 
-        // Re-enable fields
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
-        Object.values(fields).forEach(input => {
-          if (input) input.disabled = false;
-        });
 
         showToast(`Order #${orderId} placed successfully!`);
       }, 1200);
     });
 
-    // Reset confirmation screen handler
     const finishBtn = document.getElementById('order-confirmation-finish-btn');
     if (finishBtn) {
       finishBtn.addEventListener('click', () => {
@@ -802,117 +918,8 @@
     }
   }
 
-  /**
-   * Form 3: Contact Us Modal Form
-   * Handles inquiries, error states, loaders, and success state
-   */
-  function initContactModal() {
-    const contactLinks = document.querySelectorAll('a[href="#contact"]');
-    const modal = document.getElementById('contact-modal');
-    const closeBtn = document.getElementById('contact-modal-close');
-    const backdrop = document.getElementById('contact-backdrop');
-    const form = document.getElementById('contact-form');
-
-    if (!modal || !form) return;
-
-    function openModal(e) {
-      if (e) e.preventDefault();
-      modal.classList.add('is-open');
-      if (backdrop) backdrop.classList.add('is-visible');
-      document.body.classList.add('no-scroll');
-      modal.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeModal() {
-      modal.classList.remove('is-open');
-      if (backdrop) backdrop.classList.remove('is-visible');
-      document.body.classList.remove('no-scroll');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-
-    contactLinks.forEach(link => {
-      link.addEventListener('click', openModal);
-    });
-
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (backdrop) backdrop.addEventListener('click', closeModal);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeModal();
-      }
-    });
-
-    const nameInput = document.getElementById('contact-name');
-    const emailInput = document.getElementById('contact-email');
-    const messageInput = document.getElementById('contact-message');
-    const submitBtn = document.getElementById('contact-submit-btn');
-    const successCard = document.getElementById('contact-success');
-    const formContent = document.getElementById('contact-form-content');
-
-    function checkField(input, errorId, condition, errorMsg) {
-      const errEl = document.getElementById(errorId);
-      if (!condition) {
-        input.classList.add('input--invalid');
-        input.setAttribute('aria-invalid', 'true');
-        if (errEl) {
-          errEl.textContent = errorMsg;
-          errEl.classList.remove('is-hidden');
-        }
-        return false;
-      } else {
-        input.classList.remove('input--invalid');
-        input.removeAttribute('aria-invalid');
-        if (errEl) {
-          errEl.textContent = '';
-          errEl.classList.add('is-hidden');
-        }
-        return true;
-      }
-    }
-
-    if (nameInput) nameInput.addEventListener('input', () => checkField(nameInput, 'contact-name-error', nameInput.value.trim().length >= 2, ''));
-    if (emailInput) emailInput.addEventListener('input', () => checkField(emailInput, 'contact-email-error', isValidEmail(emailInput.value.trim()), ''));
-    if (messageInput) messageInput.addEventListener('input', () => checkField(messageInput, 'contact-message-error', messageInput.value.trim().length >= 10, ''));
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const isNameValid = checkField(nameInput, 'contact-name-error', nameInput.value.trim().length >= 2, 'Please enter your name (min 2 characters).');
-      const isEmailValid = checkField(emailInput, 'contact-email-error', isValidEmail(emailInput.value.trim()), 'Please enter a valid email address.');
-      const isMsgValid = checkField(messageInput, 'contact-message-error', messageInput.value.trim().length >= 10, 'Please write a message of at least 10 characters.');
-
-      if (!isNameValid || !isEmailValid || !isMsgValid) return;
-
-      // Loader State
-      const originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Sending Message...</span>';
-
-      setTimeout(() => {
-        if (formContent) formContent.classList.add('is-hidden');
-        if (successCard) successCard.classList.remove('is-hidden');
-
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        form.reset();
-
-        showToast('Message sent to our floral support team!');
-      }, 1000);
-    });
-
-    const resetContactBtn = document.getElementById('contact-reset-btn');
-    if (resetContactBtn) {
-      resetContactBtn.addEventListener('click', () => {
-        if (successCard) successCard.classList.add('is-hidden');
-        if (formContent) formContent.classList.remove('is-hidden');
-        if (nameInput) nameInput.focus();
-      });
-    }
-  }
-
   // ==========================================
-  // 8. TOAST NOTIFICATIONS
+  // 10. TOAST NOTIFICATIONS
   // ==========================================
   function showToast(message, type = 'default') {
     let container = document.getElementById('toast-container');
@@ -920,14 +927,13 @@
       container = document.createElement('div');
       container.id = 'toast-container';
       container.className = 'toast-container';
-      container.setAttribute('aria-live', 'polite');
       document.body.appendChild(container);
     }
 
     const toast = document.createElement('div');
     toast.className = `toast-item toast--${type}`;
     toast.innerHTML = `
-      <i class="fas fa-check-circle toast-icon" aria-hidden="true"></i>
+      <i class="fas fa-check-circle toast-icon"></i>
       <span class="toast-message">${message}</span>
       <button type="button" class="toast-close" aria-label="Close notification">&times;</button>
     `;
@@ -938,8 +944,6 @@
     });
 
     container.appendChild(toast);
-
-    // Auto remove after 3.5 seconds
     setTimeout(() => {
       if (toast.parentElement) {
         toast.classList.add('toast--exit');
@@ -948,40 +952,38 @@
     }, 3500);
   }
 
-  // ==========================================
-  // 9. PROMOTIONAL DEALS ADD-TO-CART BINDINGS
-  // ==========================================
+  // Deals Claim Button
   function initDealButtons() {
     document.querySelectorAll('.btn--deal-shop').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const dealId = btn.getAttribute('data-deal-target');
         if (dealId) {
-          addToCart(dealId, btn);
+          addToCart(dealId, 1, btn);
         } else {
-          // Scroll smoothly to catalog
           const catalogEl = document.getElementById('catalog');
-          if (catalogEl) {
-            catalogEl.scrollIntoView({ behavior: 'smooth' });
-          }
+          if (catalogEl) catalogEl.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
   }
 
   // ==========================================
-  // 10. INITIALIZATION
+  // 11. INITIALIZATION
   // ==========================================
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNavigation();
+    initHeroSlider();
     renderProducts('all');
     initFilters();
     initCartDrawer();
     updateCartUI();
+    initDealsTimer();
+    initAccordion();
+    initJournalModal();
     initNewsletterForm();
     initCheckoutForm();
-    initContactModal();
     initDealButtons();
   });
 
