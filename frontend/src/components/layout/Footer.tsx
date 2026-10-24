@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 Flower Market & Services. Built with FixItNow Full-Stack Architecture. All rights reserved.</p>
+          <p>© 2026 Flower Market & Services. Modern Full-Stack Clean Architecture. All rights reserved.</p>
           <div className="flex gap-6">
             <Link to="/privacy" className="hover:text-slate-400">Privacy Policy</Link>
             <Link to="/privacy" className="hover:text-slate-400">Terms of Service</Link>

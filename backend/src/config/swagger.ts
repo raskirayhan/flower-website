@@ -4,10 +4,10 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'FixItNow - Botanical Marketplace & Services API',
+      title: 'Flower Market - Botanical Marketplace & Services API',
       version: '1.0.0',
       description:
-        'Comprehensive REST API documentation for FixItNow On-Demand Botanical Services and Marketplace, featuring JWT authentication, role-based access control (User, Admin, Manager), Stripe payments, dynamic filters, and Flora AI concierge.',
+        'Comprehensive REST API documentation for Flower Market Botanical Stems, Houseplants and Services, featuring JWT authentication, role-based access control (User, Admin, Manager), Stripe payments, dynamic filters, and Flora AI concierge.',
       contact: {
         name: 'Rayhan Raski',
         email: 'support@flowermarket.shop',
@@ -19,7 +19,7 @@ const options: swaggerJsdoc.Options = {
         description: 'Local Development Server',
       },
       {
-        url: 'https://fixitnow-backend.onrender.com/api',
+        url: 'https://flowermarket-backend.onrender.com/api',
         description: 'Production Render Server',
       },
     ],

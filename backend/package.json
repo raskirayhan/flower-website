@@ -1,7 +1,7 @@
 {
-  "name": "fixitnow-backend",
+  "name": "flowermarket-backend",
   "version": "1.0.0",
-  "description": "Express REST API with Prisma ORM for FixItNow On-Demand Service & Botanical Marketplace",
+  "description": "Express REST API with Prisma ORM for Flower Market Botanical Platform",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -21,7 +21,7 @@
     "stripe",
     "swagger",
     "zod",
-    "marketplace"
+    "flower-market"
   ],
   "author": "Rayhan Raski",
   "license": "MIT",

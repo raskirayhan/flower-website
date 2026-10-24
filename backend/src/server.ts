@@ -9,7 +9,7 @@ async function bootstrap() {
   await connectDatabase();
 
   const server = app.listen(env.PORT, () => {
-    console.log(`🌸 FixItNow Botanical Backend API listening on port ${env.PORT}`);
+    console.log(`🌸 Flower Market Backend API listening on port ${env.PORT}`);
     console.log(`📖 Swagger API Documentation available at http://localhost:${env.PORT}/docs`);
     console.log(`🌱 Health check endpoint: http://localhost:${env.PORT}${env.API_PREFIX}/health`);
   });

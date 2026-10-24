@@ -10,9 +10,9 @@ const envSchema = z.object({
   DATABASE_URL: z
     .string()
     .default('postgresql://user:password@localhost:5432/dbname'),
-  JWT_SECRET: z.string().default('fixitnow_super_secret_jwt_access_token_key_2026'),
+  JWT_SECRET: z.string().default('your_jwt_access_secret_key_here'),
   JWT_EXPIRES_IN: z.string().default('7d'),
-  JWT_REFRESH_SECRET: z.string().default('fixitnow_super_secret_jwt_refresh_token_key_2026'),
+  JWT_REFRESH_SECRET: z.string().default('your_jwt_refresh_secret_key_here'),
   JWT_REFRESH_EXPIRES_IN: z.string().default('30d'),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
   STRIPE_SECRET_KEY: z.string().default('your_stripe_secret_key_here'),
