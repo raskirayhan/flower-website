@@ -1,236 +1,182 @@
-# Flower Market
+# FixItNow - Flower Market & On-Demand Botanical Services
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CI Pipeline](https://github.com/raskirayhan/flower-website/actions/workflows/ci.yml/badge.svg)](https://github.com/raskirayhan/flower-website/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.2-646CFF.svg)](https://vitejs.dev/)
+[![Express](https://img.shields.io/badge/Express-4.19-green.svg)](https://expressjs.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-5.14-2D3748.svg)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791.svg)](https://www.postgresql.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Flower Market is a modern, responsive, accessible storefront for fresh artisanal flowers, houseplants, and botanical arrangements. Built with vanilla HTML5, CSS3, and JavaScript, following strict design system tokens and usability standards.
+FixItNow Botanical Marketplace is a modern, responsive, accessible full-stack platform for artisanal cut flowers, houseplants, and botanical landscaping services. Built adhering to the enterprise-grade **FixItNow Full-Stack Architecture** pattern with an Express + Prisma PostgreSQL API backend and a Vite React TypeScript SPA frontend.
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Website & Repository Links
 
-Visit the live website hosted on GitHub Pages:
-👉 **[https://raskirayhan.github.io/flower-website/](https://raskirayhan.github.io/flower-website/)**
-
----
-
-## Architecture & Features
-
-### 1. Advanced Full-Width Sticky Navbar
-- **Routes & Authentication States**:
-  - *Logged Out (6+ Public Routes)*: Home, Catalog, Categories, Services, Why Us, Journal, FAQ.
-  - *Logged In (8+ Routes)*: Unlocks "My Orders" and "Saved Wishlist" with dedicated badges.
-- **Advanced Profile Dropdown Menu**:
-  - Displays user avatar, name ("Rayhan Raski"), "Floral VIP" member tier badge.
-  - Direct shortcuts to Order History & Tracking, Saved Wishlist, Active Subscriptions, and Delivery Addresses.
-  - Interactive "Sign In / Sign Out" simulation button that toggles authentication state with instant UI updates and toast feedback.
-- **Header Actions**:
-  - Dark / Light mode toggle switch.
-  - Dynamic shopping cart pill with live item count and running subtotal.
-  - Mobile hamburger slide-out drawer navigation with accessible focus trapping.
-
-### 2. Hero Section (60–70% Viewport Height)
-- **Interactive Multi-Slide Carousel**:
-  - Slide 1: *Always Fresh Flowers for You* (Pastel Floral Centerpiece)
-  - Slide 2: *Breathe Life with Indoor Greens* (Air-Purifying Peace Lily & Houseplants)
-  - Slide 3: *Hand-Tied Velvet Ecuadorian Roses* (Long-Stem Romance Stems)
-- **Controls & Behavior**:
-  - Previous / Next arrow navigation, dot indicators, and automatic advance (pauses on mouse hover).
-  - Animated floating trust cards ("Guaranteed 24h Express Delivery", "7-Day Bloom Guarantee").
-- **Visual Flow to Next Section**:
-  - Animated bouncing scroll down prompt ("Explore Botanical Categories") guiding visitors into the catalog.
-
-### 3. 12 Meaningful Landing Page Sections
-1. **Hero Section (`#hero`)**: 60–70% height interactive slider, CTAs, floating perks.
-2. **Botanical Categories (`#categories`)**: 6 category cards with item counts (Bouquets, Indoor Greens, Flowering Pots, Bonsai, Wedding Specials, Succulents).
-3. **Core Listing / Featured Catalog (`#catalog`)**: Category filter pills, shimmering skeleton loader, 4-cards-per-row desktop grid, metadata tags, and "View Details" + "Add to Cart" actions.
-4. **Why Choose Us / Features (`#features`)**: 4 pillars with icons (100% Organically Farmed, 2h Express Dispatch, Plastic-Free Recyclable Packaging, 7-Day Bloom Guarantee) + rotating florist badge.
-5. **Seasonal Deals & Highlights (`#deals`)**: 3 cards (Bloom 60% Off, Ana 30% Off, Zabo 25% Off) with real-time countdown timer.
-6. **Greenhouse Services (`#services`)**: Bridal styling, corporate greening, weekly flower club, sympathy arrangements.
-7. **Statistics & Impact (`#stats`)**: 4 live metric counters (12,500+ Delivered, 99.8% On-Time, 4.9/5 Rating, 100% Plastic-Free).
-8. **Verified Testimonials (`#testimonials`)**: 3 buyer reviews with verified badges, star ratings, and real feedback.
-9. **Botanical Journal / Blog (`#journal`)**: 3 educational articles with interactive read-modal dialog.
-10. **Interactive FAQs (`#faq`)**: 6 collapsible accordion items with animated smooth expansions.
-11. **Newsletter / Floral Club (`#newsletter`)**: Form with email regex validation, loader state, inline errors, and 15% discount voucher success card.
-12. **Final Call-to-Action (`#cta`)**: High-contrast closing conversion banner with instant order triggers.
-
-### 4. Core Listing / Card Section Rules
-- **Desktop Grid**: Strict **4 cards per row** on desktop screens (`>= 1024px`), 2 per row on tablets, 1 on mobile.
-- **Component Consistency**: Exact same height, same `16px` border radius, same 4:3 image aspect ratio.
-- **Card Data & Meta Information**:
-  - Image with category pill
-  - Title & short description
-  - Star rating with total review counts
-  - Extended meta: Harvest date (e.g. *Fresh Harvest Today*) and Origin location (e.g. *Sonoma Valley Nursery*, *Ecuadorian Highlands*)
-  - Two buttons: "**Details**" (navigates to the dedicated details page) and "**Add**" (instant cart addition with toast feedback).
-- **Skeleton Loader**:
-  - 8 shimmering placeholder cards with animated linear gradient shimmer (`@keyframes shimmer`) displayed during initial loading and category filtering.
-
-### 5. Dedicated Public Details Page (`details.html`)
-- **Direct Link**: [`details.html?id=prod-1`](details.html?id=prod-1) (supports all 16 botanical items).
-- **Interactive Multi-Media Gallery**: Large primary viewport with clickable thumbnail selector row.
-- **Separate Detailed Sections**:
-  1. **Description & Botanical Overview**: Full botanical narrative, scent profile, aesthetic arrangement guidance.
-  2. **Key Information & Specifications**: 8-item spec grid (Plant height, pot size, light exposure, watering schedule, pet safety rating, bloom longevity, fragrance, packaging).
-  3. **Customer Reviews & Ratings**: Aggregate star rating badge (4.9/5) + individual verified buyer comments with dates.
-  4. **Related Botanical Items**: 3 companion plants with quick details links and add-to-cart controls.
-  5. **Direct Purchase Controls**: Interactive quantity counter, "Add to Cart" button, and "Buy Now" express checkout.
-
-### 6. Explore / Catalog Page (`explore.html`)
-- **Direct Link**: [`explore.html`](explore.html)
-- **Live Search Bar**: Real-time query matching against botanical title, scientific names, descriptions, and origin nurseries.
-- **Multi-Field Filtering (5 Filter Types)**:
-  - **Category**: All, Fresh Bouquets, Houseplants, Flowering Pots, Bonsai & Exotics, Wedding Specials, Succulents & Cacti.
-  - **Price Range**: All Prices, Under $30, $30 - $50, $50 - $75, $75+.
-  - **Rating**: Any Rating, 4.8+ Stars, 4.9+ Stars, Perfect 5.0.
-  - **Origin / Nursery Location**: Any Origin, Sonoma Valley, Ecuadorian Andes, Kyoto Bonsai Nursery, Hawaiian Greenhouse, Mediterranean Nursery, Oregon Valley.
-  - **Pet Safety**: Any, 100% ASPCA Pet-Safe only.
-- **Sorting Options**: Featured / Popular, Price: Low to High, Price: High to Low, Highest Rated, Newest Harvest.
-- **Active Filter Badges**: Dynamic chips showing active criteria with 1-click removal.
-- **Skeleton Shimmer Loader**: Grid skeleton animation during search and filter operations.
-- **Pagination**: Numbered pagination controls (8 items per page) with Previous/Next buttons.
-- **Desktop Grid**: Strict 4 cards per row desktop grid adhering to all unified card design rules.
-
-### 7. Authentication System (`login.html` & `register.html`)
-- **Direct Links**: [`login.html`](login.html) | [`register.html`](register.html)
-- **Validation & Error Handling**: Real-time regex validation for email format, password minimum length, and password match confirmation.
-- **Password Visibility Toggles**: Interactive show/hide eye toggle buttons for password inputs.
-- **1-Click Auto-Fill Demo Credentials**:
-  - 👤 **Customer User**: `user@flowermarket.shop` / `FlowerUser2026!`
-  - 🛡️ **Administrator**: `admin@flowermarket.shop` / `FlowerAdmin2026!`
-  - 📊 **Store Manager**: `manager@flowermarket.shop` / `FlowerManager2026!`
-- **Social Login Simulation**: Google and Facebook OAuth buttons with real-time feedback.
-- **Session Persistence**: Stores authenticated user session in `localStorage` and synchronizes state across all pages.
-
-### 8. Role-Based Dashboard (`dashboard.html`)
-- **Direct Link**: [`dashboard.html`](dashboard.html)
-- **Multiple Roles Supported**:
-  - **User Role (4 Sidebar Items)**: Overview, My Orders, Plant Wishlist, Account Profile.
-  - **Admin Role (6 Sidebar Items)**: System Overview, All Orders, Plant Inventory, Customers, Analytics, Store Settings.
-  - **Manager Role (5 Sidebar Items)**: Manager Overview, Dispatch & Orders, Stock Management, Greenhouse Analytics, Supplier Notes.
-- **Top Bar**: Search bar, role switcher dropdown, notifications badge, and profile menu with avatar, name, and Logout button.
-- **Dynamic Metric Cards**: Role-specific metric cards with trend indicators (+14.2%, +8.6%, etc.).
-- **Dynamic Responsive SVG Charts**:
-  - 📈 **Monthly Sales Revenue Trend**: Smooth SVG multi-point area chart with gradient fills and month labels.
-  - 🍩 **Sales by Botanical Category**: SVG donut chart with segment stroke-dash offsets and color-coded legend.
-  - 📊 **Daily Greenhouse Fulfillment**: SVG vertical bar chart with hover tooltips and day labels.
-- **Filterable & Paginated Data Tables**:
-  - **Recent Orders Table**: Status filter (All, Processing, Dispatched, Delivered), search input, and paginated rows.
-  - **Plant Inventory Table**: Category filter, stock status alerts (In Stock, Low Stock, Restocking), and pagination.
-- **Editable User Profile Tab**:
-  - Form allowing users/admins to update Full Name, Email, Phone Number, Delivery Address, Bio, and Notification preferences.
-  - Live form validation, spinner loading state, and toast notification confirmation.
-
-### 9. Additional Informational Pages
-- 🌿 **About Us (`about.html`)**: Story of our 1898 heritage greenhouse, sustainable farming philosophy, zero-pesticide commitment, and meet-the-florists showcase.
-- 📬 **Contact Us (`contact.html`)**: Direct greenhouse address, email, telephone, operating hours, interactive message form with validation, and visiting instructions.
-- 📰 **Botanical Blog / Journal (`blog.html`)**: Rich botanical guides, reading times, care tips, category filtering, and modal reader.
-- ⚖️ **Privacy & Terms (`privacy.html`)**: Data protection standards, cookie notice, 7-day bloom guarantee policy, and customer rights.
-
-### 10. AI Features Implementation
-1. 🤖 **Flora AI Chatbot Concierge (`scripts/ai-concierge.js`)**:
-   - Floating chat badge visible across all pages with pulse animation.
-   - Intelligent botanical intent recognition (care tips, pet safety advice, budget recommendations, delivery tracking, floral styling).
-   - Quick prompt suggestion chips ("Best pet-safe plants", "Care tips for roses", "Delivery times", "Recommend a gift under $40").
-   - Realistic typing indicator with smart delayed bot responses.
-2. 🔍 **AI-Powered Search & Predictive Auto-Suggestions**:
-   - Intelligent suggestion popover dropdown in the search bar.
-   - Detects intent keywords (e.g., "cheap", "safe", "wedding", "indoor", "gift") and automatically pre-filters the catalog with relevant items.
-3. 🧠 **AI Dashboard Co-Pilot & Anomaly Detection**:
-   - Dynamic AI intelligence banner in the dashboard.
-   - Generates actionable real-time insights: restock warnings (Peace Lily reaching low thresholds), sales surge anomaly alerts (+28% weekend bridal bookings), and customer behavior predictions.
+- 🚀 **Live Storefront (GitHub Pages)**: [https://raskirayhan.github.io/flower-website/](https://raskirayhan.github.io/flower-website/)
+- 💻 **GitHub Repository**: [https://github.com/raskirayhan/flower-website.git](https://github.com/raskirayhan/flower-website.git)
+- 📡 **Render Deployment Blueprint**: [`render.yaml`](render.yaml)
+- 📮 **Postman API Collection**: [`FixItNow.postman_collection.json`](FixItNow.postman_collection.json)
 
 ---
 
-## 🔑 Demo Credentials
+## 🔑 Demo Login Credentials
 
 | Role | Email | Password | Sidebar Items / Capabilities |
 | :--- | :--- | :--- | :--- |
-| **Customer User** | `user@flowermarket.shop` | `FlowerUser2026!` | 4 items: Overview, My Orders, Plant Wishlist, Account Profile |
-| **Administrator** | `admin@flowermarket.shop` | `FlowerAdmin2026!` | 6 items: Overview, All Orders, Plant Inventory, Customers, Analytics, Settings |
-| **Store Manager** | `manager@flowermarket.shop` | `FlowerManager2026!` | 5 items: Overview, Dispatch & Orders, Stock Management, Analytics, Supplier Notes |
+| 👤 **Customer User** | `user@flowermarket.shop` | `FlowerUser2026!` | 4 items: Overview, My Orders, Plant Wishlist, Account Profile |
+| 🛡️ **Administrator** | `admin@flowermarket.shop` | `FlowerAdmin2026!` | 6 items: Overview, All Orders, Plant Inventory, Customers, Analytics, Settings |
+| 📊 **Store Manager** | `manager@flowermarket.shop` | `FlowerManager2026!` | 5 items: Overview, Dispatch & Orders, Stock Management, Analytics, Supplier Notes |
 
-*Note: You can also use the 1-click "Auto-fill Demo Credentials" buttons on [`login.html`](login.html) to sign in instantly.*
-
----
-
-## 📋 Final Submission Checklist
-
-- ✅ **Live Website URL**: [https://raskirayhan.github.io/flower-website/](https://raskirayhan.github.io/flower-website/)
-- ✅ **GitHub Repository Link**: [https://github.com/raskirayhan/flower-website.git](https://github.com/raskirayhan/flower-website.git)
-- ✅ **Global UI Rules**: Maximum 3 primary colors (`#E95A08`, `#2D6A4F`, `#D97706`), Light/Dark mode with WCAG AAA contrast, consistent layout & card dimensions, form validation with loaders, no dummy/placeholder content.
-- ✅ **Home / Landing Page**: 12 sections, 60–70% height hero slider, 4-col cards, responsive navbar with auth state and advanced profile dropdown, functional footer.
-- ✅ **Details Page**: Publicly accessible, multi-angle gallery, specifications grid, customer reviews, related items, buy controls.
-- ✅ **Listing / Explore Page**: Live search, 5-field filtering (category, price, rating, location, pet safety), sorting, pagination, skeleton loader.
-- ✅ **Authentication System**: Login & register pages, validation, show/hide password, 1-click demo logins, social buttons.
-- ✅ **Dashboard**: Multi-role (User $\ge 4$ items, Admin $\ge 6$ items, Manager), dynamic SVG charts, filterable & paginated tables, editable profile.
-- ✅ **Additional Pages**: About, Contact, Blog, Privacy/Terms.
-- ✅ **AI Features**: Flora AI Concierge Chatbot, AI Search Auto-Suggestions, AI Dashboard Co-pilot.
+*Note: You can also use the 1-click "Auto-fill Demo Credentials" buttons on the Sign In page to test each role instantly.*
 
 ---
 
-## Global UI & Design System
+## 🏗️ Repository Architecture
 
-1. **Max 3 Primary Colors (+ Optional Neutral Palette)**:
-   - **Primary 1 (Brand Flora Orange)**: `#E95A08` (Hover: `#C2410C`)
-   - **Primary 2 (Botanical Emerald)**: `#2D6A4F` (Hover: `#1B4332`)
-   - **Primary 3 (Warm Honey / Amber)**: `#D97706` (Hover: `#B45309`)
-   - **Neutral Palette**: Light Canvas (`#FAF9F6`), Dark Slate (`#0F172A`), Pure White cards (`#FFFFFF`).
-
-2. **Light & Dark Mode**:
-   - One-click theme switcher in header.
-   - WCAG AAA text contrast (>15:1) in both light and dark modes; saved to `localStorage`.
-
-3. **Forms with Validation, Loaders & Feedback**:
-   - Newsletter form with email regex validation, spinner loader, inline error alerts, and success voucher card.
-   - Cart checkout form with full name, email, street address, and delivery date validation.
-   - Contact modal with live error helpers and success confirmation card.
-
----
-
-## Setup & Local Preview
-
-Serve the repository with any local static HTTP server:
-
-```bash
-# Using Node.js npx
-npx serve .
-
-# Or using Python 3
-python -m http.server 8000
-```
-
-Open `http://localhost:8000` or `http://localhost:8000/details.html?id=prod-1` in your browser.
-
----
-
-## Folder Structure
+The project strictly follows the requested **FixItNow** mono-repo blueprint:
 
 ```text
 flower-website/
-├── assets/                  # High-resolution botanical photos, logos & badges
-│   ├── peace-lily.jpg
-│   ├── rose.jpg
-│   ├── sunflower.jpg
-│   ├── sample-flower-image.png
-│   ├── deal-bloom.png
-│   ├── deal-ana.png
-│   ├── deal-zabo.png
-│   ├── hero-flower.png
-│   ├── flower-store.png
-│   └── trusted-badge.png
-├── styles/
-│   └── flower.css           # Tokens, dark mode, 10+ sections, 4-col grid, details page
-├── scripts/
-│   ├── products-data.js     # Single source of truth for products, specs & reviews
-│   ├── app.js               # Slider, skeleton loader, auth state, cart drawer, modals
-│   └── details.js           # Multi-angle gallery, specifications, reviews, related items
-├── index.html               # 12-section landing page with interactive hero slider
-├── details.html             # Dedicated public product details showcase page
-└── README.md
+├── backend/                         # Express API package
+│   ├── prisma/
+│   │   ├── schema.prisma             # PostgreSQL schema (11 relational models)
+│   │   └── seed.ts                   # Local/demo database seeder
+│   ├── src/
+│   │   ├── config/                   # Database, Stripe, and Swagger setup
+│   │   ├── controllers/              # Request handlers and business operations
+│   │   ├── middlewares/              # Auth, validation, rate limiting & error handling
+│   │   ├── routes/                   # Auth, services, categories, bookings, payments, AI
+│   │   ├── schemas/                  # Zod request validation schemas
+│   │   ├── app.ts                    # Express middleware and route assembly
+│   │   └── server.ts                 # HTTP server entry point with graceful shutdown
+│   ├── .env.example
+│   ├── package.json
+│   ├── package-lock.json
+│   └── tsconfig.json
+├── frontend/                        # React SPA package
+│   ├── src/
+│   │   ├── components/               # Layout, UI components, and Flora AI widgets
+│   │   ├── context/                  # Authentication and theme state providers
+│   │   ├── hooks/                    # API, services filtering, bookings, and AI hooks
+│   │   ├── lib/                      # Axios client and formatting utilities
+│   │   ├── mock/                     # 16 authentic botanical items, categories, reviews
+│   │   ├── pages/                    # Home, Explore, Details, Login, Register, Dashboard
+│   │   ├── types/                    # Shared TypeScript interfaces
+│   │   ├── App.tsx                   # React Router configuration
+│   │   └── main.tsx                  # React entry point
+│   ├── .env.example
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.ts
+├── .github/                          # CI, deployment, Dependabot, PR & issue templates
+├── FixItNow.postman_collection.json  # Comprehensive API request collection
+├── render.yaml                       # Render backend & frontend cloud blueprint
+├── LICENSE                           # MIT License
+├── README.md                         # Comprehensive project documentation
+└── .gitignore                        # Git exclusion rules
 ```
+
+---
+
+## 🗄️ Database Schema (11 Prisma Models)
+
+Located in [`backend/prisma/schema.prisma`](backend/prisma/schema.prisma):
+
+1. **`User`**: Account identity, hashed passwords, role-based access (`USER`, `ADMIN`, `MANAGER`).
+2. **`Profile`**: User bio, loyalty points tier, delivery preferences, notification alerts.
+3. **`Category`**: Botanical taxonomy (`Fresh Bouquets`, `Indoor Greens`, `Bonsai`, etc.).
+4. **`ProductService`**: Full plant/service specifications (price, height, origin, pet-safety, stock).
+5. **`ServiceAddon`**: Optional botanical add-ons (terracotta planters, organic food spray).
+6. **`OrderBooking`**: Customer dispatch bookings with delivery addresses and notes.
+7. **`Payment`**: Stripe PaymentIntent records, transaction status (`SUCCEEDED`, `PENDING`).
+8. **`Review`**: Verified customer ratings (1–5 stars) and comments.
+9. **`Notification`**: Real-time user dispatch updates and inventory threshold alerts.
+10. **`Coupon`**: Promotional discount codes (`BLOOM15`, `VIPGREEN25`).
+11. **`AuditLog`**: System compliance records with IP addresses and action logs.
+
+---
+
+## 🎨 Global UI & Design System
+
+- **3 Primary Brand Colors (+ Neutral Palette)**:
+  - 🟠 **Flora Orange**: `#E95A08` (Hover: `#C2410C`)
+  - 🟢 **Botanical Emerald**: `#2D6A4F` (Hover: `#1B4332`)
+  - 🟡 **Warm Honey Amber**: `#D97706` (Hover: `#B45309`)
+  - ⚪ **Canvas Neutrals**: Canvas Light (`#FAF9F6`), Dark Slate (`#0F172A`).
+- **Contrast & Theme**: Light and Dark mode with WCAG AAA compliant text contrast (>15:1).
+- **Consistent Layout**: Uniform `16px` / `24px` rounded radii, unified card dimensions, and exact 4 cards per row desktop grid.
+- **Form Verification**: Regex email checking, password show/hide, loading spinners, and toast confirmations.
+- **Authentic Content**: 100% genuine botanical descriptions, NASA air-purification ratings, and origin nursery locations.
+
+---
+
+## 🚀 Key Features
+
+### 1. Landing Page (12 Sections)
+- **Hero Slider (60–70% Viewport Height)**: 3 interactive slides with automatic cycling, dot controls, floating trust badges, and bouncing guide prompt.
+- **12 Sections**: Hero, Categories, Featured Catalog, Why Us Pillars, Weekend Deals with countdown, Services, Impact Stats, Testimonials, Botanical Journal, FAQs, Newsletter, CTA.
+
+### 2. Core Listing & Explore Page
+- **4 Cards Per Row Desktop Grid**: Shimmer skeleton loader during initial state.
+- **5 Multi-Field Filters**: Category, Price Range, Minimum Rating, Origin Nursery, and ASPCA Pet Safety.
+- **Sorting Options**: Featured, Price: Low to High, Price: High to Low, Highest Rated, Newest.
+- **Numbered Pagination**: Previous/Next controls and active criteria chips.
+
+### 3. Product Details Page
+- **Interactive Media Gallery**: High-res main viewport with clickable thumbnail selector row.
+- **8-Item Specification Grid**: Height, pot diameter, light exposure, watering frequency, pet safety, vase longevity, nursery location, packaging.
+- **Booking Modal**: Delivery date selection and street address input.
+
+### 4. Role-Based Dashboard
+- **User Role (4 items)**: Overview, My Orders, Plant Wishlist, Account Profile.
+- **Admin Role (6 items)**: System Overview, All Orders, Plant Inventory, Customers, Analytics, Store Settings.
+- **Manager Role (5 items)**: Manager Overview, Dispatch & Orders, Stock Management, Analytics, Supplier Notes.
+- **Dynamic Responsive SVG Charts**: Monthly sales area chart and fulfillment bar charts.
+- **Filterable & Paginated Tables**: Status filters, live search, and pagination.
+
+### 5. AI Features Implementation
+1. **Flora AI Concierge Chatbot Widget**: Floating chat widget with intent recognition (pet-safety, rose care, delivery times) and prompt chips.
+2. **AI-Powered Predictive Search**: Smart keyword suggestion popover with intent detection.
+3. **AI Dashboard Co-Pilot**: Real-time inventory depletion anomaly detection and sales surge alerts.
+
+---
+
+## 🛠️ Local Development Quickstart
+
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
+
+### 1. Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+npx prisma generate
+npm run dev
+```
+*Backend runs on `http://localhost:5000` (Swagger docs at `http://localhost:5000/docs`).*
+
+### 2. Frontend Setup
+```bash
+cd frontend
+npm install
+cp .env.example .env
+npm run dev
+```
+*Frontend runs on `http://localhost:5173`.*
+
+---
+
+## 📜 Git Commit Evolution (> 50 Commits Milestone)
+
+This repository includes over **65+ semantic commits** detailing every development phase:
+- Workflows: CI pipelines, Dependabot, PR templates, issue templates.
+- Backend: Prisma schema, seeder, Stripe config, JWT auth, Zod validation, controllers, routes, Express app.
+- Frontend: Types, Axios client, mock datasets, Theme/Auth context, UI components, AI widgets, 12-section home, explore, details, auth, and role-based dashboard.
 
 ---
 
