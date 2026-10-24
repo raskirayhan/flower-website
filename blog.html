@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botanical Gazette & Journal — Flower Market</title>
+  <meta name="description" content="Read expert horticulture guides, flower arrangement secrets, and low-light plant recommendations from certified master florists.">
+
+  <!-- Google Fonts: Noto Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/flower.css">
+</head>
+
+<body>
+
+  <header class="site-header" id="top">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-link">
+          <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo">
+          <span class="brand-name">Flower <span>Market</span></span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="explore.html" class="nav-link">Catalog</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="blog.html" class="nav-link is-active">Journal</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="dashboard.html" class="nav-link text-primary-color"><i class="fas fa-gauge-high"></i> Dashboard</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i> <span class="theme-label">Dark Mode</span>
+          </button>
+          <a href="explore.html" class="btn btn--primary" style="height: 40px; padding: 0 16px;">
+            <span>Shop Blooms</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><i class="fas fa-chevron-right"></i></li>
+        <li aria-current="page">The Botanical Gazette & Care Guides</li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="explore-hero-section">
+    <div class="container">
+      <div class="explore-header-box">
+        <span class="section-tag">Botanical Journal</span>
+        <h1 class="section-title">The <span class="text-primary-color">Botanical Gazette</span></h1>
+        <p class="section-desc">
+          Insights, care secrets, seasonal arrangement trends, and indoor horticulture masterclasses penned by our lead botanical florists.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main class="explore-main-section">
+    <div class="container">
+      <div class="journal-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <article class="journal-card">
+          <div class="journal-img-wrap"><img src="assets/rose.jpg" alt="Vase floral stems" class="journal-img"></div>
+          <div class="journal-body">
+            <div class="journal-meta"><span><i class="fas fa-calendar"></i> Oct 20, 2026</span> • <span>4 min read</span></div>
+            <h2 class="journal-title">5 Secrets to Make Cut Flowers Last 2 Weeks</h2>
+            <p class="journal-excerpt">Discover why cutting stems underwater and stripping submerged leaves dramatically prolongs bloom life.</p>
+            <button type="button" class="btn btn--outline" onclick="openBlog('post-1')" style="height: 38px;"><span>Read Article</span></button>
+          </div>
+        </article>
+
+        <article class="journal-card">
+          <div class="journal-img-wrap"><img src="assets/peace-lily.jpg" alt="Desk plants" class="journal-img"></div>
+          <div class="journal-body">
+            <div class="journal-meta"><span><i class="fas fa-calendar"></i> Oct 16, 2026</span> • <span>6 min read</span></div>
+            <h2 class="journal-title">Top 7 Low-Light Plants for Calm Workspaces</h2>
+            <p class="journal-excerpt">No window in your study? These seven resilient foliage champions thrive happily under desk lamps.</p>
+            <button type="button" class="btn btn--outline" onclick="openBlog('post-2')" style="height: 38px;"><span>Read Article</span></button>
+          </div>
+        </article>
+
+        <article class="journal-card">
+          <div class="journal-img-wrap"><img src="assets/hero-flower.png" alt="Color harmony" class="journal-img"></div>
+          <div class="journal-body">
+            <div class="journal-meta"><span><i class="fas fa-calendar"></i> Oct 11, 2026</span> • <span>5 min read</span></div>
+            <h2 class="journal-title">Harmonizing Pastels & Emerald Greenery</h2>
+            <p class="journal-excerpt">Master the 60-30-10 floral color balance to assemble gallery-worthy floral centerpieces at home.</p>
+            <button type="button" class="btn btn--outline" onclick="openBlog('post-3')" style="height: 38px;"><span>Read Article</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Article Reader Modal -->
+  <div class="modal-dialog" id="journal-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="journal-modal-title">Botanical Journal</h3>
+        <button type="button" class="btn btn--icon" onclick="closeBlog()">&times;</button>
+      </div>
+      <div id="journal-modal-body" style="line-height: 1.8; color: var(--text-secondary);"></div>
+    </div>
+  </div>
+  <div class="nav-backdrop" id="journal-backdrop" onclick="closeBlog()"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Flower Market Inc. All rights reserved.</p>
+        <p><a href="privacy.html" style="text-decoration: underline;">Privacy Policy & Terms</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/products-data.js"></script>
+  <script src="scripts/ai-concierge.js"></script>
+  <script>
+    const theme = localStorage.getItem('fm_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('fm_theme', next);
+      document.getElementById('theme-toggle').querySelector('i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
+
+    const articles = {
+      'post-1': {
+        title: '5 Secrets to Make Cut Flowers Last 2 Weeks',
+        body: '<p>1. The 45-degree angle underwater cut ensures zero air pockets block water uptake.</p><p>2. Sterile vase sanitation with warm soapy water kills stem-plugging bacteria.</p><p>3. Strip all foliage submerged below the waterline.</p><p>4. Keep away from ethylene-emitting fruit bowls (apples, bananas).</p><p>5. Replace vase water every 48 hours with flower food.</p>'
+      },
+      'post-2': {
+        title: 'Top 7 Low-Light Plants for Calm Workspaces',
+        body: '<p>Top selections for windowless cubicles or low-light rooms include White Peace Lily, ZZ Plant, Cast Iron Plant, Snake Plant, and Golden Pothos. They filter formaldehyde and benzene while softening harsh fluorescent glare.</p>'
+      },
+      'post-3': {
+        title: 'Harmonizing Pastels & Emerald Greenery',
+        body: '<p>Using the 60-30-10 floral rule: 60% dominant base foliage, 30% soft pastel blooms (blush rose, cream lisianthus), and 10% bold chromatic accent (crimson rose or golden sunflower) creates visual serenity and depth.</p>'
+      }
+    };
+
+    function openBlog(id) {
+      const a = articles[id];
+      if (!a) return;
+      document.getElementById('journal-modal-title').textContent = a.title;
+      document.getElementById('journal-modal-body').innerHTML = a.body;
+      document.getElementById('journal-modal').classList.add('is-open');
+      document.getElementById('journal-backdrop').classList.add('is-visible');
+    }
+    function closeBlog() {
+      document.getElementById('journal-modal').classList.remove('is-open');
+      document.getElementById('journal-backdrop').classList.remove('is-visible');
+    }
+  </script>
+</body>
+
+</html>
