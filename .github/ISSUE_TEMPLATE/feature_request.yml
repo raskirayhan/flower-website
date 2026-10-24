@@ -1,0 +1,33 @@
+name: ✨ Feature Request
+description: Suggest an idea or enhancement for FixItNow / Flower Market platform
+title: '[FEAT]: '
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: We appreciate suggestions to make the platform better!
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your feature request related to a problem?
+      description: A clear and concise description of the problem or limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the proposed solution
+      description: Detailed explanation of what you want to happen.
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
