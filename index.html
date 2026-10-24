@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Market — Artfully Arranged Fresh Flowers & Houseplants</title>
+  <meta name="description" content="Discover fresh handpicked flowers, indoor plants, and artisan floral bouquets with same-day local delivery and eco-friendly packaging.">
+
+  <!-- Google Fonts: Noto Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/flower.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+       1. NAVBAR (Sticky, Full-width, Multi-route, Advanced Menu)
+       ========================================== -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <!-- Brand Logo -->
+        <a href="#top" class="brand-link" aria-label="Flower Market Homepage">
+          <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo">
+          <span class="brand-name">Flower <span>Market</span></span>
+        </a>
+
+        <!-- Navigation Routes (4+ logged out, 6+ logged in) -->
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#top" class="nav-link is-active">Home</a></li>
+          <li><a href="#catalog" class="nav-link">Catalog</a></li>
+          <li><a href="#categories" class="nav-link">Categories</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#features" class="nav-link">Why Us</a></li>
+          <li><a href="#journal" class="nav-link">Journal</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <!-- Logged-in only routes (Rules: min 6 routes logged in) -->
+          <li class="nav-auth-only" style="display: none;"><a href="#top" class="nav-link text-primary-color" onclick="window.openCartDrawer(); return false;"><i class="fas fa-box"></i> My Orders</a></li>
+          <li class="nav-auth-only" style="display: none;"><a href="#catalog" class="nav-link text-secondary-color"><i class="fas fa-heart"></i> Wishlist</a></li>
+        </ul>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <!-- Light / Dark Mode Toggle -->
+          <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+            <span class="theme-label">Dark Mode</span>
+          </button>
+
+          <!-- Advanced Profile Dropdown Menu (Rule Requirement) -->
+          <div class="profile-menu-container">
+            <button type="button" class="profile-menu-btn" id="profile-menu-btn" aria-label="Open user profile menu" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle profile-icon" aria-hidden="true"></i>
+              <span class="profile-name-snippet">Rayhan</span>
+              <i class="fas fa-chevron-down profile-arrow" aria-hidden="true"></i>
+            </button>
+
+            <!-- Dropdown Card -->
+            <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-label="User Profile Options">
+              <div class="profile-dropdown-header">
+                <div class="profile-avatar-circle">RR</div>
+                <div>
+                  <strong class="profile-full-name">Rayhan Raski</strong>
+                  <div class="profile-user-status" id="auth-status-text">Guest Visitor</div>
+                  <span class="profile-badge">Floral VIP</span>
+                </div>
+              </div>
+              <ul class="profile-dropdown-links">
+                <li><a href="#top" onclick="window.openCartDrawer(); return false;"><i class="fas fa-truck-ramp-box"></i> Order History & Tracking</a></li>
+                <li><a href="#catalog"><i class="fas fa-heart"></i> Saved Wishlist Stems</a></li>
+                <li><a href="#services"><i class="fas fa-seedling"></i> Active Flower Subscriptions</a></li>
+                <li><a href="#contact" onclick="alert('Account settings simulated'); return false;"><i class="fas fa-sliders"></i> Delivery Addresses</a></li>
+              </ul>
+              <div class="profile-dropdown-footer">
+                <button type="button" class="btn-auth-switch" id="auth-toggle-btn">
+                  <i class="fas fa-sign-in-alt"></i> <span>Sign In as Member</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shopping Cart Pill -->
+          <button type="button" class="cart-toggle-btn" id="cart-toggle" aria-label="View shopping cart">
+            <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+            <span id="cart-badge-total">$0.00</span>
+            <span class="cart-badge" id="cart-badge-count">0</span>
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="nav-toggle-btn" id="nav-toggle" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Backdrop -->
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <main>
+    <!-- ==========================================
+         SECTION 1: HERO SECTION (HEIGHT 60-70% OF SCREEN, SLIDER, CTAS, SCROLL FLOW)
+         ========================================== -->
+    <section class="hero" id="hero">
+      <div class="container" style="height: 100%;">
+        <div class="hero-slider" aria-roledescription="carousel" aria-label="Featured Floral Highlights">
+          <!-- Slide 1 -->
+          <div class="hero-slide is-active" data-slide="0" aria-label="Slide 1 of 3">
+            <div class="hero-grid">
+              <div class="hero-content">
+                <div class="hero-badge">
+                  <i class="fas fa-seedling" aria-hidden="true"></i>
+                  <span>100% Organically Farmed & Hand-Tied</span>
+                </div>
+                <h1 class="hero-title">
+                  ALWAYS <span class="text-primary-color">FRESH</span><br>
+                  <span class="text-primary-color">FLOWERS</span> FOR YOU
+                </h1>
+                <p class="hero-desc">
+                  Discover the enchantment of fresh botanical blooms artfully arranged to deliver warmth, joy, and peace. From fragrant garden stems to air-purifying foliage, we bring nature’s charm straight to your door.
+                </p>
+                <div class="hero-actions">
+                  <a href="#catalog" class="btn btn--primary">
+                    <i class="fas fa-basket-shopping" aria-hidden="true"></i>
+                    <span>Explore Catalog</span>
+                  </a>
+                  <a href="#deals" class="btn btn--outline">
+                    <i class="fas fa-tag" aria-hidden="true"></i>
+                    <span>Claim 60% Off Deals</span>
+                  </a>
+                </div>
+              </div>
+              <div class="hero-image-wrap">
+                <img src="assets/hero-flower.png" alt="Artisan pastel hand-tied bouquet" class="hero-image">
+                <div class="hero-floating-card">
+                  <div class="floating-icon"><i class="fas fa-truck-fast"></i></div>
+                  <div class="floating-text">
+                    <strong>Express Delivery</strong>
+                    <span>Guaranteed in 24 hours</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="hero-slide" data-slide="1" aria-label="Slide 2 of 3">
+            <div class="hero-grid">
+              <div class="hero-content">
+                <div class="hero-badge">
+                  <i class="fas fa-wind" aria-hidden="true"></i>
+                  <span>Natural Living Air Cleaners</span>
+                </div>
+                <h1 class="hero-title">
+                  BREATHE <span class="text-secondary-color">LIFE</span><br>
+                  WITH <span class="text-secondary-color">INDOOR GREENS</span>
+                </h1>
+                <p class="hero-desc">
+                  Transform your living spaces into tranquil sanctuaries. Our low-maintenance houseplants filter indoor air, soften ambient lighting, and boost daily productivity.
+                </p>
+                <div class="hero-actions">
+                  <a href="#catalog" class="btn btn--secondary">
+                    <i class="fas fa-leaf" aria-hidden="true"></i>
+                    <span>Shop Indoor Greens</span>
+                  </a>
+                  <a href="#services" class="btn btn--outline">
+                    <i class="fas fa-building" aria-hidden="true"></i>
+                    <span>Office Greening</span>
+                  </a>
+                </div>
+              </div>
+              <div class="hero-image-wrap">
+                <img src="assets/peace-lily.jpg" alt="White Peace Lily potted in ceramic" class="hero-image" style="border-radius: 16px; max-height: 350px;">
+                <div class="hero-floating-card">
+                  <div class="floating-icon" style="background-color: var(--color-primary-tint); color: var(--color-primary);"><i class="fas fa-shield-cat"></i></div>
+                  <div class="floating-text">
+                    <strong>Pet Friendly Choices</strong>
+                    <span>ASPCA Non-Toxic Certified</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="hero-slide" data-slide="2" aria-label="Slide 3 of 3">
+            <div class="hero-grid">
+              <div class="hero-content">
+                <div class="hero-badge">
+                  <i class="fas fa-heart text-amber" aria-hidden="true"></i>
+                  <span>Artisan Romance & Celebrations</span>
+                </div>
+                <h1 class="hero-title">
+                  HAND-TIED <span class="text-primary-color">VELVET</span><br>
+                  <span class="text-primary-color">ECUADORIAN</span> ROSES
+                </h1>
+                <p class="hero-desc">
+                  High-altitude volcanic blooms with up to 45 velvety petals per head. Paired with fragrant silver dollar eucalyptus and conditioned for 10-day vase longevity.
+                </p>
+                <div class="hero-actions">
+                  <a href="details.html?id=prod-2" class="btn btn--primary">
+                    <i class="fas fa-eye" aria-hidden="true"></i>
+                    <span>View Rose Details</span>
+                  </a>
+                  <a href="#catalog" class="btn btn--outline">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                    <span>Schedule Delivery</span>
+                  </a>
+                </div>
+              </div>
+              <div class="hero-image-wrap">
+                <img src="assets/rose.jpg" alt="Crimson velvet rose arrangement" class="hero-image" style="border-radius: 16px; max-height: 350px;">
+                <div class="hero-floating-card">
+                  <div class="floating-icon" style="background-color: var(--color-tertiary-tint); color: var(--color-tertiary);"><i class="fas fa-award"></i></div>
+                  <div class="floating-text">
+                    <strong>7-Day Fresh Guarantee</strong>
+                    <span>Or 100% Free Replacement</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="hero-slider-nav">
+            <button type="button" class="hero-arrow-btn" id="hero-prev-btn" aria-label="Previous Slide">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="hero-dots" role="tablist" aria-label="Carousel navigation">
+              <button type="button" class="hero-dot is-active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+              <button type="button" class="hero-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+              <button type="button" class="hero-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+            </div>
+            <button type="button" class="hero-arrow-btn" id="hero-next-btn" aria-label="Next Slide">
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Clear Visual Flow to Next Section (Rule Requirement) -->
+        <a href="#categories" class="hero-scroll-prompt" aria-label="Scroll down to explore botanical categories">
+          <span>Explore Botanical Categories</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: BOTANICAL CATEGORIES
+         ========================================== -->
+    <section class="categories-section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Explore Collections</span>
+          <h2 class="section-title">Shop by <span class="text-primary-color">Botanical Category</span></h2>
+          <p class="section-desc">
+            Whether you desire fragrant freshly cut centerpieces, resilient office greens, or rare bonsai, browse our carefully tended categories.
+          </p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card" data-category="bouquets">
+            <div class="category-icon-box"><i class="fas fa-spa"></i></div>
+            <h3 class="category-title">Fresh Bouquets</h3>
+            <span class="category-count">18 Curated Stems</span>
+          </div>
+
+          <div class="category-card" data-category="indoor">
+            <div class="category-icon-box" style="background-color: var(--color-secondary-tint); color: var(--color-secondary);"><i class="fas fa-leaf"></i></div>
+            <h3 class="category-title">Indoor Air Purifiers</h3>
+            <span class="category-count">24 Houseplants</span>
+          </div>
+
+          <div class="category-card" data-category="flowering">
+            <div class="category-icon-box" style="background-color: var(--color-tertiary-tint); color: var(--color-tertiary);"><i class="fas fa-sun"></i></div>
+            <h3 class="category-title">Flowering Pots</h3>
+            <span class="category-count">14 Blooming Pots</span>
+          </div>
+
+          <div class="category-card" data-category="indoor">
+            <div class="category-icon-box"><i class="fas fa-tree"></i></div>
+            <h3 class="category-title">Bonsai & Planters</h3>
+            <span class="category-count">9 Sculptural Stems</span>
+          </div>
+
+          <div class="category-card" data-category="bouquets">
+            <div class="category-icon-box" style="background-color: var(--color-secondary-tint); color: var(--color-secondary);"><i class="fas fa-ring"></i></div>
+            <h3 class="category-title">Wedding Specials</h3>
+            <span class="category-count">12 Bridal Clusters</span>
+          </div>
+
+          <div class="category-card" data-category="indoor">
+            <div class="category-icon-box" style="background-color: var(--color-tertiary-tint); color: var(--color-tertiary);"><i class="fas fa-seedling"></i></div>
+            <h3 class="category-title">Eco Succulents</h3>
+            <span class="category-count">16 Terracotta Pots</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: CORE LISTING / CARD SECTION (4 PER ROW, SKELETON LOADER, DETAILS BUTTON)
+         ========================================== -->
+    <section class="catalog-section" id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Featured Blooms</span>
+          <h2 class="section-title">Our <span class="text-primary-color">Featured</span> Plants & Blooms</h2>
+          <p class="section-desc">
+            Explore our curated gallery of vibrant flowering arrangements and resilient houseplants. Each botanical specimen is nurtured for balance, longevity, and tranquil beauty.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="catalog-filters" role="tablist" aria-label="Plant Categories">
+          <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+            All Blooms (8)
+          </button>
+          <button type="button" class="filter-btn" data-filter="indoor" role="tab" aria-selected="false">
+            Indoor Greens
+          </button>
+          <button type="button" class="filter-btn" data-filter="bouquets" role="tab" aria-selected="false">
+            Fresh Bouquets
+          </button>
+          <button type="button" class="filter-btn" data-filter="flowering" role="tab" aria-selected="false">
+            Flowering Plants
+          </button>
+        </div>
+
+        <!-- Product Cards Grid: Desktop 4 cards per row, includes Skeleton Loader -->
+        <div class="product-grid" id="product-catalog">
+          <!-- Populated dynamically by scripts/app.js with skeleton shimmer animation -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: WHY CHOOSE US / FEATURES
+         ========================================== -->
+    <section class="plant-lovers" id="features">
+      <div class="container">
+        <div class="plant-lovers-grid">
+          <div class="pl-image-wrapper">
+            <img src="assets/flower-store.png" alt="Inside our sunlit botanical florist boutique" class="pl-main-img">
+            <img src="assets/trusted-badge.png" alt="Trusted Florist Quality Badge" class="pl-rotating-badge">
+          </div>
+
+          <div class="pl-content">
+            <span class="section-tag">Our Ethos</span>
+            <h2 class="pl-content-title">Flowers & Plants <br><span class="text-primary-color">Crafted with Love</span></h2>
+            
+            <div class="pl-feature-list">
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon"><i class="fas fa-heart-pulse"></i></div>
+                <div class="pl-feature-text">
+                  <h4>Serenity for Every Home</h4>
+                  <p>Nature offers peace beyond words to those who cherish living greens. A blooming tulip or trailing vine brings a quiet, restorative moment of daily tranquility.</p>
+                </div>
+              </div>
+
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon"><i class="fas fa-leaf"></i></div>
+                <div class="pl-feature-text">
+                  <h4>100% Organically Farmed</h4>
+                  <p>We partner exclusively with certified organic regional growers, utilizing zero harsh synthetic pesticides and nourishing living soils.</p>
+                </div>
+              </div>
+
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon"><i class="fas fa-box-open"></i></div>
+                <div class="pl-feature-text">
+                  <h4>Plastic-Free Recyclable Packaging</h4>
+                  <p>Every arrangement arrives in recycled kraft paper and moisture-retaining compostable hydration wraps that protect stems without polluting the earth.</p>
+                </div>
+              </div>
+
+              <div class="pl-feature-item">
+                <div class="pl-feature-icon"><i class="fas fa-shield-halved"></i></div>
+                <div class="pl-feature-text">
+                  <h4>7-Day Freshness Guarantee</h4>
+                  <p>Every handpicked stem is conditioned in floral nourishment solution, ensuring your blooms stay aromatic and fresh for at least 7 full days.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: SEASONAL DEALS WITH COUNTDOWN TIMER
+         ========================================== -->
+    <section class="deals-section" id="deals">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Flash Sale</span>
+          <h2 class="section-title"><span class="text-primary-color">Latest</span> Seasonal Deals</h2>
+          <p class="section-desc">
+            Unwrap limited seasonal offers and special discounts on our bestselling bouquets and architectural plants before stocks run out.
+          </p>
+        </div>
+
+        <div class="deals-grid">
+          <!-- Stack of 2 Deals -->
+          <div class="deals-stack">
+            <article class="deal-card deal-card--bloom">
+              <div class="deal-card__content">
+                <div>
+                  <span class="deal-discount-pill">60% Off</span>
+                  <span class="deal-timer-pill"><i class="fas fa-clock"></i> <span class="deal-timer">02d : 14h : 35m</span></span>
+                </div>
+                <h3 class="deal-title">Calathea Bloom Plant</h3>
+                <button type="button" class="btn btn--primary btn--deal-shop" data-deal-target="prod-5">
+                  <i class="fas fa-cart-shopping" aria-hidden="true"></i> <span>Claim 60% Off</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="deal-card deal-card--ana">
+              <div class="deal-card__content">
+                <div>
+                  <span class="deal-discount-pill">30% Off</span>
+                  <span class="deal-timer-pill"><i class="fas fa-clock"></i> <span class="deal-timer">02d : 14h : 35m</span></span>
+                </div>
+                <h3 class="deal-title">Scarlet Anthurium Ana</h3>
+                <button type="button" class="btn btn--primary btn--deal-shop" data-deal-target="prod-6">
+                  <i class="fas fa-cart-shopping" aria-hidden="true"></i> <span>Claim 30% Off</span>
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Featured Large Deal -->
+          <article class="deal-card deal-card--zabo deal-card--featured">
+            <div class="deal-card__content">
+              <div>
+                <span class="deal-discount-pill">25% Off Premium</span>
+                <span class="deal-timer-pill"><i class="fas fa-clock"></i> <span class="deal-timer">02d : 14h : 35m</span></span>
+              </div>
+              <h3 class="deal-title">Zabo Bonsai Ficus Plant</h3>
+              <p style="margin-bottom: 1.5rem; max-width: 480px; color: rgba(255,255,255,0.9);">
+                Sculptural indoor miniature bonsai with aerial root formation in a hand-glazed ceramic dish.
+              </p>
+              <button type="button" class="btn btn--primary btn--deal-shop" data-deal-target="prod-7">
+                <i class="fas fa-cart-shopping" aria-hidden="true"></i> <span>Shop Zabo Deal</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: GREENHOUSE SERVICES
+         ========================================== -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Specialized Services</span>
+          <h2 class="section-title">Floristry & <span class="text-primary-color">Greenhouse Services</span></h2>
+          <p class="section-desc">
+            Beyond everyday bouquets, we provide bespoke botanical services tailored to celebrate your life's memorable milestones.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-wine-glass-empty"></i></div>
+            <h3 class="service-title">Bespoke Bridal Florals</h3>
+            <p class="service-desc">Complete wedding floral styling, bridal bouquets, archway floral installations, and delicate buttonholes designed with your color palette.</p>
+            <a href="#contact" class="btn btn--outline" style="height: 38px;"><span>Consult Florist</span></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon" style="background-color: var(--color-primary-tint); color: var(--color-primary);"><i class="fas fa-building"></i></div>
+            <h3 class="service-title">Office Greening & Plants</h3>
+            <p class="service-desc">Professional corporate plant staging and bi-weekly maintenance service for corporate lobbies, executive suites, and collaborative workspaces.</p>
+            <a href="#contact" class="btn btn--outline" style="height: 38px;"><span>Corporate Inquiry</span></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon" style="background-color: var(--color-tertiary-tint); color: var(--color-tertiary);"><i class="fas fa-calendar-star"></i></div>
+            <h3 class="service-title">Weekly Floral Club</h3>
+            <p class="service-desc">Regular doorstep deliveries of seasonal farm-fresh flower stems with free styling vases and flexible skip-or-cancel controls.</p>
+            <a href="#newsletter" class="btn btn--outline" style="height: 38px;"><span>Join Club</span></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-dove"></i></div>
+            <h3 class="service-title">Celebration & Sympathy</h3>
+            <p class="service-desc">Dignified floral wreaths, standing sprays, and uplifting celebration arrangements prepared with utmost grace and express delivery.</p>
+            <a href="#contact" class="btn btn--outline" style="height: 38px;"><span>Order Custom</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: STATISTICS & IMPACT METRICS
+         ========================================== -->
+    <section class="stats-section" id="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon text-primary-color"><i class="fas fa-gift"></i></div>
+            <div class="stat-number">12,500+</div>
+            <div class="stat-label">Bouquets Hand-Tied & Delivered</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon text-secondary-color"><i class="fas fa-truck-fast"></i></div>
+            <div class="stat-number">99.8%</div>
+            <div class="stat-label">On-Time Express Courier Delivery</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon text-amber"><i class="fas fa-star"></i></div>
+            <div class="stat-number">4.9 / 5.0</div>
+            <div class="stat-label">Average Customer Satisfaction Score</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon text-secondary-color"><i class="fas fa-recycle"></i></div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Compostable & Plastic-Free Wraps</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: VERIFIED CUSTOMER TESTIMONIALS
+         ========================================== -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Community Love</span>
+          <h2 class="section-title">What Our <span class="text-primary-color">Plant Lovers Say</span></h2>
+          <p class="section-desc">
+            Read authentic reviews from happy customers who welcomed Flower Market blooms and foliage into their homes.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                “I ordered the Crimson Velvet Roses for our tenth anniversary. The stems were extraordinarily long, and the fragrance filled our entire apartment for nine days!”
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-info">
+                <strong>Sarah Miller</strong>
+                <span><i class="fas fa-check-circle text-secondary-color"></i> Verified Buyer • San Francisco, CA</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                “The White Peace Lily arrived in flawless condition. The terracotta pot is heavy, genuine artisan pottery, and zero soil was spilled. A truly five-star experience.”
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background-color: var(--color-secondary-tint); color: var(--color-secondary);">DC</div>
+              <div class="author-info">
+                <strong>David Chen</strong>
+                <span><i class="fas fa-check-circle text-secondary-color"></i> Verified Buyer • Seattle, WA</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                “I love that their packaging is completely compostable and recyclable. As an eco-conscious consumer, Flower Market is the only florist I trust for gifts.”
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background-color: var(--color-tertiary-tint); color: var(--color-tertiary);">EM</div>
+              <div class="author-info">
+                <strong>Emily Martinez</strong>
+                <span><i class="fas fa-check-circle text-secondary-color"></i> Verified Buyer • Austin, TX</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 9: BOTANICAL JOURNAL & BLOG
+         ========================================== -->
+    <section class="journal-section" id="journal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Care & Inspiration</span>
+          <h2 class="section-title">The <span class="text-primary-color">Botanical Gazette</span></h2>
+          <p class="section-desc">
+            Expert gardening advice, floristry secrets, and indoor plant wellness guides written by our head florists.
+          </p>
+        </div>
+
+        <div class="journal-grid">
+          <article class="journal-card">
+            <div class="journal-img-wrap">
+              <img src="assets/rose.jpg" alt="Cutting stems at 45 degree angle" class="journal-img">
+            </div>
+            <div class="journal-body">
+              <div class="journal-meta">
+                <span><i class="fas fa-calendar"></i> Oct 20, 2026</span> • <span>4 min read</span>
+              </div>
+              <h3 class="journal-title">5 Secrets to Make Cut Flowers Last 2 Weeks</h3>
+              <p class="journal-excerpt">Discover why cutting stems underwater and stripping submerged leaves dramatically prolongs bloom life.</p>
+              <button type="button" class="btn btn--outline" data-blog-id="post-1" style="align-self: flex-start; height: 38px;">
+                <span>Read Full Article</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="journal-card">
+            <div class="journal-img-wrap">
+              <img src="assets/peace-lily.jpg" alt="Low light houseplants for desk" class="journal-img">
+            </div>
+            <div class="journal-body">
+              <div class="journal-meta">
+                <span><i class="fas fa-calendar"></i> Oct 16, 2026</span> • <span>6 min read</span>
+              </div>
+              <h3 class="journal-title">Top 7 Low-Light Plants for Calm Workspaces</h3>
+              <p class="journal-excerpt">No window in your study? These seven resilient foliage champions thrive happily under desk lamps.</p>
+              <button type="button" class="btn btn--outline" data-blog-id="post-2" style="align-self: flex-start; height: 38px;">
+                <span>Read Full Article</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="journal-card">
+            <div class="journal-img-wrap">
+              <img src="assets/hero-flower.png" alt="Color palette floral arrangement" class="journal-img">
+            </div>
+            <div class="journal-body">
+              <div class="journal-meta">
+                <span><i class="fas fa-calendar"></i> Oct 11, 2026</span> • <span>5 min read</span>
+              </div>
+              <h3 class="journal-title">Harmonizing Pastels & Emerald Greenery</h3>
+              <p class="journal-excerpt">Master the 60-30-10 floral color balance to assemble gallery-worthy floral centerpieces at home.</p>
+              <button type="button" class="btn btn--outline" data-blog-id="post-3" style="align-self: flex-start; height: 38px;">
+                <span>Read Full Article</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 10: INTERACTIVE FAQS ACCORDION
+         ========================================== -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked <span class="text-primary-color">Questions</span></h2>
+          <p class="section-desc">
+            Everything you need to know about our sourcing, same-day delivery windows, and care guarantees.
+          </p>
+        </div>
+
+        <div class="faq-accordion" role="region" aria-label="Frequently Asked Questions">
+          <div class="faq-item is-open">
+            <button type="button" class="faq-question" aria-expanded="true">
+              <span>How does your 24-hour delivery guarantee work?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>All orders placed before 2:00 PM are harvested, hand-tied, and dispatched via our temperature-controlled courier fleet for same-day evening or guaranteed next-morning delivery across our regional delivery zones.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>What if my flowers arrive damaged or wilt early?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>We stand firmly by our <strong>7-Day Freshness Guarantee</strong>. If your flowers do not stay vibrant for at least a full week, simply snap a quick photo and email us—we will immediately dispatch a complimentary replacement bouquet or issue a 100% refund.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Are your houseplants safe for cats and dogs?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>We clearly tag all pet-friendly houseplants (such as our Calathea Bloom and Boston Ferns) with our official ASPCA Non-Toxic badge. We also provide clear warnings on varieties like lilies that should be kept strictly away from cats.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Can I include a handwritten custom gift message?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! During checkout in your cart drawer, simply enter your personalized note in the "Gift Message" field. Our florists handwrite each card on textured cotton cardstock and seal it with an embossed wax stamp.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Do you offer recurring flower subscriptions?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely. Our Floral Club offers weekly, bi-weekly, or monthly deliveries of seasonal farm blooms at a 15% discount. You can pause, reschedule, or cancel your subscription at any time with a single click in your profile menu.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Is your packaging truly 100% plastic-free?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Our hydration bags are crafted from seaweed-based cellulose, our twine is unbleached organic jute, and our shipping boxes are certified 100% post-consumer recycled paper printed with natural vegetable soy inks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 11: NEWSLETTER FORM
+         ========================================== -->
+    <section class="newsletter-section" id="newsletter">
+      <div class="container">
+        <div class="newsletter-box">
+          <div class="newsletter-content">
+            <!-- Active Form Content -->
+            <div id="newsletter-form-content">
+              <h2 class="newsletter-title">Join the Colorful Brunch</h2>
+              <p class="newsletter-desc">
+                Subscribe to our weekly botanical gazette. Enjoy 15% off your first purchase, seasonal plant care guides, and exclusive subscriber perks.
+              </p>
+
+              <form id="newsletter-form" novalidate aria-label="Newsletter Subscription Form">
+                <div class="newsletter-form-row">
+                  <div class="newsletter-input-wrap">
+                    <i class="fas fa-envelope newsletter-icon" aria-hidden="true"></i>
+                    <input 
+                      type="email" 
+                      id="newsletter-email" 
+                      name="email"
+                      class="newsletter-input" 
+                      placeholder="Enter your email address" 
+                      aria-label="Email address"
+                      autocomplete="email"
+                      required
+                    >
+                  </div>
+                  <button type="submit" class="btn btn--primary newsletter-btn" id="newsletter-submit-btn">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    <span>Subscribe</span>
+                  </button>
+                </div>
+
+                <!-- Validation Error Message -->
+                <div id="newsletter-error" class="newsletter-error-msg is-hidden" role="alert" aria-live="assertive"></div>
+              </form>
+            </div>
+
+            <!-- Success State Card -->
+            <div id="newsletter-success" class="newsletter-success-card is-hidden" role="region" aria-live="polite">
+              <div class="success-icon">
+                <i class="fas fa-check" aria-hidden="true"></i>
+              </div>
+              <h3 style="font-family: 'Noto Serif', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Welcome to Flower Market!</h3>
+              <p style="margin-bottom: 1.25rem;">
+                A confirmation with your <strong>15% OFF voucher code</strong> has been sent to <span class="user-email-display" style="text-decoration: underline;"></span>.
+              </p>
+              <button type="button" class="btn btn--outline" id="newsletter-reset-btn" style="background-color: #FFFFFF; color: #111827;">
+                <span>Subscribe another email</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 12: FINAL CALL TO ACTION (CTA)
+         ========================================== -->
+    <section class="final-cta-section" id="cta">
+      <div class="container">
+        <div class="final-cta-content">
+          <span class="section-tag" style="background-color: rgba(255,255,255,0.2); color: #FFFFFF;">Instant Joy</span>
+          <h2 class="final-cta-title">Ready to Brighten Someone’s Day?</h2>
+          <p class="final-cta-desc">
+            Send fresh artisanal blooms or lush potted greenery across town. Guaranteed on-time delivery with complimentary flower food and greeting card.
+          </p>
+          <div class="final-cta-actions">
+            <a href="#catalog" class="btn" style="background-color: #FFFFFF; color: var(--color-primary); font-weight: 700; height: 48px; padding: 0 28px;">
+              <i class="fas fa-bag-shopping" aria-hidden="true"></i>
+              <span>Order Fresh Stems</span>
+            </a>
+            <a href="#contact" class="btn btn--outline" style="border-color: rgba(255,255,255,0.6); color: #FFFFFF; height: 48px;">
+              <i class="fas fa-headset" aria-hidden="true"></i>
+              <span>Speak to a Florist</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       SITE FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="#top" class="brand-link" aria-label="Flower Market Homepage">
+            <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo">
+            <span class="brand-name">Flower <span>Market</span></span>
+          </a>
+          <p>
+            Indulge your senses with the vibrant colors and soothing fragrances of freshly arranged flowers and thriving houseplants.
+          </p>
+          <div class="footer-socials" aria-label="Social media links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on Twitter / X"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Flower Market on YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Shop Collection</h4>
+          <ul class="footer-links">
+            <li><a href="#catalog" class="footer-link">Fresh Flower Bouquets</a></li>
+            <li><a href="#catalog" class="footer-link">Indoor Air Purifiers</a></li>
+            <li><a href="#deals" class="footer-link">Weekly Flash Deals</a></li>
+            <li><a href="#categories" class="footer-link">Bonsai & Planters</a></li>
+            <li><a href="#services" class="footer-link">Bridal Floral Packages</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#contact" class="footer-link">Help & Contact Us</a></li>
+            <li><a href="#features" class="footer-link">Flower Care Guide</a></li>
+            <li><a href="#faq" class="footer-link">Delivery & Shipping Terms</a></li>
+            <li><a href="#features" class="footer-link">7-Day Freshness Guarantee</a></li>
+            <li><a href="#services" class="footer-link">Corporate Plant Gifting</a></li>
+          </ul>
+        </div>
+
+        <!-- Store Location & Hours -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Store & Greenhouse</h4>
+          <ul class="footer-links" style="line-height: 1.8;">
+            <li style="color: var(--text-secondary);"><i class="fas fa-location-dot text-primary-color" style="margin-right: 6px;"></i> 142 Garden Blossom Way</li>
+            <li style="color: var(--text-secondary);"><i class="fas fa-clock text-primary-color" style="margin-right: 6px;"></i> Mon – Sat: 8:00 AM – 7:00 PM</li>
+            <li style="color: var(--text-secondary);"><i class="fas fa-phone text-primary-color" style="margin-right: 6px;"></i> +1 (800) 456-FLOWERS</li>
+            <li style="color: var(--text-secondary);"><i class="fas fa-envelope text-primary-color" style="margin-right: 6px;"></i> hello@flowermarket.shop</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Flower Market Inc. All rights reserved. Crafted for botanical living.</p>
+        <p>Built with plain semantic HTML5, CSS3 & Modern JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       CART DRAWER & CHECKOUT FORM
+       ========================================== -->
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart and Checkout" aria-hidden="true">
+    <div class="cart-drawer__header">
+      <h3 class="cart-drawer__title">Your Botanical Cart</h3>
+      <button type="button" class="btn btn--icon" id="cart-drawer-close" aria-label="Close cart drawer">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="cart-drawer__body">
+      <!-- Items Container -->
+      <div id="cart-items-container" class="cart-items-container"></div>
+
+      <!-- Empty State -->
+      <div id="cart-empty-state" class="cart-empty-state">
+        <i class="fas fa-basket-shopping cart-empty-icon" aria-hidden="true"></i>
+        <h4 style="font-family: 'Noto Serif', serif; font-size: 1.25rem; margin-bottom: 0.5rem;">Your Cart is Empty</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9375rem;">
+          Add handpicked flowers or indoor greens to experience nature’s tranquility.
+        </p>
+        <button type="button" class="btn btn--primary btn-continue-shopping">
+          <i class="fas fa-leaf" aria-hidden="true"></i> <span>Explore Blooms</span>
+        </button>
+      </div>
+
+      <!-- Order Confirmation Screen (Success State) -->
+      <div id="order-confirmation-screen" class="order-confirmation-screen is-hidden" role="region" aria-live="polite">
+        <div class="order-conf-icon">
+          <i class="fas fa-check" aria-hidden="true"></i>
+        </div>
+        <h3 style="font-family: 'Noto Serif', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Order Confirmed!</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9375rem;">
+          Thank you, <strong id="order-confirmation-name"></strong>! Your fresh blooms are being carefully arranged.
+        </p>
+        <div class="order-conf-id-box">
+          <div>Order Tracking ID: <strong id="order-confirmation-id" class="text-primary-color">#FM-000000</strong></div>
+          <div style="margin-top: 4px;">Total Paid: <strong id="order-confirmation-total">$0.00</strong></div>
+          <div style="margin-top: 4px;">Estimated Delivery: <strong id="order-confirmation-date">Tomorrow</strong></div>
+        </div>
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          A full receipt and delivery tracking link have been dispatched to your email address.
+        </p>
+        <button type="button" class="btn btn--primary" id="order-confirmation-finish-btn">
+          <span>Continue Shopping</span>
+        </button>
+      </div>
+
+      <!-- Checkout Form inside Drawer -->
+      <div id="cart-checkout-section" class="checkout-form-box is-hidden">
+        <h4 class="checkout-title"><i class="fas fa-truck-fast text-primary-color"></i> Express Checkout</h4>
+
+        <form id="checkout-form" novalidate aria-label="Checkout Delivery Details">
+          <div class="form-group">
+            <label for="checkout-name" class="form-label">Recipient Full Name *</label>
+            <input type="text" id="checkout-name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+            <div id="checkout-name-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="checkout-email" class="form-label">Delivery Notification Email *</label>
+            <input type="email" id="checkout-email" class="form-input" placeholder="e.g. eleanor@example.com" required>
+            <div id="checkout-email-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="checkout-address" class="form-label">Delivery Street Address *</label>
+            <input type="text" id="checkout-address" class="form-input" placeholder="Street, Apartment, City, Postal Code" required>
+            <div id="checkout-address-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="checkout-date" class="form-label">Preferred Delivery Date *</label>
+            <input type="date" id="checkout-date" class="form-input" required>
+            <div id="checkout-date-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <!-- Order Summary -->
+          <div style="margin: 1.25rem 0; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+            <div class="summary-row"><span>Subtotal:</span><span id="drawer-subtotal">$0.00</span></div>
+            <div class="summary-row"><span>Courier Delivery:</span><span id="drawer-shipping">Free</span></div>
+            <div class="summary-row"><span>Estimated Tax (8%):</span><span id="drawer-tax">$0.00</span></div>
+            <div class="summary-row summary-row--total"><span>Order Total:</span><span id="drawer-total" class="text-primary-color">$0.00</span></div>
+          </div>
+
+          <button type="submit" class="btn btn--primary" id="checkout-submit-btn" style="width: 100%; height: 48px;">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span>Place Secure Order</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cart Backdrop -->
+  <div class="nav-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       JOURNAL ARTICLE READER MODAL
+       ========================================== -->
+  <div class="modal-dialog" id="journal-modal" role="dialog" aria-modal="true" aria-label="Botanical Article Reader" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="journal-modal-title">Botanical Journal</h3>
+        <button type="button" class="btn btn--icon" id="journal-modal-close" aria-label="Close article reader">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="journal-modal-meta" id="journal-modal-meta" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1rem;"></div>
+      <div class="journal-modal-body" id="journal-modal-body" style="line-height: 1.8; color: var(--text-secondary);"></div>
+    </div>
+  </div>
+  <div class="nav-backdrop" id="journal-backdrop" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       CONTACT US MODAL FORM
+       ========================================== -->
+  <div class="modal-dialog" id="contact-modal" role="dialog" aria-modal="true" aria-label="Contact Customer Support" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Contact Flower Market</h3>
+        <button type="button" class="btn btn--icon" id="contact-modal-close" aria-label="Close contact dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div id="contact-form-content">
+        <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          Have questions about an ongoing order, custom floral styling, or corporate events? Send us a message and our lead botanist will reply within 2 hours.
+        </p>
+
+        <form id="contact-form" novalidate aria-label="Customer Inquiry Form">
+          <div class="form-group">
+            <label for="contact-name" class="form-label">Your Name *</label>
+            <input type="text" id="contact-name" class="form-input" placeholder="e.g. Maya Lin" required>
+            <div id="contact-name-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email" class="form-label">Email Address *</label>
+            <input type="email" id="contact-email" class="form-input" placeholder="e.g. maya@example.com" required>
+            <div id="contact-email-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message" class="form-label">Message *</label>
+            <textarea id="contact-message" class="form-textarea" placeholder="How can our florist team assist you today?" required></textarea>
+            <div id="contact-message-error" class="form-error is-hidden" role="alert"></div>
+          </div>
+
+          <button type="submit" class="btn btn--primary" id="contact-submit-btn" style="width: 100%; height: 46px; margin-top: 0.5rem;">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Success State -->
+      <div id="contact-success" class="is-hidden" style="text-align: center; padding: var(--space-4) 0;" role="region" aria-live="polite">
+        <div class="success-icon" style="margin-bottom: var(--space-3);"><i class="fas fa-check"></i></div>
+        <h4 style="font-family: 'Noto Serif', serif; font-size: 1.375rem; margin-bottom: 0.5rem;">Message Received!</h4>
+        <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 1.25rem;">
+          Thank you for reaching out. Our botanical support team will respond to your email shortly.
+        </p>
+        <button type="button" class="btn btn--outline" id="contact-reset-btn"><span>Send Another Inquiry</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-backdrop" id="contact-backdrop" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Shared Products Data & Main JavaScript Application -->
+  <script src="scripts/products-data.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+
+</html>

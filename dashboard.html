@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role-Based Botanical Dashboard — Flower Market</title>
+  <meta name="description" content="Manage orders, inspect inventory, view real-time sales trends, and configure botanical profile settings.">
+
+  <!-- Google Fonts: Noto Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/flower.css">
+</head>
+
+<body class="dashboard-body">
+
+  <!-- ==========================================
+       DASHBOARD TOP NAVIGATION BAR
+       ========================================== -->
+  <header class="dashboard-topbar">
+    <div class="dashboard-topbar-left">
+      <button type="button" class="btn--icon dashboard-sidebar-toggle" id="dash-sidebar-toggle" aria-label="Toggle Sidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="brand-link">
+        <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo" style="height: 40px;">
+        <span class="brand-name">Flower <span>Market</span></span>
+      </a>
+      <span class="dash-portal-tag">Management Portal</span>
+    </div>
+
+    <div class="dashboard-topbar-right">
+      <!-- Role Switcher Dropdown (Allows testing User, Admin, Manager) -->
+      <div class="role-switcher-box">
+        <label for="dashboard-role-selector" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">ACTIVE ROLE:</label>
+        <select id="dashboard-role-selector" class="form-select role-select">
+          <option value="admin">Administrator (6+ Menus)</option>
+          <option value="manager">Store Manager (5 Menus)</option>
+          <option value="user">Customer / User (4 Menus)</option>
+        </select>
+      </div>
+
+      <!-- Theme Toggle -->
+      <button type="button" class="btn--icon" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <!-- Storefront Shortcut -->
+      <a href="index.html" class="btn btn--outline" style="height: 38px; padding: 0 12px; font-size: 0.8125rem;">
+        <i class="fas fa-store"></i> <span>Storefront</span>
+      </a>
+
+      <!-- Profile Dropdown in Dashboard Navbar (Rule Requirement) -->
+      <div class="profile-menu-container">
+        <button type="button" class="profile-menu-btn" id="profile-menu-btn" aria-haspopup="true" aria-expanded="false">
+          <div class="profile-avatar-circle" style="width: 32px; height: 32px; font-size: 0.8125rem;">RR</div>
+          <span class="profile-name-snippet" id="dashboard-user-name">Rayhan Raski</span>
+          <span class="role-pill role-pill--admin" id="user-role-badge">ADMIN</span>
+          <i class="fas fa-chevron-down profile-arrow"></i>
+        </button>
+
+        <div class="profile-dropdown" id="profile-dropdown">
+          <div class="profile-dropdown-header">
+            <div class="profile-avatar-circle">RR</div>
+            <div>
+              <strong class="profile-full-name" id="dash-dd-name">Rayhan Raski</strong>
+              <div class="profile-user-status" id="dashboard-user-email">admin@flowermarket.shop</div>
+            </div>
+          </div>
+          <ul class="profile-dropdown-links">
+            <li><a href="#" onclick="document.querySelector('[data-tab=\'profile\']').click(); return false;"><i class="fas fa-user-pen"></i> Edit Profile</a></li>
+            <li><a href="index.html"><i class="fas fa-house"></i> Return to Homepage</a></li>
+            <li><a href="explore.html"><i class="fas fa-seedling"></i> Browse All Stems</a></li>
+          </ul>
+          <div class="profile-dropdown-footer">
+            <a href="login.html" class="btn-auth-switch" onclick="localStorage.removeItem('fm_logged_in');">
+              <i class="fas fa-arrow-right-from-bracket"></i> <span>Sign Out</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       DASHBOARD WRAPPER: SIDEBAR + CONTENT
+       ========================================== -->
+  <div class="dashboard-wrapper">
+    <!-- Sidebar Navigation (Role-based menus) -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <div class="sidebar-user-card">
+        <div class="sidebar-avatar">RR</div>
+        <div class="sidebar-user-meta">
+          <strong>Rayhan Raski</strong>
+          <span class="sidebar-tier-label" id="sidebar-role-label">Floral Operations</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav-container" id="dashboard-sidebar-nav" aria-label="Dashboard Sidebar">
+        <!-- Rendered dynamically by scripts/dashboard.js based on User / Admin / Manager role -->
+      </nav>
+
+      <div class="sidebar-footer-box">
+        <div class="system-health-pill">
+          <span class="health-dot"></span> System Operational
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Flower Market Cloud v2.6</div>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Content Panels -->
+    <main class="dashboard-main-content">
+      <!-- ==========================================
+           TAB 1: OVERVIEW & KPIS
+           ========================================== -->
+      <section class="dashboard-tab-panel" id="tab-overview">
+        <!-- AI Co-Pilot Analytics Insight Banner (Section 9 AI Feature) -->
+        <div class="ai-insight-banner">
+          <div class="ai-insight-header">
+            <span class="ai-badge-sparkle"><i class="fas fa-wand-magic-sparkles"></i> FloraAI Intelligence Co-Pilot</span>
+            <span class="ai-insight-time">Updated 3m ago</span>
+          </div>
+          <p class="ai-insight-body">
+            <strong>Demand Forecast & Stock Advisory:</strong> High weekend demand predicted for <em>Crimson Velvet Roses</em> (+38% vs baseline) due to wedding season. <em>White Peace Lily</em> inventory is down to 18 units—recommending automatic supplier re-order.
+          </p>
+        </div>
+
+        <!-- 4 Overview KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Monthly Revenue</span>
+              <div class="kpi-icon-box text-primary-color"><i class="fas fa-dollar-sign"></i></div>
+            </div>
+            <div class="kpi-value">$48,250.00</div>
+            <div class="kpi-trend trend--up">
+              <i class="fas fa-arrow-trend-up"></i> +14.2% from last month
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Active Floral Dispatches</span>
+              <div class="kpi-icon-box text-secondary-color"><i class="fas fa-truck-fast"></i></div>
+            </div>
+            <div class="kpi-value">142 Orders</div>
+            <div class="kpi-trend trend--up">
+              <i class="fas fa-arrow-trend-up"></i> +8.4% courier volume
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Customer Satisfaction</span>
+              <div class="kpi-icon-box text-amber"><i class="fas fa-star"></i></div>
+            </div>
+            <div class="kpi-value">4.92 / 5.0</div>
+            <div class="kpi-trend trend--up">
+              <i class="fas fa-circle-check"></i> 99.8% on-time freshness
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Greenhouse Fresh Stock</span>
+              <div class="kpi-icon-box text-secondary-color"><i class="fas fa-boxes-stacked"></i></div>
+            </div>
+            <div class="kpi-value">94% Capacity</div>
+            <div class="kpi-trend trend--neutral">
+              <i class="fas fa-seedling"></i> 240 potted plants ready
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic SVG Charts Grid -->
+        <div class="charts-grid">
+          <!-- Sales Trend Line Chart -->
+          <div class="chart-card chart-card--wide">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Sales Volume & Revenue Growth</h3>
+                <span class="chart-subtitle">Six-month trailing performance (USD)</span>
+              </div>
+              <span class="chart-tag-badge">Real-Time Data</span>
+            </div>
+            <div class="chart-render-area" id="sales-trend-chart"></div>
+          </div>
+
+          <!-- Category Donut / Pie Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Category Revenue Mix</h3>
+                <span class="chart-subtitle">Share by botanical classification</span>
+              </div>
+            </div>
+            <div class="chart-render-area" id="category-pie-chart"></div>
+          </div>
+
+          <!-- Courier Delivery Daily Volume Bar Chart -->
+          <div class="chart-card" style="grid-column: 1 / -1;">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Weekly Dispatch Volume by Day</h3>
+                <span class="chart-subtitle">Completed courier shipments across regional zones</span>
+              </div>
+            </div>
+            <div class="chart-render-area" id="delivery-bar-chart"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 2: ORDERS MANAGEMENT TABLE (PAGINATED & FILTERED)
+           ========================================== -->
+      <section class="dashboard-tab-panel is-hidden" id="tab-orders">
+        <div class="table-card">
+          <div class="table-header-flex">
+            <div>
+              <h2 class="table-title">Recent Customer Orders</h2>
+              <p style="font-size: 0.875rem; color: var(--text-secondary);">Filter by order status or search customer names and invoice numbers.</p>
+            </div>
+
+            <div class="table-actions-row">
+              <div class="input-with-icon" style="width: 240px;">
+                <i class="fas fa-search"></i>
+                <input type="text" id="orders-search-input" class="form-input" placeholder="Search orders..." style="height: 38px;">
+              </div>
+              <select id="orders-status-filter" class="form-select" style="width: 150px; height: 38px;">
+                <option value="all">All Statuses</option>
+                <option value="Delivered">Delivered</option>
+                <option value="In Transit">In Transit</option>
+                <option value="Arranging">Arranging</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Data Table -->
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Customer Orders Table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Botanical Stems</th>
+                  <th>Amount</th>
+                  <th>Harvest Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Table Pagination -->
+          <div class="table-pagination-bar" id="orders-pagination"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 3: PLANT INVENTORY TABLE (PAGINATED & FILTERED)
+           ========================================== -->
+      <section class="dashboard-tab-panel is-hidden" id="tab-inventory">
+        <div class="table-card">
+          <div class="table-header-flex">
+            <div>
+              <h2 class="table-title">Live Greenhouse Plant Inventory</h2>
+              <p style="font-size: 0.875rem; color: var(--text-secondary);">Real-time stock counts and replenishment controls for all 16 botanical varieties.</p>
+            </div>
+            <div class="input-with-icon" style="width: 260px;">
+              <i class="fas fa-search"></i>
+              <input type="text" id="inventory-search-input" class="form-input" placeholder="Search plant species..." style="height: 38px;">
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Plant Inventory Table">
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Botanical Specimen</th>
+                  <th>Classification</th>
+                  <th>Unit Price</th>
+                  <th>Stock Available</th>
+                  <th>Quick Action</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="table-pagination-bar" id="inventory-pagination"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 4: CUSTOMER ACCOUNTS (ADMIN ONLY)
+           ========================================== -->
+      <section class="dashboard-tab-panel is-hidden" id="tab-customers">
+        <div class="table-card">
+          <h2 class="table-title" style="margin-bottom: 0.5rem;">Registered Floral Club Members</h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Managing 12,500 registered plant enthusiasts and corporate accounts.</p>
+          <div class="table-responsive">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Member Name</th>
+                  <th>Email</th>
+                  <th>Tier Badge</th>
+                  <th>Total Orders</th>
+                  <th>Joined Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Sophia Martinez</strong></td>
+                  <td>sophia@example.com</td>
+                  <td><span class="role-pill role-pill--admin">Floral VIP</span></td>
+                  <td>14 orders</td>
+                  <td>Jan 2026</td>
+                </tr>
+                <tr>
+                  <td><strong>David Chen</strong></td>
+                  <td>david@example.com</td>
+                  <td><span class="role-pill role-pill--user">Club Member</span></td>
+                  <td>8 orders</td>
+                  <td>Mar 2026</td>
+                </tr>
+                <tr>
+                  <td><strong>Hannah Miller</strong></td>
+                  <td>hannah@example.com</td>
+                  <td><span class="role-pill role-pill--user">Club Member</span></td>
+                  <td>6 orders</td>
+                  <td>Apr 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 5: REVENUE ANALYTICS
+           ========================================== -->
+      <section class="dashboard-tab-panel is-hidden" id="tab-analytics">
+        <div class="table-card">
+          <h2 class="table-title" style="margin-bottom: 0.5rem;">In-Depth Financial & Dispatch Analytics</h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Comprehensive quarterly balance sheets and logistics efficiency ratings.</p>
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-title">Average Order Value (AOV)</span>
+              <div class="kpi-value">$36.40</div>
+              <div class="kpi-trend trend--up">+5.2% vs Q2</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Gross Profit Margin</span>
+              <div class="kpi-value">58.4%</div>
+              <div class="kpi-trend trend--up">Healthy Organic Margin</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Subscription Retention</span>
+              <div class="kpi-value">92.6%</div>
+              <div class="kpi-trend trend--up">Top 5% in industry</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Packaging Recyclability</span>
+              <div class="kpi-value">100%</div>
+              <div class="kpi-trend trend--up">Zero Plastic Waste</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 6: EDITABLE PROFILE & SETTINGS
+           ========================================== -->
+      <section class="dashboard-tab-panel is-hidden" id="tab-profile">
+        <div class="table-card" style="max-width: 720px;">
+          <h2 class="table-title" style="margin-bottom: 0.5rem;"><i class="fas fa-user-gear text-primary-color"></i> Botanical Profile & Account Settings</h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Update your delivery details, contact coordinates, and notification preferences.</p>
+
+          <form id="dashboard-profile-form" novalidate aria-label="Edit Profile Details">
+            <div class="form-group">
+              <label for="prof-name" class="form-label">Full Name *</label>
+              <input type="text" id="prof-name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="prof-email" class="form-label">Notification Email *</label>
+              <input type="email" id="prof-email" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="prof-phone" class="form-label">Mobile Phone (Delivery SMS)</label>
+              <input type="tel" id="prof-phone" class="form-input" value="+1 (555) 345-6789">
+            </div>
+
+            <div class="form-group">
+              <label for="prof-address" class="form-label">Default Greenhouse Delivery Address</label>
+              <textarea id="prof-address" class="form-textarea" style="height: 80px;">142 Garden Blossom Way, Suite 4B, Greenhouse District</textarea>
+            </div>
+
+            <div style="margin: 1.25rem 0;">
+              <h4 style="font-size: 0.9375rem; margin-bottom: 0.5rem;">Alert Preferences</h4>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; margin-bottom: 6px; cursor: pointer;">
+                <input type="checkbox" checked> <span>Receive morning courier dispatch SMS alerts</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; cursor: pointer;">
+                <input type="checkbox" checked> <span>Weekly botanical care guide newsletter</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary" id="prof-submit-btn" style="height: 46px; padding: 0 24px;">
+              <i class="fas fa-floppy-disk"></i> <span>Save Profile Changes</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="scripts/products-data.js"></script>
+  <script src="scripts/dashboard.js"></script>
+</body>
+
+</html>
