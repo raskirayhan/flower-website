@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Starting FixItNow Botanical Database Seeder...');
+  console.log('🌱 Starting Flower Market Botanical Database Seeder...');
 
   // 1. Clean existing records in dependency order
   await prisma.auditLog.deleteMany();

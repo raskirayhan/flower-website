@@ -1,4 +1,4 @@
-# FixItNow - Flower Market & On-Demand Botanical Services
+# Flower Market - Artisanal Stems & Botanical Services Platform
 
 [![CI Pipeline](https://github.com/raskirayhan/flower-website/actions/workflows/ci.yml/badge.svg)](https://github.com/raskirayhan/flower-website/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue.svg)](https://www.typescriptlang.org/)
@@ -9,7 +9,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791.svg)](https://www.postgresql.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-FixItNow Botanical Marketplace is a modern, responsive, accessible full-stack platform for artisanal cut flowers, houseplants, and botanical landscaping services. Built adhering to the enterprise-grade **FixItNow Full-Stack Architecture** pattern with an Express + Prisma PostgreSQL API backend and a Vite React TypeScript SPA frontend.
+Flower Market is a modern, responsive, accessible full-stack e-commerce and booking platform for artisanal cut flowers, NASA-certified houseplants, and botanical landscaping services. Built adhering to enterprise-grade Clean Architecture with an Express + Prisma PostgreSQL API backend and a Vite React TypeScript SPA frontend.
 
 ---
 
@@ -18,7 +18,7 @@ FixItNow Botanical Marketplace is a modern, responsive, accessible full-stack pl
 - 🚀 **Live Storefront (GitHub Pages)**: [https://raskirayhan.github.io/flower-website/](https://raskirayhan.github.io/flower-website/)
 - 💻 **GitHub Repository**: [https://github.com/raskirayhan/flower-website.git](https://github.com/raskirayhan/flower-website.git)
 - 📡 **Render Deployment Blueprint**: [`render.yaml`](render.yaml)
-- 📮 **Postman API Collection**: [`FixItNow.postman_collection.json`](FixItNow.postman_collection.json)
+- 📮 **Postman API Collection**: [`FlowerMarket.postman_collection.json`](FlowerMarket.postman_collection.json)
 
 ---
 
@@ -36,7 +36,7 @@ FixItNow Botanical Marketplace is a modern, responsive, accessible full-stack pl
 
 ## 🏗️ Repository Architecture
 
-The project strictly follows the requested **FixItNow** mono-repo blueprint:
+The project strictly follows the modular mono-repo blueprint:
 
 ```text
 flower-website/
@@ -72,7 +72,7 @@ flower-website/
 │   ├── package-lock.json
 │   └── vite.config.ts
 ├── .github/                          # CI, deployment, Dependabot, PR & issue templates
-├── FixItNow.postman_collection.json  # Comprehensive API request collection
+├── FlowerMarket.postman_collection.json  # Comprehensive API request collection
 ├── render.yaml                       # Render backend & frontend cloud blueprint
 ├── LICENSE                           # MIT License
 ├── README.md                         # Comprehensive project documentation
