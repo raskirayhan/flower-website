@@ -101,28 +101,67 @@
   --bg-overlay: rgba(0, 0, 0, 0.75);
 
   --text-primary: #F8FAFC;     /* 15.8:1 contrast against #0F172A (WCAG AAA) */
-  --text-secondary: #94A3B8;   /* 6.2:1 contrast against #0F172A (WCAG AA) */
-  --text-muted: #64748B;
+  --text-secondary: #CBD5E1;   /* 8.5:1 high contrast against #0F172A (WCAG AAA) */
+  --text-muted: #94A3B8;       /* 6.2:1 contrast against #0F172A (WCAG AA/AAA) */
   --text-inverse: #0F172A;
 
   --border-subtle: #334155;
   --border-medium: #475569;
   --border-strong: #64748B;
 
-  --color-primary-tint: rgba(233, 90, 8, 0.18);
-  --color-secondary-tint: rgba(45, 106, 79, 0.25);
-  --color-tertiary-tint: rgba(217, 119, 6, 0.22);
+  --color-primary-tint: rgba(233, 90, 8, 0.22);
+  --color-secondary-tint: rgba(45, 106, 79, 0.3);
+  --color-tertiary-tint: rgba(217, 119, 6, 0.26);
 
-  --color-error-bg: rgba(220, 38, 38, 0.2);
+  --color-error-bg: rgba(220, 38, 38, 0.25);
   --color-error-border: #EF4444;
 
-  --color-success-bg: rgba(22, 163, 74, 0.2);
+  --color-success-bg: rgba(22, 163, 74, 0.25);
   --color-success-border: #22C55E;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 6px 16px -2px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 18px 32px -4px rgba(0, 0, 0, 0.6);
-  --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 6px 16px -2px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 18px 32px -4px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+}
+
+/* Enhanced Dark Mode Contrast & Legibility Overrides */
+[data-theme="dark"] .product-category,
+[data-theme="dark"] .section-tag,
+[data-theme="dark"] .badge--success,
+[data-theme="dark"] .text-secondary-color {
+  color: #4ADE80 !important;
+}
+
+[data-theme="dark"] .text-primary-color {
+  color: #FF782D !important;
+}
+
+[data-theme="dark"] .form-input::placeholder,
+[data-theme="dark"] .form-textarea::placeholder {
+  color: #94A3B8;
+  opacity: 1;
+}
+
+[data-theme="dark"] .product-card__ext-meta {
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .hero-floating-card {
+  background-color: rgba(30, 41, 59, 0.92);
+  border-color: #475569;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .cart-drawer {
+  background-color: #0F172A;
+  border-left-color: #334155;
+}
+
+[data-theme="dark"] .modal-card {
+  background-color: #1E293B;
+  border-color: #334155;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
 }
 
 /* ==========================================================================
@@ -263,6 +302,8 @@ ul, ol {
   transition: var(--transition-base);
   user-select: none;
   white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .btn:focus-visible {
