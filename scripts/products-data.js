@@ -1,6 +1,7 @@
 /**
  * Flower Market - Shared Product Catalog Data
- * Single Source of Truth for Listing and Details Pages
+ * 16 Authentic Botanical Products with In-Depth Specifications,
+ * Origins, Ratings, Categories, and Multi-Angle Media.
  */
 
 const PRODUCTS_DATA = [
@@ -16,48 +17,29 @@ const PRODUCTS_DATA = [
     reviewsCount: 64,
     dateAdded: 'Harvested Today',
     origin: 'Sonoma Valley Nursery',
+    originCountry: 'USA',
     badge: 'Best Seller',
     badgeColor: 'primary',
+    petFriendly: false,
+    lightLevel: 'Low to Medium',
+    inStock: true,
+    stockCount: 18,
     shortDescription: 'Lush indoor Spathiphyllum in artisanal terracotta pot, naturally purifying indoor air.',
-    fullDescription: 'The White Peace Lily (Spathiphyllum wallisii) is a celebrated indoor botanical classic renowned for its deep emerald lance-shaped leaves and pristine white spathes. Grown organically in our Sonoma greenhouses, this resilient houseplant thrives in gentle indirect light and actively cleanses household air by filtering ambient toxins. Delivered potted in an artisanal porous terracotta vessel that ensures optimal root breathability.',
-    images: [
-      'assets/peace-lily.jpg',
-      'assets/sample-flower-image.png',
-      'assets/flower-store.png',
-      'assets/hero-flower.png'
-    ],
+    fullDescription: 'The White Peace Lily is a celebrated indoor botanical classic renowned for its deep emerald lance-shaped leaves and pristine white spathes. Grown organically in our Sonoma greenhouses, this resilient houseplant thrives in gentle indirect light and actively cleanses household air.',
+    images: ['assets/peace-lily.jpg', 'assets/sample-flower-image.png', 'assets/flower-store.png', 'assets/hero-flower.png'],
     specs: {
-      height: '18 – 22 inches (45 – 55 cm)',
-      potDiameter: '6.5 inches breathable terracotta',
-      lightRequirement: 'Bright indirect light to moderate shade',
-      wateringFrequency: 'Every 7 – 10 days; water when top inch dries',
-      petSafety: 'Mildly toxic if ingested (keep away from curious cats)',
-      bloomLongevity: 'Continuous blooms lasting 6 to 8 weeks',
-      fragrance: 'Subtle sweet nocturnal fragrance',
-      packaging: '100% compostable root wrapping with hydration pod'
+      height: '18 – 22 inches',
+      potDiameter: '6.5 inches terracotta',
+      lightRequirement: 'Bright indirect to moderate shade',
+      wateringFrequency: 'Every 7 – 10 days',
+      petSafety: 'Mildly toxic if ingested by pets',
+      bloomLongevity: 'Continuous blooms lasting 6-8 weeks',
+      fragrance: 'Subtle sweet nocturnal notes',
+      packaging: '100% compostable root wrap'
     },
     reviews: [
-      {
-        author: 'Sophia Martinez',
-        rating: 5,
-        date: 'October 18, 2026',
-        comment: 'Arrived in flawless condition with two unopened white spathes! It has already opened up beautifully on my living room bookshelf.',
-        verified: true
-      },
-      {
-        author: 'Marcus Vance',
-        rating: 5,
-        date: 'October 12, 2026',
-        comment: 'Very easy to care for. The terracotta pot is heavy and feels handcrafted. Purifies the room and looks stunning.',
-        verified: true
-      },
-      {
-        author: 'Elena Rostova',
-        rating: 4.8,
-        date: 'October 04, 2026',
-        comment: 'Packaged with extreme care—zero soil spilled during courier transit. Highly recommended florist!',
-        verified: true
-      }
+      { author: 'Sophia Martinez', rating: 5, date: 'October 18, 2026', comment: 'Arrived in flawless condition with two unopened white spathes!', verified: true },
+      { author: 'Marcus Vance', rating: 5, date: 'October 12, 2026', comment: 'Very easy to care for. Terracotta pot is heavy and handcrafted.', verified: true }
     ],
     relatedIds: ['prod-5', 'prod-7', 'prod-4']
   },
@@ -73,41 +55,28 @@ const PRODUCTS_DATA = [
     reviewsCount: 88,
     dateAdded: 'Cut Today 6:00 AM',
     origin: 'Ecuadorian Highlands',
+    originCountry: 'Ecuador',
     badge: 'Fresh Cut',
     badgeColor: 'secondary',
+    petFriendly: true,
+    lightLevel: 'Vase Floral',
+    inStock: true,
+    stockCount: 25,
     shortDescription: 'Dozen long-stem Ecuadorian crimson roses paired with fresh silver dollar eucalyptus.',
-    fullDescription: 'Cultivated in high-altitude volcanic soil along the Ecuadorian equator, our Crimson Velvet Roses boast unusually large flower heads with up to 45 velvety petals per bloom. Hand-harvested at dawn, conditioned in floral nourishment solution, and spiraled with fresh fragrant silver dollar eucalyptus and panicled baby\'s breath. Perfect for anniversaries, birthdays, or heartfelt romantic gestures.',
-    images: [
-      'assets/rose.jpg',
-      'assets/deal-ana.png',
-      'assets/hero-flower.png',
-      'assets/sample-flower-image.png'
-    ],
+    fullDescription: 'Cultivated in high-altitude volcanic soil along the Ecuadorian equator, our Crimson Velvet Roses boast unusually large flower heads with up to 45 velvety petals per bloom. Hand-harvested at dawn and conditioned in floral nourishment solution.',
+    images: ['assets/rose.jpg', 'assets/deal-ana.png', 'assets/hero-flower.png', 'assets/sample-flower-image.png'],
     specs: {
-      height: '24-inch long stems (60 cm)',
-      potDiameter: 'Arrangement wrapped in linen Kraft wrap',
-      lightRequirement: 'Keep in cool room out of direct sunlight',
-      wateringFrequency: 'Change vase water and trim stems every 2 days',
-      petSafety: 'Non-toxic to cats and dogs (pet friendly)',
-      bloomLongevity: 'Guaranteed fresh for 7 to 10 days in vase',
+      height: '24-inch long stems',
+      potDiameter: 'Linen Kraft wrapped bouquet',
+      lightRequirement: 'Cool room away from heat vents',
+      wateringFrequency: 'Refresh vase water every 2 days',
+      petSafety: '100% non-toxic (Pet Safe)',
+      bloomLongevity: '7 to 10 days in vase',
       fragrance: 'Deep classic damask rose aroma',
-      packaging: 'Hydration stem bag with satin ribbon wrap'
+      packaging: 'Hydration stem bag with satin ribbon'
     },
     reviews: [
-      {
-        author: 'David Chen',
-        rating: 5,
-        date: 'October 21, 2026',
-        comment: 'Ordered for our 10th anniversary. My wife was in awe—the petals are so rich and velvety, and the scent filled our entire home.',
-        verified: true
-      },
-      {
-        author: 'Claire Gallagher',
-        rating: 5,
-        date: 'October 15, 2026',
-        comment: 'The eucalyptus pairing elevates this beyond normal roses. Stood fresh in my vase for over 9 days without drooping!',
-        verified: true
-      }
+      { author: 'David Chen', rating: 5, date: 'October 21, 2026', comment: 'Ordered for our 10th anniversary. Petals are rich and velvety!', verified: true }
     ],
     relatedIds: ['prod-4', 'prod-8', 'prod-3']
   },
@@ -123,41 +92,28 @@ const PRODUCTS_DATA = [
     reviewsCount: 52,
     dateAdded: 'Fresh Cut Yesterday',
     origin: 'California Coastal Farm',
+    originCountry: 'USA',
     badge: 'Seasonal',
     badgeColor: 'tertiary',
+    petFriendly: true,
+    lightLevel: 'Bright Ambient',
+    inStock: true,
+    stockCount: 14,
     shortDescription: 'Golden field-cut sunflowers radiating positive energy and rustic cottage charm.',
-    fullDescription: 'Sunburst Sunflowers are sunshine made tangible. Sourced directly from our organic coastal California family farms, each stem features heavy golden disc florets framed by radiant yellow ray petals. Naturally pollen-free to minimize allergies while maximizing vase life and cheerful radiance. Tied with natural jute twine.',
-    images: [
-      'assets/sunflower.jpg',
-      'assets/hero-flower.png',
-      'assets/deal-bloom.png',
-      'assets/sample-flower-image.png'
-    ],
+    fullDescription: 'Sunburst Sunflowers are sunshine made tangible. Sourced directly from our organic coastal California family farms, each stem features heavy golden disc florets framed by radiant yellow ray petals. Pollen-free to minimize allergies.',
+    images: ['assets/sunflower.jpg', 'assets/hero-flower.png', 'assets/deal-bloom.png', 'assets/sample-flower-image.png'],
     specs: {
-      height: '20 inches (50 cm)',
-      potDiameter: 'Hand-tied bouquet ready for medium vase',
-      lightRequirement: 'Prefers well-lit room, avoid heat vents',
-      wateringFrequency: 'Replace lukewarm vase water every 48 hours',
-      petSafety: 'Completely pet-friendly and non-toxic',
-      bloomLongevity: '7 to 12 days in fresh water',
+      height: '20 inches',
+      potDiameter: 'Hand-tied bouquet',
+      lightRequirement: 'Prefers well-lit room',
+      wateringFrequency: 'Trim stems and replace water every 48h',
+      petSafety: '100% pet-friendly & non-toxic',
+      bloomLongevity: '7 to 12 days',
       fragrance: 'Earthy, honeyed countryside scent',
-      packaging: 'Biodegradable kraft paper and wet-pack wrap'
+      packaging: 'Biodegradable kraft paper wrap'
     },
     reviews: [
-      {
-        author: 'Hannah Miller',
-        rating: 5,
-        date: 'October 19, 2026',
-        comment: 'Such cheerful, massive blooms! Sent these to a sick friend and they completely brightened her week.',
-        verified: true
-      },
-      {
-        author: 'Robert Lee',
-        rating: 4.7,
-        date: 'October 08, 2026',
-        comment: 'Pollen-free claim is true—no yellow dust all over my kitchen table. Very pleased.',
-        verified: true
-      }
+      { author: 'Hannah Miller', rating: 5, date: 'October 19, 2026', comment: 'Cheerfully massive blooms! Completely brightened my kitchen.', verified: true }
     ],
     relatedIds: ['prod-2', 'prod-8', 'prod-1']
   },
@@ -173,34 +129,28 @@ const PRODUCTS_DATA = [
     reviewsCount: 41,
     dateAdded: 'Fresh Harvest Today',
     origin: 'Holland Glasshouses',
+    originCountry: 'Netherlands',
     badge: 'Popular',
     badgeColor: 'primary',
+    petFriendly: false,
+    lightLevel: 'Moderate',
+    inStock: true,
+    stockCount: 20,
     shortDescription: 'Fragrant Oriental stargazer lilies with delicate blush petals and graceful blooms.',
-    fullDescription: 'Celebrated worldwide for their dramatic starry blossoms and sweet, intoxicating fragrance, our Oriental Pink Lilies arrive in tight bud form so you can enjoy the magic of each bloom unfurling day by day. Every stem displays 3 to 5 buds accented by Italian ruscus greenery.',
-    images: [
-      'assets/sample-flower-image.png',
-      'assets/rose.jpg',
-      'assets/hero-flower.png',
-      'assets/deal-ana.png'
-    ],
+    fullDescription: 'Celebrated worldwide for their dramatic starry blossoms and sweet, intoxicating fragrance, our Oriental Pink Lilies arrive in tight bud form so you can enjoy the magic of each bloom unfurling day by day.',
+    images: ['assets/sample-flower-image.png', 'assets/rose.jpg', 'assets/hero-flower.png', 'assets/deal-ana.png'],
     specs: {
-      height: '22 inches (55 cm)',
-      potDiameter: 'Long stem cut arrangement',
+      height: '22 inches',
+      potDiameter: 'Cut flower bouquet',
       lightRequirement: 'Moderate indirect light',
-      wateringFrequency: 'Top up water daily; remove anthers as blooms open',
-      petSafety: 'Toxic to felines (do NOT purchase for cat owners)',
-      bloomLongevity: 'Up to 14 days as buds open consecutively',
+      wateringFrequency: 'Top up water daily',
+      petSafety: 'Toxic to felines (Keep away from cats)',
+      bloomLongevity: 'Up to 14 days',
       fragrance: 'Strong, luxurious sweet perfume',
-      packaging: 'Protective netted sleeves with floral preservation pouch'
+      packaging: 'Protective netted sleeves'
     },
     reviews: [
-      {
-        author: 'Jessica Taylor',
-        rating: 5,
-        date: 'October 22, 2026',
-        comment: 'Came with 4 tight buds that opened within 48 hours into gigantic pink stars. The fragrance is divine!',
-        verified: true
-      }
+      { author: 'Jessica Taylor', rating: 5, date: 'October 22, 2026', comment: 'Came with 4 buds that opened into gigantic pink stars!', verified: true }
     ],
     relatedIds: ['prod-2', 'prod-1', 'prod-8']
   },
@@ -215,35 +165,29 @@ const PRODUCTS_DATA = [
     rating: 4.7,
     reviewsCount: 39,
     dateAdded: 'Fresh Potted Oct 20',
-    origin: 'Oahu Tropical Conservatory',
+    origin: 'Oahu Conservatory',
+    originCountry: 'USA',
     badge: 'Eco Pick',
     badgeColor: 'secondary',
+    petFriendly: true,
+    lightLevel: 'Low to Medium',
+    inStock: true,
+    stockCount: 12,
     shortDescription: 'Ornamental prayer plant with striking patterned leaves that fold gently at dusk.',
-    fullDescription: 'The Calathea Orbifolia is a showstopper among tropical foliage. Featuring wide, silver-striped leaves that resemble hand-painted watercolors, this living sculpture practices nyctinasty—its leaves fold upwards like praying hands as night falls. Completely safe for cats and dogs.',
-    images: [
-      'assets/deal-bloom.png',
-      'assets/peace-lily.jpg',
-      'assets/deal-zabo.png',
-      'assets/flower-store.png'
-    ],
+    fullDescription: 'The Calathea Orbifolia is a showstopper among tropical foliage. Featuring wide, silver-striped leaves that resemble hand-painted watercolors, this living sculpture practices nyctinasty—its leaves fold upwards at night.',
+    images: ['assets/deal-bloom.png', 'assets/peace-lily.jpg', 'assets/deal-zabo.png', 'assets/flower-store.png'],
     specs: {
-      height: '14 – 16 inches (35 – 40 cm)',
-      potDiameter: '6-inch modern matte ceramic pot',
-      lightRequirement: 'Medium to low indirect light; avoids direct sun',
-      wateringFrequency: 'Keep soil evenly moist with filtered or rain water',
+      height: '14 – 16 inches',
+      potDiameter: '6-inch modern ceramic pot',
+      lightRequirement: 'Medium to low indirect light',
+      wateringFrequency: 'Keep soil evenly moist',
       petSafety: '100% Non-toxic & Pet Safe (ASPCA certified)',
-      bloomLongevity: 'Evergreen perennial foliage year-round',
-      fragrance: 'Clean, neutral tropical rainforest aroma',
-      packaging: 'Secure plant cradle box with coconut coir insulation'
+      bloomLongevity: 'Perennial foliage year-round',
+      fragrance: 'Clean neutral tropical scent',
+      packaging: 'Ventilated cradle box'
     },
     reviews: [
-      {
-        author: 'Amber Davies',
-        rating: 5,
-        date: 'October 17, 2026',
-        comment: 'As a cat mom, finding safe, beautiful plants is hard. This calathea is stunning and my cat leaves it alone completely.',
-        verified: true
-      }
+      { author: 'Amber Davies', rating: 5, date: 'October 17, 2026', comment: 'Stunning and completely safe for my curious cat.', verified: true }
     ],
     relatedIds: ['prod-1', 'prod-7', 'prod-6']
   },
@@ -259,34 +203,28 @@ const PRODUCTS_DATA = [
     reviewsCount: 73,
     dateAdded: 'Fresh Potted Oct 22',
     origin: 'Hawaii Volcanic Nursery',
+    originCountry: 'USA',
     badge: 'Trending',
     badgeColor: 'primary',
+    petFriendly: false,
+    lightLevel: 'Bright Indirect',
+    inStock: true,
+    stockCount: 16,
     shortDescription: 'Heart-shaped fiery red spathes that bloom continuously for months in indirect light.',
-    fullDescription: 'Known as the Painter’s Palette or Flamingo Flower, the Scarlet Anthurium is the world’s longest-blooming houseplant. Each heart-shaped waxy red spathe lasts up to eight weeks on the plant, while new buds emerge regularly from the glossy foliage.',
-    images: [
-      'assets/deal-ana.png',
-      'assets/rose.jpg',
-      'assets/deal-bloom.png',
-      'assets/hero-flower.png'
-    ],
+    fullDescription: 'Known as the Flamingo Flower, the Scarlet Anthurium is the world’s longest-blooming houseplant. Each heart-shaped waxy red spathe lasts up to eight weeks on the plant, while new buds emerge regularly.',
+    images: ['assets/deal-ana.png', 'assets/rose.jpg', 'assets/deal-bloom.png', 'assets/hero-flower.png'],
     specs: {
-      height: '16 – 20 inches (40 – 50 cm)',
+      height: '16 – 20 inches',
       potDiameter: '6-inch geometric stoneware planter',
-      lightRequirement: 'Bright indirect light for prolific continuous blooming',
-      wateringFrequency: 'Water every 7 to 9 days when top half dries',
-      petSafety: 'Contains calcium oxalate (keep out of reach of pets)',
-      bloomLongevity: 'Individual flowers last 2+ months; repeats year-round',
-      fragrance: 'Subtle, fresh botanical scent',
-      packaging: 'Eco-padded air-vented protective container'
+      lightRequirement: 'Bright indirect light for prolific blooming',
+      wateringFrequency: 'Water every 7 to 9 days',
+      petSafety: 'Contains calcium oxalate (keep away from pets)',
+      bloomLongevity: 'Individual flowers last 2+ months',
+      fragrance: 'Subtle fresh botanical scent',
+      packaging: 'Eco-padded air-vented box'
     },
     reviews: [
-      {
-        author: 'Brian Walker',
-        rating: 5,
-        date: 'October 14, 2026',
-        comment: 'The scarlet color is so intense it almost looks fake until you touch it! Three weeks in and still looks brand new.',
-        verified: true
-      }
+      { author: 'Brian Walker', rating: 5, date: 'October 14, 2026', comment: 'The scarlet color is intense and blooms non-stop.', verified: true }
     ],
     relatedIds: ['prod-5', 'prod-1', 'prod-2']
   },
@@ -302,34 +240,28 @@ const PRODUCTS_DATA = [
     reviewsCount: 94,
     dateAdded: 'Shaped Oct 15',
     origin: 'Kyoto Heritage Greenhouse',
+    originCountry: 'Japan',
     badge: 'Signature',
     badgeColor: 'tertiary',
+    petFriendly: false,
+    lightLevel: 'Bright Indirect',
+    inStock: true,
+    stockCount: 9,
     shortDescription: 'Sculptural miniature bonsai featuring aerial roots potted in glazed stoneware.',
-    fullDescription: 'Our Zabo Bonsai Ficus is an exquisite living sculpture trained by master bonsai artisans over four years. Featuring stout banyan-style aerial roots and small, thick glossy green leaves, it brings calming Zen aesthetics to any executive desk, entryway, or meditation nook. Exceptionally forgiving and beginner-friendly.',
-    images: [
-      'assets/deal-zabo.png',
-      'assets/flower-store.png',
-      'assets/deal-bloom.png',
-      'assets/peace-lily.jpg'
-    ],
+    fullDescription: 'Our Zabo Bonsai Ficus is an exquisite living sculpture trained by master bonsai artisans over four years. Featuring stout banyan-style aerial roots and small, thick glossy green leaves.',
+    images: ['assets/deal-zabo.png', 'assets/flower-store.png', 'assets/deal-bloom.png', 'assets/peace-lily.jpg'],
     specs: {
-      height: '12 – 15 inches (30 – 38 cm)',
-      potDiameter: '8-inch traditional glazed ceramic bonsai tray with saucer',
-      lightRequirement: 'Bright indirect light; enjoys morning window sun',
-      wateringFrequency: 'Immerse or drench when moss surface feels dry (approx. 5-7 days)',
-      petSafety: 'Mildly irritating sap if chewed (keep elevated)',
+      height: '12 – 15 inches',
+      potDiameter: '8-inch traditional glazed ceramic tray',
+      lightRequirement: 'Bright indirect light',
+      wateringFrequency: 'Water when surface moss dries (5-7 days)',
+      petSafety: 'Keep elevated away from pets',
       bloomLongevity: 'Lifelong architectural living companion',
       fragrance: 'Subtle forest earth notes',
-      packaging: 'Wooden stabilizing base crate with humidity moss collar'
+      packaging: 'Wooden stabilizing base crate'
     },
     reviews: [
-      {
-        author: 'Liam O’Connor',
-        rating: 5,
-        date: 'October 20, 2026',
-        comment: 'The craftsmanship on this bonsai is breathtaking. The aerial roots look like an ancient sacred banyan tree in miniature.',
-        verified: true
-      }
+      { author: 'Liam O’Connor', rating: 5, date: 'October 20, 2026', comment: 'Breathtaking craftsmanship on this bonsai.', verified: true }
     ],
     relatedIds: ['prod-5', 'prod-1', 'prod-6']
   },
@@ -345,40 +277,329 @@ const PRODUCTS_DATA = [
     reviewsCount: 45,
     dateAdded: 'Artisan Tied Today',
     origin: 'Flower Market Studio',
+    originCountry: 'USA',
     badge: 'Chef Choice',
     badgeColor: 'secondary',
+    petFriendly: false,
+    lightLevel: 'Vase Floral',
+    inStock: true,
+    stockCount: 15,
     shortDescription: 'Hand-tied arrangement of seasonal pastel garden blooms curated by master florists.',
-    fullDescription: 'Pastel Floral Harmony is our signature seasonal centerpiece. Our head florists combine soft blush spray roses, powdery blue hydrangeas, cream lisianthus, and frosted lamb\'s ear foliage into a cascading romantic cluster. Includes an etched glass cylinder vase and a packet of natural flower food.',
-    images: [
-      'assets/hero-flower.png',
-      'assets/sample-flower-image.png',
-      'assets/rose.jpg',
-      'assets/sunflower.jpg'
-    ],
+    fullDescription: 'Pastel Floral Harmony is our signature seasonal centerpiece. Combines soft blush spray roses, powdery blue hydrangeas, cream lisianthus, and frosted lamb\'s ear foliage into a cascading cluster.',
+    images: ['assets/hero-flower.png', 'assets/sample-flower-image.png', 'assets/rose.jpg', 'assets/sunflower.jpg'],
     specs: {
       height: '18 inches tall, 14 inches spread',
-      potDiameter: 'Included hand-blown cylinder vase (8” x 4”)',
-      lightRequirement: 'Keep away from ripening fruit and drafty windows',
-      wateringFrequency: 'Refresh vase water daily with half packet of flower food',
-      petSafety: 'Contains mixed stems (consult guide before purchase)',
-      bloomLongevity: '7 to 10 days of vibrant elegance',
-      fragrance: 'Harmonious bouquet of garden tea roses and sweet herbs',
-      packaging: 'Gift box with silk ribbon and handwritten calligraphy note option'
+      potDiameter: 'Includes cylinder glass vase',
+      lightRequirement: 'Keep away from ripening fruit & drafty windows',
+      wateringFrequency: 'Refresh vase water daily',
+      petSafety: 'Mixed floral arrangement (keep away from cats)',
+      bloomLongevity: '7 to 10 days of elegance',
+      fragrance: 'Harmonious bouquet of garden tea roses',
+      packaging: 'Gift box with silk ribbon'
     },
     reviews: [
-      {
-        author: 'Rachel Adams',
-        rating: 5,
-        date: 'October 23, 2026',
-        comment: 'Received this for my birthday and it took my breath away. Even better in person than the photos!',
-        verified: true
-      }
+      { author: 'Rachel Adams', rating: 5, date: 'October 23, 2026', comment: 'Received this for my birthday—even better in person than the photos!', verified: true }
     ],
     relatedIds: ['prod-2', 'prod-4', 'prod-3']
+  },
+  {
+    id: 'prod-9',
+    name: 'Emerald Snake Plant',
+    category: 'indoor',
+    categoryLabel: 'Low Maintenance',
+    scientificName: 'Sansevieria trifasciata',
+    price: 26,
+    originalPrice: 32,
+    rating: 4.9,
+    reviewsCount: 57,
+    dateAdded: 'Fresh Potted Oct 19',
+    origin: 'Sonoma Valley Nursery',
+    originCountry: 'USA',
+    badge: 'Indestructible',
+    badgeColor: 'secondary',
+    petFriendly: false,
+    lightLevel: 'Low to High',
+    inStock: true,
+    stockCount: 22,
+    shortDescription: 'Architectural sword-like variegated foliage releasing oxygen overnight.',
+    fullDescription: 'The Snake Plant is famed for its architectural upright leaves and unparalleled resilience. NASA clean-air studies highlight its capability to remove airborne benzene and formaldehyde while synthesizing oxygen during nighttime hours.',
+    images: ['assets/peace-lily.jpg', 'assets/deal-bloom.png', 'assets/flower-store.png'],
+    specs: {
+      height: '16 – 22 inches',
+      potDiameter: '6-inch slate cylindrical pot',
+      lightRequirement: 'Thrives in any light, from low shade to full sun',
+      wateringFrequency: 'Allow soil to dry out completely (every 2-3 weeks)',
+      petSafety: 'Mildly toxic if ingested by pets',
+      bloomLongevity: 'Indestructible perennial foliage',
+      fragrance: 'Clean, neutral aroma',
+      packaging: 'Recyclable carton with moss collar'
+    },
+    reviews: [
+      { author: 'Kenji Sato', rating: 5, date: 'October 15, 2026', comment: 'Perfect plant for beginners. Looks sharp in my home office.', verified: true }
+    ],
+    relatedIds: ['prod-1', 'prod-5', 'prod-7']
+  },
+  {
+    id: 'prod-10',
+    name: 'Lavender Mist Orchid',
+    category: 'flowering',
+    categoryLabel: 'Exotic Bloom',
+    scientificName: 'Phalaenopsis violetta',
+    price: 36,
+    originalPrice: 45,
+    rating: 5.0,
+    reviewsCount: 68,
+    dateAdded: 'Budding Oct 21',
+    origin: 'Holland Glasshouses',
+    originCountry: 'Netherlands',
+    badge: 'Luxury',
+    badgeColor: 'primary',
+    petFriendly: true,
+    lightLevel: 'Bright Indirect',
+    inStock: true,
+    stockCount: 11,
+    shortDescription: 'Double-spike lavender moth orchid potted in premium moss and ceramic planter.',
+    fullDescription: 'Our double-spike Phalaenopsis orchids feature up to 16 velvety lavender blooms that open sequentially and stay open for up to three months. Potted in organic New Zealand sphagnum moss.',
+    images: ['assets/sample-flower-image.png', 'assets/hero-flower.png', 'assets/deal-ana.png'],
+    specs: {
+      height: '20 – 24 inches',
+      potDiameter: '5-inch glazed ceramic orchid pot',
+      lightRequirement: 'Bright indirect window exposure',
+      wateringFrequency: 'Three ice cubes or 1/4 cup water weekly',
+      petSafety: '100% Non-toxic & Pet Safe',
+      bloomLongevity: 'Blooms remain vibrant for 10-12 weeks',
+      fragrance: 'Delicate powdery morning scent',
+      packaging: 'Thermal protective transit box'
+    },
+    reviews: [
+      { author: 'Olivia Wilde', rating: 5, date: 'October 19, 2026', comment: 'The double spike is magnificent! Two months later and still in full bloom.', verified: true }
+    ],
+    relatedIds: ['prod-6', 'prod-8', 'prod-2']
+  },
+  {
+    id: 'prod-11',
+    name: 'Golden Pothos Totem',
+    category: 'indoor',
+    categoryLabel: 'Trailing Vine',
+    scientificName: 'Epipremnum aureum',
+    price: 21,
+    originalPrice: 26,
+    rating: 4.8,
+    reviewsCount: 49,
+    dateAdded: 'Fresh Potted Oct 18',
+    origin: 'California Coastal Farm',
+    originCountry: 'USA',
+    badge: 'Easy Care',
+    badgeColor: 'secondary',
+    petFriendly: false,
+    lightLevel: 'Low to Medium',
+    inStock: true,
+    stockCount: 19,
+    shortDescription: 'Lush heart-shaped leaves splashed with gold cascading from a coir climbing pole.',
+    fullDescription: 'The Golden Pothos is celebrated as the easiest houseplant in the world. Its heart-shaped leaves are splashed with sunny golden marbling and will happily climb a moss totem or cascade gracefully from high shelves.',
+    images: ['assets/deal-bloom.png', 'assets/peace-lily.jpg', 'assets/flower-store.png'],
+    specs: {
+      height: '18 inches on climbing stake',
+      potDiameter: '6-inch nursery pot with decorative basket',
+      lightRequirement: 'Moderate indirect light',
+      wateringFrequency: 'Water when top 2 inches dry out (weekly)',
+      petSafety: 'Keep out of reach of chewing pets',
+      bloomLongevity: 'Fast-growing trailing vine',
+      fragrance: 'Neutral fresh greenery',
+      packaging: 'Compostable cardboard transit cylinder'
+    },
+    reviews: [
+      { author: 'Daniel Craig', rating: 5, date: 'October 11, 2026', comment: 'Grows so fast! Love the golden marbling on every new leaf.', verified: true }
+    ],
+    relatedIds: ['prod-1', 'prod-5', 'prod-9']
+  },
+  {
+    id: 'prod-12',
+    name: 'Rustic Wildflower Medley',
+    category: 'bouquets',
+    categoryLabel: 'Hand Gathered',
+    scientificName: 'Compositae silva',
+    price: 29,
+    originalPrice: 35,
+    rating: 4.9,
+    reviewsCount: 38,
+    dateAdded: 'Cut Today 7:00 AM',
+    origin: 'Sonoma Valley Nursery',
+    originCountry: 'USA',
+    badge: 'Cottage Charm',
+    badgeColor: 'tertiary',
+    petFriendly: true,
+    lightLevel: 'Vase Floral',
+    inStock: true,
+    stockCount: 17,
+    shortDescription: 'Carefree meadow mix of chamomile, blue cornflowers, lavender, and seeded grasses.',
+    fullDescription: 'Reminiscent of walking through an English countryside meadow at sunrise, our Rustic Wildflower Medley blends daisy-like chamomile, cornflowers, fragrant French lavender, and ornamental seeded grasses.',
+    images: ['assets/hero-flower.png', 'assets/sunflower.jpg', 'assets/rose.jpg'],
+    specs: {
+      height: '18 inches',
+      potDiameter: 'Wrapped in rustic burlap & twine',
+      lightRequirement: 'Cool indirect light',
+      wateringFrequency: 'Refresh vase water every other day',
+      petSafety: '100% Pet Friendly',
+      bloomLongevity: '7 to 10 days',
+      fragrance: 'Calming lavender & wild chamomile herbal scent',
+      packaging: 'Cotton water sponge collar'
+    },
+    reviews: [
+      { author: 'Emma Watson', rating: 5, date: 'October 21, 2026', comment: 'The chamomile and lavender scent is so soothing after a long workday.', verified: true }
+    ],
+    relatedIds: ['prod-3', 'prod-2', 'prod-8']
+  },
+  {
+    id: 'prod-13',
+    name: 'Monstera Swiss Cheese',
+    category: 'indoor',
+    categoryLabel: 'Tropical Icon',
+    scientificName: 'Monstera deliciosa',
+    price: 34,
+    originalPrice: 42,
+    rating: 5.0,
+    reviewsCount: 82,
+    dateAdded: 'Fresh Potted Oct 16',
+    origin: 'Hawaii Volcanic Nursery',
+    originCountry: 'USA',
+    badge: 'Statement Leaf',
+    badgeColor: 'primary',
+    petFriendly: false,
+    lightLevel: 'Bright Indirect',
+    inStock: true,
+    stockCount: 13,
+    shortDescription: 'Dramatic tropical fenestrated leaves that bring lush jungle aesthetics indoors.',
+    fullDescription: 'The Monstera Deliciosa is the undisputed king of indoor botanical styling. Each giant heart-shaped leaf develops natural hole perforations (fenestrations) that allow light to pass through to lower foliage.',
+    images: ['assets/deal-bloom.png', 'assets/flower-store.png', 'assets/peace-lily.jpg'],
+    specs: {
+      height: '22 – 28 inches',
+      potDiameter: '8-inch matte stoneware planter',
+      lightRequirement: 'Bright indirect sunlight',
+      wateringFrequency: 'Water every 7 – 10 days when soil is half dry',
+      petSafety: 'Mildly toxic if chewed by pets',
+      bloomLongevity: 'Evergreen statement foliage',
+      fragrance: 'Clean jungle aroma',
+      packaging: 'Heavy-duty eco-box'
+    },
+    reviews: [
+      { author: 'Alex Turner', rating: 5, date: 'October 16, 2026', comment: 'Came with three giant fenestrated leaves! Outstanding quality.', verified: true }
+    ],
+    relatedIds: ['prod-5', 'prod-1', 'prod-7']
+  },
+  {
+    id: 'prod-14',
+    name: 'Coral Peony Symphony',
+    category: 'bouquets',
+    categoryLabel: 'Limited Cut',
+    scientificName: 'Paeonia coral sunset',
+    price: 44,
+    originalPrice: 52,
+    rating: 5.0,
+    reviewsCount: 91,
+    dateAdded: 'Cut Today 5:30 AM',
+    origin: 'Holland Glasshouses',
+    originCountry: 'Netherlands',
+    badge: 'Rare Bloom',
+    badgeColor: 'primary',
+    petFriendly: false,
+    lightLevel: 'Vase Floral',
+    inStock: false,
+    stockCount: 0,
+    shortDescription: 'Magical chameleon peonies that transition from vibrant coral to apricot and soft cream.',
+    fullDescription: 'The Coral Sunset Peony is one of the botanical world’s greatest wonders. Over its vase life, the giant layered bowl blossoms transform day by day from deep salmon coral to sunny apricot, finally softening into champagne cream.',
+    images: ['assets/sample-flower-image.png', 'assets/rose.jpg', 'assets/hero-flower.png'],
+    specs: {
+      height: '20 inches',
+      potDiameter: 'Luxury embossed gift box',
+      lightRequirement: 'Keep cool out of direct sun',
+      wateringFrequency: 'Warm water with floral food daily',
+      petSafety: 'Keep away from dogs and cats',
+      bloomLongevity: '6 to 9 days of color-changing drama',
+      fragrance: 'Subtle sweet citrus floral scent',
+      packaging: 'Silk tissue and water reservoir'
+    },
+    reviews: [
+      { author: 'Grace Kelly', rating: 5, date: 'October 22, 2026', comment: 'Watching the petals change color from coral to cream is pure magic.', verified: true }
+    ],
+    relatedIds: ['prod-2', 'prod-4', 'prod-8']
+  },
+  {
+    id: 'prod-15',
+    name: 'Bonsai Jade Money Tree',
+    category: 'indoor',
+    categoryLabel: 'Good Fortune',
+    scientificName: 'Crassula ovata',
+    price: 31,
+    originalPrice: 38,
+    rating: 4.8,
+    reviewsCount: 44,
+    dateAdded: 'Shaped Oct 14',
+    origin: 'Kyoto Heritage Greenhouse',
+    originCountry: 'Japan',
+    badge: 'Good Luck',
+    badgeColor: 'secondary',
+    petFriendly: false,
+    lightLevel: 'Direct to Bright',
+    inStock: true,
+    stockCount: 15,
+    shortDescription: 'Succulent bonsai with thick jade-green leaves symbolizing prosperity and harmony.',
+    fullDescription: 'Cultivated according to Japanese aesthetic balance, the Jade Money Tree features thick gnarled stems and plump coin-shaped jade leaves. In feng shui tradition, it represents financial growth, good luck, and enduring vitality.',
+    images: ['assets/deal-zabo.png', 'assets/flower-store.png', 'assets/deal-bloom.png'],
+    specs: {
+      height: '10 – 12 inches',
+      potDiameter: '6-inch handcrafted ceramic bonsai tray',
+      lightRequirement: 'Loves bright sunny windows',
+      wateringFrequency: 'Water sparingly every 2-3 weeks',
+      petSafety: 'Toxic to pets if ingested',
+      bloomLongevity: 'Living heirloom plant for decades',
+      fragrance: 'Neutral succulent scent',
+      packaging: 'Cushioned wooden crate'
+    },
+    reviews: [
+      { author: 'Nathan Drake', rating: 5, date: 'October 13, 2026', comment: 'Thick, healthy stems and beautiful glazed ceramic dish.', verified: true }
+    ],
+    relatedIds: ['prod-7', 'prod-5', 'prod-9']
+  },
+  {
+    id: 'prod-16',
+    name: 'White Hydrangea Cloud',
+    category: 'flowering',
+    categoryLabel: 'Grand Bloom',
+    scientificName: 'Hydrangea macrophylla alba',
+    price: 33,
+    originalPrice: 40,
+    rating: 4.9,
+    reviewsCount: 53,
+    dateAdded: 'Fresh Potted Oct 17',
+    origin: 'Sonoma Valley Nursery',
+    originCountry: 'USA',
+    badge: 'Pure Elegance',
+    badgeColor: 'primary',
+    petFriendly: false,
+    lightLevel: 'Morning Sun',
+    inStock: true,
+    stockCount: 10,
+    shortDescription: 'Enormous spherical cloud of pristine white florets potted in antique metal urn.',
+    fullDescription: 'Featuring majestic spherical bloom heads up to 8 inches wide, our White Hydrangea Cloud delivers pure bridal sophistication. Delivered potted with healthy fibrous root balls in an antique zinc-finished planter.',
+    images: ['assets/hero-flower.png', 'assets/sample-flower-image.png', 'assets/peace-lily.jpg'],
+    specs: {
+      height: '16 – 18 inches',
+      potDiameter: '7-inch antique zinc finish planter',
+      lightRequirement: 'Morning sunlight and afternoon shade',
+      wateringFrequency: 'Hydrangeas love water! Water every 3-4 days',
+      petSafety: 'Toxic to pets (keep out of reach)',
+      bloomLongevity: 'Blooms last 4-6 weeks potted',
+      fragrance: 'Delicate clean water scent',
+      packaging: 'Spill-proof soil seal with aeration ports'
+    },
+    reviews: [
+      { author: 'Victoria Wood', rating: 5, date: 'October 17, 2026', comment: 'The blooms look like puffy white cumulus clouds. Utterly gorgeous!', verified: true }
+    ],
+    relatedIds: ['prod-8', 'prod-1', 'prod-6']
   }
 ];
 
-// Helper to look up a product by ID
 function getProductById(id) {
   return PRODUCTS_DATA.find(p => p.id === id) || null;
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Flower Market</title>
+  <meta name="description" content="Sign in to Flower Market to track orders, manage floral club subscriptions, and access role-based dashboards.">
+
+  <!-- Google Fonts: Noto Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/flower.css">
+</head>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; background: radial-gradient(circle at top center, var(--color-primary-tint) 0%, var(--bg-body) 70%);">
+
+  <!-- Simple Header -->
+  <header style="padding: 1.5rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="brand-link">
+        <img src="assets/logo.png" alt="Flower Market Logo" class="brand-logo">
+        <span class="brand-name">Flower <span>Market</span></span>
+      </a>
+      <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme">
+        <i class="fas fa-moon"></i> <span class="theme-label">Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Login Card Container -->
+  <main class="container" style="max-width: 480px; margin: 2rem auto; width: 100%;">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-icon-circle"><i class="fas fa-lock"></i></div>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Access your botanical orders, wishlist, or staff dashboard.</p>
+      </div>
+
+      <!-- Quick 1-Click Demo Login Credentials (Rule Requirement) -->
+      <div class="demo-login-box">
+        <div class="demo-title"><i class="fas fa-key text-primary-color"></i> 1-Click Demo Auto-fill:</div>
+        <div class="demo-buttons-row">
+          <button type="button" class="btn-demo-pill" data-demo-role="user">
+            <i class="fas fa-user"></i> <span>Customer</span>
+          </button>
+          <button type="button" class="btn-demo-pill" data-demo-role="admin">
+            <i class="fas fa-user-shield"></i> <span>Admin</span>
+          </button>
+          <button type="button" class="btn-demo-pill" data-demo-role="manager">
+            <i class="fas fa-briefcase"></i> <span>Manager</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Validation Error Box -->
+      <div id="login-alert" class="form-error-banner is-hidden" role="alert"></div>
+
+      <!-- Standard Login Form -->
+      <form id="login-form" novalidate aria-label="Sign In Form">
+        <div class="form-group">
+          <label for="login-email" class="form-label">Email Address *</label>
+          <div class="input-with-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="login-email" class="form-input" placeholder="e.g. user@flowermarket.shop" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <label for="login-password" class="form-label">Password *</label>
+            <a href="#contact" class="auth-forgot-link">Forgot password?</a>
+          </div>
+          <div class="input-with-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" class="form-input" placeholder="Enter password (min 6 chars)" autocomplete="current-password" required>
+            <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-secondary); cursor: pointer;">
+            <input type="checkbox" checked> <span>Remember this browser</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn--primary" id="login-submit-btn" style="width: 100%; height: 48px; font-size: 1rem;">
+          <i class="fas fa-arrow-right-to-bracket"></i> <span>Sign In</span>
+        </button>
+      </form>
+
+      <!-- Social Logins (Google & Facebook) -->
+      <div class="auth-divider"><span>OR CONTINUE WITH</span></div>
+
+      <div class="social-login-grid">
+        <button type="button" class="btn btn--outline social-login-btn" data-provider="Google">
+          <i class="fab fa-google text-primary-color"></i> <span>Google</span>
+        </button>
+        <button type="button" class="btn btn--outline social-login-btn" data-provider="Facebook">
+          <i class="fab fa-facebook-f" style="color: #1877F2;"></i> <span>Facebook</span>
+        </button>
+      </div>
+
+      <p class="auth-footer-text">
+        Don't have a Flower Market account? <a href="register.html">Create one for free</a>
+      </p>
+    </div>
+  </main>
+
+  <footer style="padding: 1.5rem 0; text-align: center; font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border-subtle);">
+    <p>&copy; 2026 Flower Market Inc. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/auth.js"></script>
+  <script>
+    // Theme toggle
+    const theme = localStorage.getItem('fm_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('fm_theme', next);
+      document.getElementById('theme-toggle').querySelector('i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
+  </script>
+</body>
+
+</html>
