@@ -1,0 +1,354 @@
+{
+  "info": {
+    "_postman_id": "b3e94a12-8c10-4f92-a1b7-94d8e5a08f21",
+    "name": "Flower Market API - Complete Postman Collection",
+    "description": "Comprehensive REST API request collection for Flower Market: Artisanal Cut Stems, NASA-Certified Houseplants, and Botanical Landscaping Services. Includes JWT authentication, 5-field catalog filtering, order booking lifecycle, Stripe checkout intents, verified reviews, and Flora AI Concierge endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check & Service Uptime",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Customer Account",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sarah Jenkins\",\n  \"email\": \"sarah@example.com\",\n  \"password\": \"FlowerUser2026!\",\n  \"role\": \"USER\",\n  \"phone\": \"+1 (555) 234-5678\",\n  \"address\": \"742 Evergreen Terrace, Springfield, OR\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@flowermarket.shop\",\n  \"password\": \"FlowerUser2026!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "1-Click Demo Login (Role: ADMIN)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"ADMIN\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/demo-login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "demo-login"]
+            }
+          }
+        },
+        {
+          "name": "1-Click Demo Login (Role: MANAGER)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"MANAGER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/demo-login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "demo-login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current Authenticated User (Me)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Botanical Categories",
+      "item": [
+        {
+          "name": "List All Botanical Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Services & Stems Catalog",
+      "item": [
+        {
+          "name": "List Botanical Catalog (5 Filters + Sorting + Pagination)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services?category=indoor-greens&minPrice=20&maxPrice=80&rating=4.8&petFriendly=safe&sort=price_asc&page=1&limit=8",
+              "host": ["{{baseUrl}}"],
+              "path": ["services"],
+              "query": [
+                { "key": "category", "value": "indoor-greens" },
+                { "key": "minPrice", "value": "20" },
+                { "key": "maxPrice", "value": "80" },
+                { "key": "rating", "value": "4.8" },
+                { "key": "petFriendly", "value": "safe" },
+                { "key": "sort", "value": "price_asc" },
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "8" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Botanical Service Details by Slug",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services/peace-lily-air-purifier",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "peace-lily-air-purifier"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Order Bookings",
+      "item": [
+        {
+          "name": "Create Dispatch Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceId\": \"prod-1\",\n  \"scheduledDate\": \"2026-10-30T14:00:00.000Z\",\n  \"deliveryAddress\": \"742 Evergreen Terrace, Springfield, OR\",\n  \"notes\": \"Please leave on the shaded front porch near the garden gate.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bookings",
+              "host": ["{{baseUrl}}"],
+              "path": ["bookings"]
+            }
+          }
+        },
+        {
+          "name": "Get Customer Order Bookings",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/my",
+              "host": ["{{baseUrl}}"],
+              "path": ["bookings", "my"]
+            }
+          }
+        },
+        {
+          "name": "Update Booking Status (Admin / Manager)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"DISPATCHED\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bookings/ord-8901/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["bookings", "ord-8901", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments & Discounts",
+      "item": [
+        {
+          "name": "Create Stripe Payment Intent",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingId\": \"ord-8901\",\n  \"amount\": 38.0,\n  \"paymentMethod\": \"card\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments/create-intent",
+              "host": ["{{baseUrl}}"],
+              "path": ["payments", "create-intent"]
+            }
+          }
+        },
+        {
+          "name": "Apply Promotional Coupon (BLOOM15)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"BLOOM15\",\n  \"orderAmount\": 50.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments/apply-coupon",
+              "host": ["{{baseUrl}}"],
+              "path": ["payments", "apply-coupon"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews & Ratings",
+      "item": [
+        {
+          "name": "List Verified Reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reviews?serviceSlug=peace-lily-air-purifier",
+              "host": ["{{baseUrl}}"],
+              "path": ["reviews"],
+              "query": [{ "key": "serviceSlug", "value": "peace-lily-air-purifier" }]
+            }
+          }
+        },
+        {
+          "name": "Submit Verified Customer Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceId\": \"peace-lily-air-purifier\",\n  \"rating\": 5,\n  \"comment\": \"Lush glossy foliage with 3 open spathes. Outstanding packaging!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reviews",
+              "host": ["{{baseUrl}}"],
+              "path": ["reviews"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flora AI Intelligence",
+      "item": [
+        {
+          "name": "AI Search Predictive Auto-Suggestions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ai/search-suggestions?q=pet%20safe",
+              "host": ["{{baseUrl}}"],
+              "path": ["ai", "search-suggestions"],
+              "query": [{ "key": "q", "value": "pet safe" }]
+            }
+          }
+        },
+        {
+          "name": "Flora AI Concierge Chatbot",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Which houseplants are 100% pet-safe for cats and low-light?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ai/chat",
+              "host": ["{{baseUrl}}"],
+              "path": ["ai", "chat"]
+            }
+          }
+        },
+        {
+          "name": "AI Dashboard Co-Pilot Insights & Anomaly Alerts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/ai/dashboard-insights",
+              "host": ["{{baseUrl}}"],
+              "path": ["ai", "dashboard-insights"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
