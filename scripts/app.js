@@ -58,10 +58,12 @@
         if (icon) icon.className = 'fas fa-sun';
         if (label) label.textContent = 'Light Mode';
         toggleBtn.setAttribute('aria-label', 'Switch to light theme');
+        toggleBtn.setAttribute('title', 'Switch to light theme');
       } else {
         if (icon) icon.className = 'fas fa-moon';
         if (label) label.textContent = 'Dark Mode';
         toggleBtn.setAttribute('aria-label', 'Switch to dark theme');
+        toggleBtn.setAttribute('title', 'Switch to dark theme');
       }
     }
   }
