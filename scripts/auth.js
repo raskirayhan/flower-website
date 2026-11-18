@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // Demo Credentials
+  // Demo Credentials (mock client-side testing)
   const DEMO_ACCOUNTS = {
     user: {
       email: 'user@flowermarket.shop',

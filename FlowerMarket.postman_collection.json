@@ -45,7 +45,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Sarah Jenkins\",\n  \"email\": \"sarah@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"USER\",\n  \"phone\": \"+1 (555) 234-5678\",\n  \"address\": \"742 Evergreen Terrace, Springfield, OR\"\n}"
+              "raw": "{\n  \"name\": \"Sarah Jenkins\",\n  \"email\": \"sarah@example.com\",\n  \"password\": \"your_password_here\",\n  \"role\": \"USER\",\n  \"phone\": \"+1 (555) 234-5678\",\n  \"address\": \"742 Evergreen Terrace, Springfield, OR\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/auth/register",
@@ -61,7 +61,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"user@flowermarket.shop\",\n  \"password\": \"password123\"\n}"
+              "raw": "{\n  \"email\": \"user@flowermarket.shop\",\n  \"password\": \"your_password_here\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/auth/login",

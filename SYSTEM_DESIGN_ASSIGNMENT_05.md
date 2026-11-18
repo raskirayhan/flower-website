@@ -301,7 +301,7 @@ Table audit_logs {
 {
   "name": "Sarah Jenkins",
   "email": "sarah@flowermarket.shop",
-  "password": "password123",
+  "password": "your_secure_password",
   "role": "USER",
   "phone": "+1 (555) 234-5678",
   "address": "742 Evergreen Terrace, Springfield, OR"
@@ -342,7 +342,7 @@ Table audit_logs {
 ```json
 {
   "email": "user@flowermarket.shop",
-  "password": "password123"
+  "password": "your_secure_password"
 }
 ```
 - **Successful Response (200 OK):**
