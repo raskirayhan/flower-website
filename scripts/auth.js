@@ -6,25 +6,25 @@
 (function () {
   'use strict';
 
-  // Demo Credentials
+  // Demo Credentials (mock client-side testing)
   const DEMO_ACCOUNTS = {
     user: {
       email: 'user@flowermarket.shop',
-      password: 'FlowerUser2026!',
+      password: 'password123',
       name: 'Rayhan Raski',
       role: 'user',
       title: 'Floral Club VIP'
     },
     admin: {
       email: 'admin@flowermarket.shop',
-      password: 'FlowerAdmin2026!',
+      password: 'admin123',
       name: 'Rayhan Admin',
       role: 'admin',
       title: 'Senior Administrator'
     },
     manager: {
       email: 'manager@flowermarket.shop',
-      password: 'FlowerManager2026!',
+      password: 'manager123',
       name: 'Store Operations Manager',
       role: 'manager',
       title: 'Greenhouse Manager'

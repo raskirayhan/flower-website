@@ -26,9 +26,9 @@ Flower Market is a modern, responsive, accessible full-stack e-commerce and book
 
 | Role | Email | Password | Sidebar Items / Capabilities |
 | :--- | :--- | :--- | :--- |
-| 👤 **Customer User** | `user@flowermarket.shop` | `FlowerUser2026!` | 4 items: Overview, My Orders, Plant Wishlist, Account Profile |
-| 🛡️ **Administrator** | `admin@flowermarket.shop` | `FlowerAdmin2026!` | 6 items: Overview, All Orders, Plant Inventory, Customers, Analytics, Settings |
-| 📊 **Store Manager** | `manager@flowermarket.shop` | `FlowerManager2026!` | 5 items: Overview, Dispatch & Orders, Stock Management, Analytics, Supplier Notes |
+| 👤 **Customer User** | `user@flowermarket.shop` | `password123` | 4 items: Overview, My Orders, Plant Wishlist, Account Profile |
+| 🛡️ **Administrator** | `admin@flowermarket.shop` | `admin123` | 6 items: Overview, All Orders, Plant Inventory, Customers, Analytics, Settings |
+| 📊 **Store Manager** | `manager@flowermarket.shop` | `manager123` | 5 items: Overview, Dispatch & Orders, Stock Management, Analytics, Supplier Notes |
 
 *Note: You can also use the 1-click "Auto-fill Demo Credentials" buttons on the Sign In page to test each role instantly.*
 

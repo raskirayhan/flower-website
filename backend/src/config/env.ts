@@ -7,16 +7,14 @@ const envSchema = z.object({
   PORT: z.string().default('5000').transform((val) => parseInt(val, 10)),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   API_PREFIX: z.string().default('/api'),
-  DATABASE_URL: z
-    .string()
-    .default('postgresql://postgres:postgres@localhost:5432/flowermarket_db?schema=public'),
-  JWT_SECRET: z.string().default('flowermarket_jwt_access_secret_key_2026'),
+  DATABASE_URL: z.string().default(process.env.DATABASE_URL || ''),
+  JWT_SECRET: z.string().default(process.env.JWT_SECRET || 'dev_jwt_access_secret_do_not_use_in_prod'),
   JWT_EXPIRES_IN: z.string().default('7d'),
-  JWT_REFRESH_SECRET: z.string().default('flowermarket_jwt_refresh_secret_key_2026'),
+  JWT_REFRESH_SECRET: z.string().default(process.env.JWT_REFRESH_SECRET || 'dev_jwt_refresh_secret_do_not_use_in_prod'),
   JWT_REFRESH_EXPIRES_IN: z.string().default('30d'),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
-  STRIPE_SECRET_KEY: z.string().default('sk_test_demo_flowermarket_stripe_key'),
-  STRIPE_WEBHOOK_SECRET: z.string().default('whsec_demo_webhook_secret_key'),
+  STRIPE_SECRET_KEY: z.string().default(process.env.STRIPE_SECRET_KEY || ''),
+  STRIPE_WEBHOOK_SECRET: z.string().default(process.env.STRIPE_WEBHOOK_SECRET || ''),
   RATE_LIMIT_WINDOW_MS: z.string().default('900000').transform((val) => parseInt(val, 10)),
   RATE_LIMIT_MAX_REQUESTS: z.string().default('100').transform((val) => parseInt(val, 10)),
 });

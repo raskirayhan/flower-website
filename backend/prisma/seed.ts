@@ -21,10 +21,14 @@ async function main() {
 
   console.log('🧹 Existing records cleared.');
 
-  // 2. Hash default passwords
-  const passwordHash = await bcrypt.hash('FlowerUser2026!', 10);
-  const adminPasswordHash = await bcrypt.hash('FlowerAdmin2026!', 10);
-  const managerPasswordHash = await bcrypt.hash('FlowerManager2026!', 10);
+  // 2. Hash default passwords from environment or development defaults
+  const userPassword = process.env.SEED_USER_PASSWORD || 'password123';
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD || 'admin123';
+  const managerPassword = process.env.SEED_MANAGER_PASSWORD || 'manager123';
+
+  const passwordHash = await bcrypt.hash(userPassword, 10);
+  const adminPasswordHash = await bcrypt.hash(adminPassword, 10);
+  const managerPasswordHash = await bcrypt.hash(managerPassword, 10);
 
   // 3. Seed Users & Profiles
   const user = await prisma.user.create({

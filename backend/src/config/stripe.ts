@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { env } from './env.js';
 
-export const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+export const stripe = new Stripe(env.STRIPE_SECRET_KEY || 'mock_stripe_secret_key_placeholder', {
   apiVersion: '2024-04-10' as any,
   typescript: true,
 });
