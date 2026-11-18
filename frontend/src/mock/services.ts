@@ -17,7 +17,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Hawaiian Greenhouse',
     petSafety: 'Caution',
     description: 'Lush glossy foliage with elegant white spathes. Certified natural indoor air filtration powerhouse.',
-    images: ['assets/peace-lily.jpg', 'assets/sample-flower-image.png'],
+    images: ['/assets/peace-lily.jpg', '/assets/sample-flower-image.png'],
     stock: 42,
   },
   {
@@ -36,7 +36,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Ecuadorian Andes',
     petSafety: '100% Pet-Safe',
     description: 'Two dozen deeply saturated crimson roses cultivated in volcanic Andean soil with velvety petals.',
-    images: ['assets/rose.jpg', 'assets/deal-bloom.png'],
+    images: ['/assets/rose.jpg', '/assets/deal-bloom.png'],
     stock: 65,
   },
   {
@@ -55,7 +55,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Sonoma Valley Nursery',
     petSafety: '100% Pet-Safe',
     description: 'Radiant cheerful sunflowers with golden rays surrounding rich dark seed heads.',
-    images: ['assets/sunflower.jpg', 'assets/deal-ana.png'],
+    images: ['/assets/sunflower.jpg', '/assets/deal-ana.png'],
     stock: 50,
   },
   {
@@ -74,7 +74,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Kyoto Bonsai Nursery',
     petSafety: '100% Pet-Safe',
     description: 'Exquisitely trained miniature juniper with gnarled trunk dynamics planted in Tokoname ceramic.',
-    images: ['assets/sample-flower-image.png', 'assets/hero-flower.png'],
+    images: ['/assets/sample-flower-image.png', '/assets/hero-flower.png'],
     stock: 14,
   },
   {
@@ -93,7 +93,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Oregon Valley Hothouse',
     petSafety: '100% Pet-Safe',
     description: 'Cascading dual spikes with pristine snow-white butterfly blooms lasting up to three months.',
-    images: ['assets/sample-flower-image.png', 'assets/deal-bloom.png'],
+    images: ['/assets/sample-flower-image.png', '/assets/deal-bloom.png'],
     stock: 32,
   },
   {
@@ -112,7 +112,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Sonoma Valley Nursery',
     petSafety: 'Caution',
     description: 'Sumptuous cloud-like blush pink Sarah Bernhardt peonies accented with silver dollar eucalyptus.',
-    images: ['assets/deal-ana.png', 'assets/rose.jpg'],
+    images: ['/assets/deal-ana.png', '/assets/rose.jpg'],
     stock: 18,
   },
   {
@@ -131,7 +131,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Sonoma Valley Nursery',
     petSafety: '100% Pet-Safe',
     description: 'Sculptural geometrical rosettes of Echeveria, zebra Haworthia, and jade arranged with river stone top-dressing.',
-    images: ['assets/sample-flower-image.png', 'assets/deal-zabo.png'],
+    images: ['/assets/sample-flower-image.png', '/assets/deal-zabo.png'],
     stock: 45,
   },
   {
@@ -150,7 +150,7 @@ export const MOCK_SERVICES: BotanicalService[] = [
     originLocation: 'Mediterranean Nursery',
     petSafety: 'Caution',
     description: 'Intensely fragrant purple flower spikes with silver-green aromatic foliage for natural relaxation.',
-    images: ['assets/deal-zabo.png', 'assets/sample-flower-image.png'],
+    images: ['/assets/deal-zabo.png', '/assets/sample-flower-image.png'],
     stock: 60,
   },
 ];
