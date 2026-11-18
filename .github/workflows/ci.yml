@@ -7,6 +7,21 @@ on:
     branches: [main]
 
 jobs:
+  secret-and-credential-scan:
+    name: Secret & Credential Leak Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Secret Scanner
+        run: node ./scripts/check-secrets.js
+
   backend-lint-and-typecheck:
     name: Backend Lint & Typecheck
     runs-on: ubuntu-latest
