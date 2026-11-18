@@ -17,7 +17,7 @@ export const AboutPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
           <div className="rounded-3xl overflow-hidden h-80 bg-slate-200">
-            <img src="assets/flower-store.png" alt="Historic Greenhouse" className="w-full h-full object-cover" />
+            <img src="/assets/flower-store.png" alt="Historic Greenhouse" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold font-serif text-slate-900 dark:text-slate-100">

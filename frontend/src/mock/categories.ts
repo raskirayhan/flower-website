@@ -8,7 +8,7 @@ export const MOCK_CATEGORIES: BotanicalCategory[] = [
     description: 'Artisanal hand-tied seasonal floral arrangements cut daily.',
     count: 24,
     icon: 'flower',
-    image: 'assets/rose.jpg',
+    image: '/assets/rose.jpg',
   },
   {
     id: 'cat-2',
@@ -17,7 +17,7 @@ export const MOCK_CATEGORIES: BotanicalCategory[] = [
     description: 'NASA-certified air-purifying houseplants in ceramic planters.',
     count: 36,
     icon: 'leaf',
-    image: 'assets/peace-lily.jpg',
+    image: '/assets/peace-lily.jpg',
   },
   {
     id: 'cat-3',
@@ -26,7 +26,7 @@ export const MOCK_CATEGORIES: BotanicalCategory[] = [
     description: 'Long-lasting blooming orchids, hydrangeas, and perennials.',
     count: 18,
     icon: 'sun',
-    image: 'assets/sample-flower-image.png',
+    image: '/assets/sample-flower-image.png',
   },
   {
     id: 'cat-4',
@@ -35,7 +35,7 @@ export const MOCK_CATEGORIES: BotanicalCategory[] = [
     description: 'Heritage miniature trees and rare curated botanical specimens.',
     count: 12,
     icon: 'trees',
-    image: 'assets/hero-flower.png',
+    image: '/assets/hero-flower.png',
   },
   {
     id: 'cat-5',
@@ -44,7 +44,7 @@ export const MOCK_CATEGORIES: BotanicalCategory[] = [
     description: 'Luxury bridal bouquets, centerpieces, and celebration styling.',
     count: 15,
     icon: 'heart',
-    image: 'assets/deal-ana.png',
+    image: '/assets/deal-ana.png',
   },
   {
     id: 'cat-6',
@@ -53,6 +53,6 @@ export const MOCK_CATEGORIES: BotanicalCategory[] = [
     description: 'Sculptural drought-tolerant desk succulents and geometric arrangements.',
     count: 28,
     icon: 'shield',
-    image: 'assets/deal-zabo.png',
+    image: '/assets/deal-zabo.png',
   },
 ];

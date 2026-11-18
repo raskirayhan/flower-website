@@ -22,21 +22,21 @@ export const HomePage: React.FC = () => {
       subtitle: 'Hand-picked from certified sustainable Sonoma Valley and Andean highland nurseries.',
       cta: 'Explore Daily Stems',
       tag: '🌸 Spring Collection',
-      image: 'assets/hero-flower.png',
+      image: '/assets/hero-flower.png',
     },
     {
       title: 'Breathe Life with Indoor Greens',
       subtitle: 'NASA-rated air-purifying houseplants with artisan terracotta self-watering planters.',
       cta: 'Browse Houseplants',
       tag: '🌿 Clean Air Living',
-      image: 'assets/peace-lily.jpg',
+      image: '/assets/peace-lily.jpg',
     },
     {
       title: 'Velvet Long-Stem Ecuadorian Roses',
       subtitle: 'Cultivated in mineral-rich volcanic soil for extraordinary 12-day vase longevity.',
       cta: 'Order Luxury Roses',
       tag: '🌹 Signature Roses',
-      image: 'assets/rose.jpg',
+      image: '/assets/rose.jpg',
     },
   ];
 
