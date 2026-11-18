@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { BotanicalService, ServiceFilterOptions } from '../types/index.js';
+import { ServiceFilterOptions } from '../types/index.js';
 import { MOCK_SERVICES } from '../mock/services.js';
 
 export function useServices(initialOptions: ServiceFilterOptions = {}) {

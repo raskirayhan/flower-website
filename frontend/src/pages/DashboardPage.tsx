@@ -17,10 +17,9 @@ export const DashboardPage: React.FC = () => {
   const [profileBio, setProfileBio] = useState('Urban gardener and orchid lover.');
   const [profileSaving, setProfileSaving] = useState(false);
 
-  // Table filters & pagination
+  // Table filters
   const [statusFilter, setStatusFilter] = useState('all');
   const [tableSearch, setTableSearch] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
 
   const handleRoleChange = (role: 'USER' | 'ADMIN' | 'MANAGER') => {
     demoLogin(role);
